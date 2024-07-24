@@ -11,7 +11,9 @@ database.connect();
 app.set("views", `${__dirname}/views`);
 app.set("view engine", "pug");
 
+app.use(express.static('public')) ;
 
+// router admin
 adminRouter(app);
 
 app.listen(port, () => {
