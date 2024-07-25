@@ -2,4 +2,9 @@
     .inner-menu 
         ul 
             li 
-                a(href=`admin/home`) Tổng quan 
+                a(href=`${prefixadmin}/home`) <i class="fa-regular fa-user"></i> Người dùng
+            li 
+                a(
+                    href=`${prefixadmin}/auth/logout`
+                    class="btn btn-danger btn-sm"
+                ) Đăng xuất

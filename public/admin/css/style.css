@@ -1,3 +1,78 @@
-.test{
-    
+/* header */
+.main {
+    background-color: #c1bfbf;
 }
+.header{
+    background: #fff;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    height: 76px;
+}
+.header .inner-logo a{
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+    text-decoration: none;
+    padding-left: 30px;
+}
+.header .inner-function div{
+    background: #c1bfbf;
+    margin-left: 42px;
+    border: 1px solid red;
+    border-radius: 6px;
+    background-color: #f59191;
+    width: 78px;
+    height: 24px;
+    text-align: center;
+    font-weight: 500;   
+}
+
+/* end header */
+
+/* body */
+.body .sider{
+    width: 176px;
+    background: #fff;
+    color: #fff;
+    height: calc(100vh - 176px);
+    position: fixed;
+    top: 76px;
+    left: 0;
+}
+.body .main{
+    /* margin: 15px; */
+    padding: 10px;
+    position: relative;
+    left: 176px;
+    width: calc(100% - 150px);
+    height: calc(100% - 76px);
+
+}
+.block-main {
+    background-color: white;
+    border-radius: 6px;
+    height: 100%;
+    padding: 26px 16px;
+}
+/* End body */
+
+/* sider */
+.sider .inner-menu ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sider .inner-menu ul li a{
+    color: #000;
+    display: block;
+    padding: 6px 10px;
+    border-bottom: 1px solid #515151;
+    text-decoration: none;
+    text-align: center;
+    font-size: small;
+    margin-bottom: 10px;
+    border: none;
+}
+/*End sider */
