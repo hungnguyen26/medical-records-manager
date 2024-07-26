@@ -1,5 +1,6 @@
 const Account = require("../../models/accounts.model");
 const Role = require("../../models/roles.model");
+const searchHelper = require("../../helpers/search");
 
 // [GET] admin/accounts
 module.exports.index = async (req, res) => {
@@ -8,13 +9,9 @@ module.exports.index = async (req, res) => {
     };
     
     // tìm kiếm
-    let keyword = "";
-    if(req.query.keyword){
-        keyword = req.query.keyword;
-
-        const regex = new RegExp(keyword,"i");
-
-        find.fullName = regex;
+    const objectSearch = searchHelper(req.query);
+    if(objectSearch.regex){
+        find.fullName = objectSearch.regex;
     }
     // end tìm kiếm
 
@@ -30,6 +27,6 @@ module.exports.index = async (req, res) => {
     res.render("admin/pages/user/index.pug", {
         pageTitle: "Quản lí người dùng",
         records: records,
-        keyword:keyword
+        keyword:objectSearch.keyword
     });
 };
