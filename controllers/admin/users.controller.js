@@ -6,6 +6,17 @@ module.exports.index = async (req, res) => {
     let find = {
         deleted: false,
     };
+    
+    // tìm kiếm
+    let keyword = "";
+    if(req.query.keyword){
+        keyword = req.query.keyword;
+
+        const regex = new RegExp(keyword,"i");
+
+        find.fullName = regex;
+    }
+    // end tìm kiếm
 
     const records = await Account.find(find).select("-password -token"); 
     for (const record of records) {
@@ -15,9 +26,10 @@ module.exports.index = async (req, res) => {
         });
         record.role = role;
     }
-    // console.log(records);    
+
     res.render("admin/pages/user/index.pug", {
         pageTitle: "Quản lí người dùng",
         records: records,
+        keyword:keyword
     });
 };
