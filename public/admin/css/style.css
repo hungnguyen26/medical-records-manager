@@ -1,4 +1,9 @@
 /* header */
+.body{
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
 .main {
     background-color: #c1bfbf;
 }
@@ -47,7 +52,7 @@
     padding: 10px;
     position: relative;
     left: 176px;
-    width: calc(100% - 150px);
+    width: calc(100% - 176px);
     height: calc(100% - 76px);
 
 }
@@ -107,3 +112,46 @@ th {
     font-size: 12px; 
     /* font-weight: 500; */
 }
+
+.role-quanly {
+    background: #c1bfbf;
+    border: 1px solid rgb(232, 37, 37);
+    border-radius: 6px;
+    background-color: #fbecf2;
+    width: 78px;
+    height: 24px;
+    text-align: center;
+    font-weight: 500;   
+}
+.role-banhang{
+    background: #c1bfbf;
+    border: 1px solid rgb(12, 170, 222);
+    border-radius: 6px;
+    background-color: #cee8fd;
+    width: 78px;
+    height: 24px;
+    text-align: center;
+    font-weight: 500;  
+}
+a{
+    text-decoration: none;
+}
+
+.item-action {
+    color: black; /* Màu chữ đen */
+    margin-right: 12px; /* Khoảng cách bên phải 8px */
+    text-decoration: none; /* Loại bỏ gạch chân mặc định của thẻ a */
+    display: inline-flex; /* Đảm bảo các phần tử được hiển thị dưới dạng khối nội tuyến với căn chỉnh trung tâm */
+    align-items: center;
+}
+
+.item-action:last-child {
+    margin-right: 0; /* Loại bỏ khoảng cách bên phải của phần tử cuối cùng */
+    background-color: white;
+    border: white;
+}
+
+.item-action i {
+    font-size: 1rem; /* Kích thước font của icon */
+}
+

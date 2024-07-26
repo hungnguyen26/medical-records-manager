@@ -8,5 +8,5 @@ module.exports = (app) => {
 
   app.use(PATH_ADMIN + "/home", homeRoter);
 
-  app.use(PATH_ADMIN + "/user", usersRoter);
+  app.use(PATH_ADMIN + "/accounts", usersRoter);
 };
