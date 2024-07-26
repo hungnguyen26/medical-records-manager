@@ -1,0 +1,80 @@
+extends ../../layouts/default.pug
+
+block main
+    .block-main
+        h3(class="mb-4") Quản lí người dùng
+        .mb-3
+            .row 
+                .col-11.text-end      
+                    a(
+                        href=`${prefixadmin}/accounts/create`
+                        class="btn btn-outline-success"
+                    ) + Thêm mới
+        .card.mb-3
+            .card-header Danh sách
+            .card-body 
+                
+                table(
+                    class="table table-hover table-sm"
+                )
+                    thead 
+                        tr 
+                            th STT 
+                            th Ảnh
+                            th Email
+                            th Họ tên
+                            th Ngày sinh
+                            th Giới tính 
+                            th Điện thoại
+                            th Địa chỉ
+                            th Chức vụ
+                            th Trạng thái
+                            th Hành động
+
+                    tbody 
+                        each item, index in records 
+                            tr 
+                                td #{index+1}
+                                td  
+                                    img.round-avatar(
+                                        src=item.avatar
+                                        alt=item.fullName
+                                        width="50px"
+                                        height="auto"
+                                    )
+                                td #{item.email}
+                                td #{item.fullName}
+                                td #{item.dateOfBirth}
+                                td #{item.dateOfBirth}
+                                td #{item.dateOfBirth}
+                                td #{item.dateOfBirth}
+                                td #{item.dateOfBirth}
+                                td #{item.dateOfBirth}
+                                td #{item.dateOfBirth}
+                                //- td 
+                                //-     if(item.status === "active")
+                                //-         a(
+                                //-             href="javascript:;"
+                                //-             class="badge badge-success"
+                                //-             data-status="active"
+                                //-         ) Hoạt động
+                                //-     else 
+                                //-         a(
+                                //-             href="javascript:;"
+                                //-             class="badge badge-danger"
+                                //-             data-status="active"
+                                //-         ) Dừng hoạt động
+                                //- td 
+                                //-     a(
+                                //-         href= `${prefixadmin}/accounts/detail/${item.id}`
+                                //-         class="btn btn-secondary btn-sm"
+                                //-     ) Chi tiết
+                                //-     if(role.nhomQuyen.includes("Accounts_edit")) 
+                                //-         a(
+                                //-             href= `${prefixadmin}/accounts/edit/${item.id}`
+                                //-             class="btn btn-warning btn-sm ml-1"
+                                //-         ) Sửa
+                                //-     if(role.nhomQuyen.includes("Accounts_create")) 
+                                //-         button(
+                                //-             class="btn btn-danger btn-sm ml-1"
+                                //-         ) Xóa

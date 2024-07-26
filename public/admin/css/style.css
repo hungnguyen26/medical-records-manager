@@ -34,6 +34,7 @@
 /* body */
 .body .sider{
     width: 176px;
+    padding: 18px;
     background: #fff;
     color: #fff;
     height: calc(100vh - 176px);
@@ -75,4 +76,34 @@
     margin-bottom: 10px;
     border: none;
 }
+.sider .inner-menu ul li a.menu-item {
+    color: #000;
+    display: block;
+    padding: 6px 10px;
+    border-bottom: 1px solid #515151;
+    text-decoration: none;
+    text-align: center;
+    font-size: small;
+    margin-bottom: 10px;
+    border: none;
+}
+
+.sider .inner-menu ul li a.menu-item.active {
+    background-color: #2b93dd;
+    color: #ffffff; 
+}
 /*End sider */
+
+/* avatar user */
+.round-avatar {
+    width: 40px;
+    height: 4   0px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+/* avatar user */
+
+th {
+    font-size: 12px; 
+    /* font-weight: 500; */
+}
