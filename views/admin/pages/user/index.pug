@@ -44,13 +44,14 @@ block main
                                     )
                                 td #{item.email}
                                 td #{item.fullName}
-                                td #{item.dateOfBirth}
-                                td #{item.dateOfBirth}
-                                td #{item.dateOfBirth}
-                                td #{item.dateOfBirth}
-                                td #{item.dateOfBirth}
-                                td #{item.dateOfBirth}
-                                td #{item.dateOfBirth}
+                                td #{item.dateOfBirth}  
+                                td 
+                                    if(item.sex === "male") 
+                                        | Nam
+                                    else    
+                                        | Nữ
+                                td #{item.phone}  
+                                td #{item.address}  
                                 //- td 
                                 //-     if(item.status === "active")
                                 //-         a(
