@@ -52,13 +52,12 @@ module.exports.createPost = async (req, res) => {
         deleted:false
     });
     if(emailTontai){
-        // res.redirect("back");
-        res.send("ton tai")
+        res.redirect("back");
         return;
     }
     if(!emailTontai){
         req.body.password = md5(req.body.password);
-        console.log(req.body);
+        // console.log(req.body);
         const record = new Account(req.body);
         await record.save();
         res.redirect(`${systemConfig.prefixAdmin}/accounts`);
