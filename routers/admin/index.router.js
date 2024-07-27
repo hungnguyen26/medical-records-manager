@@ -6,7 +6,7 @@ module.exports = (app) => {
   
   const PATH_ADMIN = systemConfig.prefixAdmin;
 
-  app.use(PATH_ADMIN + "/home", homeRoter);
+  app.use(PATH_ADMIN + "/", homeRoter);
 
   app.use(PATH_ADMIN + "/accounts", usersRoter);
 };
