@@ -61,6 +61,9 @@
     border-radius: 6px;
     height: 100%;
     padding: 26px 16px;
+    overflow-y: auto;
+    max-height: 100vh; 
+    box-sizing: border-box; 
 }
 /* End body */
 
@@ -155,3 +158,28 @@ a{
     font-size: 1rem; /* Kích thước font của icon */
 }
 
+.form-create-user {
+    width: 524px;
+    margin: 36px auto; /* Đặt form ở giữa */
+    padding: 20px; /* Thêm khoảng cách bên trong form */
+    border-radius: 10px; /* Bo góc */
+    border: 1px solid #ccc; /* Viền của form */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+    background-color: #fff;
+    
+}
+.form-create-user .form-group {
+    margin-bottom: 8px; /* Khoảng cách giữa các nhóm form */
+    font-weight:400 ;
+}
+
+.form-create-user .btn {
+    margin-top: 10px;
+    width: 200px; /* Đặt nút rộng 100% của form */
+    border-radius: 5px; /* Bo góc nút */
+}
+
+.form-create-user .required {
+    color: red; /* Màu đỏ cho dấu sao */
+    font-weight: 500;
+}

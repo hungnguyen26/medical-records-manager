@@ -1,3 +1,6 @@
+const md5 = require("md5");
+const systemConfig = require("../../config/system");
+
 const Account = require("../../models/accounts.model");
 const Role = require("../../models/roles.model");
 const searchHelper = require("../../helpers/search");
@@ -29,4 +32,35 @@ module.exports.index = async (req, res) => {
         records: records,
         keyword:objectSearch.keyword
     });
+};
+
+// [GET] admin/accounts/create
+module.exports.create = async (req, res) => {
+    const roles = await Role.find({
+        deleted:false
+    });
+    res.render("admin/pages/user/create.pug", {
+        pageTitle: "Thêm mới người dùng",
+        roles:roles
+    });
+};
+
+// [POST] admin/accounts/create
+module.exports.createPost = async (req, res) => {
+    const emailTontai = await Account.findOne({
+        email: req.body.email,
+        deleted:false
+    });
+    if(emailTontai){
+        // res.redirect("back");
+        res.send("ton tai")
+        return;
+    }
+    if(!emailTontai){
+        req.body.password = md5(req.body.password);
+        console.log(req.body);
+        const record = new Account(req.body);
+        await record.save();
+        res.redirect(`${systemConfig.prefixAdmin}/accounts`);
+    }
 };
