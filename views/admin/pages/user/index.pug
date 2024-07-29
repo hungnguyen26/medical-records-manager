@@ -1,7 +1,10 @@
 extends ../../layouts/default.pug
+include ../../mixins/alert.pug
 
 block main
     .block-main
+        +alert-success("9000")
+
         h3(class="mb-4") Quản lí người dùng
         .mb-3
             .row 

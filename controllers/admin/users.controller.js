@@ -26,7 +26,6 @@ module.exports.index = async (req, res) => {
         });
         record.role = role;
     }
-
     res.render("admin/pages/user/index.pug", {
         pageTitle: "Quản lí người dùng",
         records: records,
@@ -52,6 +51,7 @@ module.exports.createPost = async (req, res) => {
         deleted:false
     });
     if(emailTontai){
+        req.flash("thatbai","Email đã tồn tại!!")
         res.redirect("back");
         return;
     }
@@ -60,6 +60,7 @@ module.exports.createPost = async (req, res) => {
         // console.log(req.body);
         const record = new Account(req.body);
         await record.save();
+        req.flash("thanhcong","Thêm người dùng mới thành công!!")
         res.redirect(`${systemConfig.prefixAdmin}/accounts`);
     }
 };

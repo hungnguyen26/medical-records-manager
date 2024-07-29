@@ -1,7 +1,10 @@
 extends ../../layouts/default.pug
+include ../../mixins/alert.pug
 
 block main
     .block-main
+        +alert-error("9000")
+        
         h3(class="mb-4") Thêm mới người dùng
         .form-create-user
             form(

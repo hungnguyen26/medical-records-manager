@@ -1,185 +1,219 @@
 /* header */
-.body{
-    font-family: "Roboto", sans-serif;
-    font-weight: 300;
-    font-style: normal;
+.body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }
 .main {
-    background-color: #c1bfbf;
+  background-color: #c1bfbf;
 }
-.header{
-    background: #fff;
-    padding: 10px 0;
-    position: sticky;
-    top: 0;
-    z-index: 999;
-    height: 76px;
+.header {
+  background: #fff;
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  height: 76px;
 }
-.header .inner-logo a{
-    font-size: 24px;
-    font-weight: 700;
-    color: #000;
-    text-decoration: none;
-    padding-left: 30px;
+.header .inner-logo a {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+  text-decoration: none;
+  padding-left: 30px;
 }
-.header .inner-function div{
-    background: #c1bfbf;
-    margin-left: 42px;
-    border: 1px solid red;
-    border-radius: 6px;
-    background-color: #f59191;
-    width: 78px;
-    height: 24px;
-    text-align: center;
-    font-weight: 500;   
+.header .inner-function div {
+  background: #c1bfbf;
+  margin-left: 42px;
+  border: 1px solid red;
+  border-radius: 6px;
+  background-color: #f59191;
+  width: 78px;
+  height: 24px;
+  text-align: center;
+  font-weight: 500;
 }
 
 /* end header */
 
 /* body */
-.body .sider{
-    width: 176px;
-    padding: 18px;
-    background: #fff;
-    color: #fff;
-    height: calc(100vh - 176px);
-    position: fixed;
-    top: 76px;
-    left: 0;
+.body .sider {
+  width: 176px;
+  padding: 18px;
+  background: #fff;
+  color: #fff;
+  height: calc(100vh - 176px);
+  position: fixed;
+  top: 76px;
+  left: 0;
 }
-.body .main{
-    /* margin: 15px; */
-    padding: 10px;
-    position: relative;
-    left: 176px;
-    width: calc(100% - 176px);
-    height: calc(100% - 76px);
-
+.body .main {
+  /* margin: 15px; */
+  padding: 10px;
+  position: relative;
+  left: 176px;
+  width: calc(100% - 176px);
+  height: calc(100% - 76px);
 }
 .block-main {
-    background-color: white;
-    border-radius: 6px;
-    height: 100%;
-    padding: 26px 16px;
-    overflow-y: auto;
-    max-height: 100vh; 
-    box-sizing: border-box; 
+  background-color: white;
+  border-radius: 6px;
+  height: 100%;
+  padding: 26px 16px;
+  overflow-y: auto;
+  max-height: 100vh;
+  box-sizing: border-box;
 }
 /* End body */
 
 /* sider */
-.sider .inner-menu ul{
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.sider .inner-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
-.sider .inner-menu ul li a{
-    color: #000;
-    display: block;
-    padding: 6px 10px;
-    border-bottom: 1px solid #515151;
-    text-decoration: none;
-    text-align: center;
-    font-size: small;
-    margin-bottom: 10px;
-    border: none;
+.sider .inner-menu ul li a {
+  color: #000;
+  display: block;
+  padding: 6px 10px;
+  border-bottom: 1px solid #515151;
+  text-decoration: none;
+  text-align: center;
+  font-size: small;
+  margin-bottom: 10px;
+  border: none;
 }
 .sider .inner-menu ul li a.menu-item {
-    color: #000;
-    display: block;
-    padding: 6px 10px;
-    border-bottom: 1px solid #515151;
-    text-decoration: none;
-    text-align: center;
-    font-size: small;
-    margin-bottom: 10px;
-    border: none;
+  color: #000;
+  display: block;
+  padding: 6px 10px;
+  border-bottom: 1px solid #515151;
+  text-decoration: none;
+  text-align: center;
+  font-size: small;
+  margin-bottom: 10px;
+  border: none;
 }
 
 .sider .inner-menu ul li a.menu-item.active {
-    background-color: #2b93dd;
-    color: #ffffff; 
+  background-color: #2b93dd;
+  color: #ffffff;
 }
 /*End sider */
 
 /* avatar user */
 .round-avatar {
-    width: 40px;
-    height: 4   0px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
+  width: 40px;
+  height: 4 0px;
+  border-radius: 50%;
+  object-fit: cover;
+}
 /* avatar user */
 
 th {
-    font-size: 12px; 
-    /* font-weight: 500; */
+  font-size: 12px;
+  /* font-weight: 500; */
 }
 
 .role-quanly {
-    background: #c1bfbf;
-    border: 1px solid rgb(232, 37, 37);
-    border-radius: 6px;
-    background-color: #fbecf2;
-    width: 78px;
-    height: 24px;
-    text-align: center;
-    font-weight: 500;   
+  background: #c1bfbf;
+  border: 1px solid rgb(232, 37, 37);
+  border-radius: 6px;
+  background-color: #fbecf2;
+  width: 78px;
+  height: 24px;
+  text-align: center;
+  font-weight: 500;
 }
-.role-banhang{
-    background: #c1bfbf;
-    border: 1px solid rgb(12, 170, 222);
-    border-radius: 6px;
-    background-color: #cee8fd;
-    width: 78px;
-    height: 24px;
-    text-align: center;
-    font-weight: 500;  
+.role-banhang {
+  background: #c1bfbf;
+  border: 1px solid rgb(12, 170, 222);
+  border-radius: 6px;
+  background-color: #cee8fd;
+  width: 78px;
+  height: 24px;
+  text-align: center;
+  font-weight: 500;
 }
-a{
-    text-decoration: none;
+a {
+  text-decoration: none;
 }
 
 .item-action {
-    color: black; /* Màu chữ đen */
-    margin-right: 12px; /* Khoảng cách bên phải 8px */
-    text-decoration: none; /* Loại bỏ gạch chân mặc định của thẻ a */
-    display: inline-flex; /* Đảm bảo các phần tử được hiển thị dưới dạng khối nội tuyến với căn chỉnh trung tâm */
-    align-items: center;
+  color: black; /* Màu chữ đen */
+  margin-right: 12px; /* Khoảng cách bên phải 8px */
+  text-decoration: none; /* Loại bỏ gạch chân mặc định của thẻ a */
+  display: inline-flex; /* Đảm bảo các phần tử được hiển thị dưới dạng khối nội tuyến với căn chỉnh trung tâm */
+  align-items: center;
 }
 
 .item-action:last-child {
-    margin-right: 0; /* Loại bỏ khoảng cách bên phải của phần tử cuối cùng */
-    background-color: white;
-    border: white;
+  margin-right: 0; /* Loại bỏ khoảng cách bên phải của phần tử cuối cùng */
+  background-color: white;
+  border: white;
 }
 
 .item-action i {
-    font-size: 1rem; /* Kích thước font của icon */
+  font-size: 1rem; /* Kích thước font của icon */
 }
 
 .form-create-user {
-    width: 524px;
-    margin: 36px auto; /* Đặt form ở giữa */
-    padding: 20px; /* Thêm khoảng cách bên trong form */
-    border-radius: 10px; /* Bo góc */
-    border: 1px solid #ccc; /* Viền của form */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Đổ bóng */
-    background-color: #fff;
-    
+  width: 524px;
+  margin: 36px auto; /* Đặt form ở giữa */
+  padding: 20px; /* Thêm khoảng cách bên trong form */
+  border-radius: 10px; /* Bo góc */
+  border: 1px solid #ccc; /* Viền của form */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+  background-color: #fff;
 }
 .form-create-user .form-group {
-    margin-bottom: 8px; /* Khoảng cách giữa các nhóm form */
-    font-weight:400 ;
+  margin-bottom: 8px; /* Khoảng cách giữa các nhóm form */
+  font-weight: 400;
 }
 
 .form-create-user .btn {
-    margin-top: 10px;
-    width: 200px; /* Đặt nút rộng 100% của form */
-    border-radius: 5px; /* Bo góc nút */
+  margin-top: 10px;
+  width: 200px; /* Đặt nút rộng 100% của form */
+  border-radius: 5px; /* Bo góc nút */
 }
 
 .form-create-user .required {
-    color: red; /* Màu đỏ cho dấu sao */
-    font-weight: 500;
+  color: red; /* Màu đỏ cho dấu sao */
+  font-weight: 500;
 }
+
+[show-alert] {
+  position: fixed;
+  top: 70px;
+  right: 15px;
+  z-index: 9999;
+}
+
+[show-alert].alert-hidden {
+  animation-duration: 0.5s;
+  animation-name: alert-hidden;
+  animation-fill-mode: both;
+}
+
+@keyframes alert-hidden {
+  from {
+    right: 15px;
+  }
+  to {
+    right: -100%;
+    display: none;
+  }
+}
+
+[show-alert] [close-alert] {
+  /* background: #ffffffc4; */
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  font-weight: 600;
+  border-radius: 50%;
+  cursor: pointer;
+}
+/* end thông báo */

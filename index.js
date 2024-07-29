@@ -5,6 +5,10 @@ const adminRouter = require("./routers/admin/index.router");
 const systemConfig = require("./config/system");
 const bodyParser = require("body-parser");
 
+const flash = require("express-flash");
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
+
 const app = express();
 const port = 3000;
 
@@ -17,6 +21,12 @@ database.connect();
 
 app.set("views", `${__dirname}/views`);
 app.set("view engine", "pug");
+
+// flash - thông báo FE
+app.use(cookieParser('djkhajksdhjkas'));
+app.use(session({ cookie: { maxAge: 60000 }}));
+app.use(flash());
+// end flash
 
 app.use(express.static('public')) ;
 

@@ -1,0 +1,24 @@
+mixin alert-success(time)
+    - if (messages.thanhcong)
+        .message.info
+            div(
+                data-time = time
+                class = "alert alert-success"
+                show-alert
+            ) 
+                h5 Thành công:  
+                | #{messages.thanhcong} 
+                <i class="fa-regular fa-circle-xmark" close-alert></i>
+
+
+mixin alert-error(time)
+    - if (messages.thatbai)
+        .message.info
+            div(
+                data-time = time
+                class = "alert alert-danger"
+                show-alert
+            ) 
+                h5 Thất bại:  
+                | #{messages.thatbai} 
+                <i class="fa-regular fa-circle-xmark" close-alert></i>
