@@ -183,6 +183,7 @@ a {
 }
 
 [show-alert] {
+  display: flex;
   position: fixed;
   top: 70px;
   right: 15px;
@@ -216,4 +217,13 @@ a {
   border-radius: 50%;
   cursor: pointer;
 }
+.alert-title-success {
+  font-weight: bold;
+  color: #28a745; /* Màu chữ xanh lá của alert-success */
+}
+.alert-title-error {
+  font-weight: bold;
+  color: #b1272c; /* Màu chữ xanh lá của alert-success */
+}
 /* end thông báo */
+

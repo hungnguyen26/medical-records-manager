@@ -6,7 +6,7 @@ mixin alert-success(time)
                 class = "alert alert-success"
                 show-alert
             ) 
-                h5 Thành công:  
+                div(class="alert-title-success") Thành công :  
                 | #{messages.thanhcong} 
                 <i class="fa-regular fa-circle-xmark" close-alert></i>
 
@@ -19,6 +19,6 @@ mixin alert-error(time)
                 class = "alert alert-danger"
                 show-alert
             ) 
-                h5 Thất bại:  
+                div(class="alert-title-error") Thất bại :  
                 | #{messages.thatbai} 
                 <i class="fa-regular fa-circle-xmark" close-alert></i>
