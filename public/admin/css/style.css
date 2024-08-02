@@ -239,5 +239,17 @@ a {
 .img-preview[src=""]{
   display: none;
 }
-
+.form-control-file{
+  display: block;
+  background: #62fdd4ac;
+}
 /* end img preview */
+.form-create-user .btn-primary {
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 25px;
+  color: #fff;
+  border: none; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+   
+}
