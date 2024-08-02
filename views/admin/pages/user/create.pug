@@ -39,7 +39,10 @@ block main
                         id="password"
                         name="password"
                     ) 
-                div(class="form-group")
+                div(
+                    class="form-group"
+                    upload-img
+                )
                     label(for="avatar") Ảnh đại diện
                         span.required ✳
                     input(
@@ -47,7 +50,15 @@ block main
                         class="form-control-file"
                         id="avatar"
                         name="avatar"
-                    ) 
+                        accept="image/*"
+                        upload-img-input
+                    )
+                    img(
+                        src=""
+                        upload-img-preview
+                        class="img-preview"
+                    )
+                    button(class="delete-img btn btn-outline-danger" type="button") <i class="fa-solid fa-trash"></i>  Xóa ảnh
                 div(class="form-group")
                     label(for="phone") Số điện thoại
                         span.required ✳

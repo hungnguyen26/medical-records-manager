@@ -31,3 +31,28 @@ if (short_alert) {
   });
 }
 //end thông báo
+
+
+// prview upload img 
+const uploadImg = document.querySelector("[upload-img]");
+if (uploadImg) {
+  const uploadImgInput = document.querySelector("[upload-img-input]");
+  const uploadImgpreview = document.querySelector("[upload-img-preview]");
+  const deleteImg = document.querySelector(".delete-img");
+
+
+
+  uploadImgInput.addEventListener("change", (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      uploadImgpreview.src = URL.createObjectURL(file);
+    }
+  });
+
+    deleteImg.addEventListener("click", () => {
+      uploadImgInput.value = "";
+      uploadImgpreview.src = "";
+  });
+ 
+}
+// end prview upload img 
