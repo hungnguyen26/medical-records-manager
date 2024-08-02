@@ -50,14 +50,15 @@ module.exports.createPost = async (req, res) => {
         email: req.body.email,
         deleted:false
     });
+    
     if(emailTontai){
         req.flash("thatbai"," Email đã tồn tại.")
         res.redirect("back");
-        return;
-    }
-    if(!emailTontai){
+    }else{
         req.body.password = md5(req.body.password);
-        // console.log(req.body);
+
+        req.body.avatar = `/uploads/${req.file.filename}`;
+
         const record = new Account(req.body);
         await record.save();
         req.flash("thanhcong"," Thêm người dùng mới.")

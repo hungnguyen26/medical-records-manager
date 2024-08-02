@@ -10,6 +10,7 @@ block main
             form(
                 action=`${prefixadmin}/accounts/create`
                 method='POST'
+                enctype="multipart/form-data"
             ) 
                 div(class="form-group")
                     label(for="fullName") Họ tên 
@@ -37,6 +38,15 @@ block main
                         class="form-control"
                         id="password"
                         name="password"
+                    ) 
+                div(class="form-group")
+                    label(for="avatar") Ảnh đại diện
+                        span.required ✳
+                    input(
+                        type="file"
+                        class="form-control-file"
+                        id="avatar"
+                        name="avatar"
                     ) 
                 div(class="form-group")
                     label(for="phone") Số điện thoại
