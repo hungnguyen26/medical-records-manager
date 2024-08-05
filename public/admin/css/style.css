@@ -5,7 +5,7 @@
   font-style: normal;
 }
 .main {
-  background-color: #c1bfbf;
+  background-color: #009cab;
 }
 .header {
   background: #fff;
@@ -111,7 +111,7 @@
 /* avatar user */
 
 th {
-  font-size: 12px;
+  font-size: 16px;
   /* font-weight: 500; */
 }
 
@@ -140,45 +140,45 @@ a {
 }
 
 .item-action {
-  color: black; /* Màu chữ đen */
-  margin-right: 12px; /* Khoảng cách bên phải 8px */
-  text-decoration: none; /* Loại bỏ gạch chân mặc định của thẻ a */
-  display: inline-flex; /* Đảm bảo các phần tử được hiển thị dưới dạng khối nội tuyến với căn chỉnh trung tâm */
+  color: black; 
+  margin-right: 30px;
+  text-decoration: none; 
+  display: inline-flex; 
   align-items: center;
 }
 
 .item-action:last-child {
-  margin-right: 0; /* Loại bỏ khoảng cách bên phải của phần tử cuối cùng */
+  margin-right: 0; 
   background-color: white;
   border: white;
 }
 
 .item-action i {
-  font-size: 1rem; /* Kích thước font của icon */
+  font-size: 1rem; 
 }
 
-.form-create-user {
+.form-create-user, .form-detail-user {
   width: 524px;
-  margin: 36px auto; /* Đặt form ở giữa */
-  padding: 20px; /* Thêm khoảng cách bên trong form */
-  border-radius: 10px; /* Bo góc */
-  border: 1px solid #ccc; /* Viền của form */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+  margin: 36px auto; 
+  padding: 20px; 
+  border-radius: 10px; 
+  border: 1px solid #ccc; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
   background-color: #fff;
 }
-.form-create-user .form-group {
-  margin-bottom: 8px; /* Khoảng cách giữa các nhóm form */
+.form-create-user,.form-detail-user .form-group {
+  margin-bottom: 8px; 
   font-weight: 400;
 }
 
 .form-create-user .btn {
   margin-top: 10px;
-  width: 200px; /* Đặt nút rộng 100% của form */
-  border-radius: 5px; /* Bo góc nút */
+  width: 200px; 
+  border-radius: 5px; 
 }
 
 .form-create-user .required {
-  color: red; /* Màu đỏ cho dấu sao */
+  color: red; 
   font-weight: 500;
 }
 

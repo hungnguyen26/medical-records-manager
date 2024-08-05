@@ -65,3 +65,21 @@ module.exports.createPost = async (req, res) => {
         res.redirect(`${systemConfig.prefixAdmin}/accounts`);
     }
 };
+
+// [GET] admin/accounts/detail/:id
+module.exports.detail = async (req, res)=>{
+    try {
+        const id = req.params.id;
+        const account = await Account.findOne({
+            _id: id,
+            deleted:false
+        }).select("-password -token -Role_id");
+
+        res.render("admin/pages/user/detail.pug",{
+            pageTitle: "Chi tiết người dùng",
+            account:account
+        })
+    } catch (error) {
+        res.redirect(`${systemConfig.prefixAdmin}/accounts`);
+    }
+}
