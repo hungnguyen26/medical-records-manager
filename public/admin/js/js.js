@@ -58,11 +58,16 @@ const updateTime = () => {
   const clockTime = document.getElementById("clock-time-item");
 
   const now = new Date();
-  const hours = String(now.getHours());
-  const getMinutes = String(now.getMinutes());
-  const seconds = String(now.getSeconds());
+  const hours = now.getHours();
+  const Minutes = now.getMinutes();
+  const seconds = now.getSeconds();
   // console.log(hours);
-  clockTime.innerHTML = `${hours} : ${getMinutes} : ${seconds}`;
+
+  const formatHours = (hours < 10 ? "0": "") + hours; 
+  const formatMinutes = (Minutes < 10 ? "0": "") + Minutes; 
+  const formatSeconds = (seconds < 10 ? "0": "") + seconds; 
+
+  clockTime.innerHTML = `${formatHours} : ${formatMinutes} : ${formatSeconds}`;
   setTimeout(updateTime,1000);
 };
 updateTime();
