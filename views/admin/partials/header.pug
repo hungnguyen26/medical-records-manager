@@ -1,13 +1,18 @@
 header.header 
     .container-fluid
         .row.align-items-center
-            .col-2 
+            .col-6
                 .inner-logo
                     a(href=`${prefixadmin}`) MEDICAL
                 .inner-function     
-                    div(class="function-person") Quản lí
-
-            .col-10
+                    div(class="function-person") QUẢN LÝ
+            .col-2
+                .clock
+                    .clock-icon 
+                        <i class="fa-solid fa-clock"></i>
+                    .clock-time 
+                        h3(id="clock-time-item") 
+            .col-4
                 div(class="text-end")
                     a(
                         href=`${prefixadmin}/my-account`
