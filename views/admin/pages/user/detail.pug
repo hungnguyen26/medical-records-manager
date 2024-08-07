@@ -15,125 +15,72 @@ block main
                             readonly
                         ) 
                     div(class="form-group")
-                    //-     label(for="email") Email 
-                    //-         span.required ✳
-                    //-     input(
-                    //-         type="text"
-                    //-         class="form-control"
-                    //-         id="email"
-                    //-         name="email"
-                    //-     ) 
-                    //- div(class="form-group")
-                    //-     label(for="password") Mật khẩu
-                    //-         span.required ✳
-                    //-     input(
-                    //-         type="text"
-                    //-         class="form-control"
-                    //-         id="password"
-                    //-         name="password"
-                    //-     ) 
-                    //- div(
-                    //-     class="form-group"
-                    //-     upload-img
-                    //- )
-                    //-     label(for="avatar") Ảnh đại diện
-                    //-         span.required ✳
-                    //-     input(
-                    //-         type="file"
-                    //-         class="form-control-file"
-                    //-         id="avatar"
-                    //-         name="avatar"
-                    //-         accept="image/*"
-                    //-         upload-img-input
-                    //-     )
-                    //-     img(
-                    //-         src=""
-                    //-         upload-img-preview
-                    //-         class="img-preview"
-                    //-     )
-                    //-     button(class="delete-img btn btn-outline-danger" type="button") <i class="fa-solid fa-trash"></i>  Xóa ảnh
-                    //- div(class="form-group")
-                    //-     label(for="phone") Số điện thoại
-                    //-         span.required ✳
-                    //-     input(
-                    //-         type="text"
-                    //-         class="form-control"
-                    //-         id="phone"
-                    //-         name="phone"
-                    //-     ) 
-                    //- div(class="form-group")
-                    //-     label(for="address") Địa chỉ
-                    //-         span.required ✳
-                    //-     input(
-                    //-         type="text"
-                    //-         class="form-control"
-                    //-         id="address"
-                    //-         name="address"
-                    //-     ) 
-                    //- div(class="form-group")
-                    //-     label(for="dateOfBirth") Ngày sinh
-                    //-         span.required ✳
-                    //-     input(
-                    //-         type="text"
-                    //-         class="form-control"
-                    //-         id="dateOfBirth"
-                    //-         name="dateOfBirth"
-                    //-         placeholder="dd/mm/yyyy "
-                    //-     ) 
-                    //- div(class="form-group")
-                    //-     label(for="Role_id") Chức vụ
-                    //-     span.required  ✳
-                    //-         select(name="Role_id" id="Role_id" class="form-control")
-                    //-             option(disabled selected) -- Chọn chức vụ -- 
-                    //-             each item in roles  
-                    //-                 option(value=item.id) #{item.title}
-                    //- div(class="form-group")
-                    //-     label(for="sex") Giới tính
-                    //-         span.required ✳
-                    //- div(class="form-group form-check form-check-inline")
-                    //-     input(
-                    //-         type="radio"
-                    //-         class="form-check-input"
-                    //-         id="sexInMale"
-                    //-         name="sex"
-                    //-         value="male"
-                    //-         checked
-                    //-     ) 
-                    //-     label(for="sexInMale" class="form-check-label") Nam
-                    //- div(class="form-group form-check form-check-inline")
-                    //-     input(
-                    //-         type="radio"
-                    //-         class="form-check-input"
-                    //-         id="sexInFemale"
-                    //-         name="sex"
-                    //-         value="female"
-                    //-     ) 
-                    //-     label(for="sexInFemale" class="form-check-label") Nữ
+                        label(for="email") Email 
+                        input(
+                            type="text"
+                            class="form-control"
+                            value=account.email
+                            readonly
+                        ) 
+                    div(class="form-group")
+                        label(for="avatar") Ảnh đại diện
+                        img(
+                            src=account.avatar
+                            upload-img-preview
+                            class="img-preview"
+                        )
+                    div(class="form-group")
+                        label(for="phone") Số điện thoại
+                        input(
+                            type="text"
+                            class="form-control"
+                            value=account.phone 
+                            readonly
+                        ) 
+                    div(class="form-group")
+                        label(for="address") Địa chỉ
+                        input(
+                            type="text"
+                            class="form-control"
+                            value=account.address
+                            readonly
+                        ) 
+                    div(class="form-group")
+                        label(for="dateOfBirth") Ngày sinh
+                        input(
+                            type="text"
+                            class="form-control"
+                            value=account.dateOfBirth
+                            readonly
+                        ) 
+                    div(class="form-group")
+                        label(for="Role_id") Chức vụ
+                        input(
+                            type="text"
+                            class="form-control"
+                            value=role.title
+                            readonly
+                        ) 
+                    div(class="form-group")
+                        label(for="sex") Giới tính
+                        input(
+                            type="text"
+                            class="form-control"
+                            value=(account.sex === "male" ? "Nam" : "Nữ")
+                            readonly
+                        ) 
+     
+                    div(class="form-group")
+                        label(for="status") Trạng thái
+                        input(
+                            type="text"
+                            class="form-control"
+                            value=(account.status === "active" ? "Hoạt động" : "Dừng hoạt động")
+                            readonly
+                        ) 
                     
-                    //- div(class="form-group")
-                    //-     label(for="status") Trạng thái
-                    //-         span.required ✳
-                    //- div(class="form-group form-check form-check-inline")
-                    //-     input(
-                    //-         type="radio"
-                    //-         class="form-check-input"
-                    //-         id="statusActive"
-                    //-         name="status"
-                    //-         value="active"
-                    //-         checked
-                    //-     ) 
-                    //-     label(for="statusActive" class="form-check-label") Hoạt động
-                    //- div(class="form-group form-check form-check-inline")
-                    //-     input(
-                    //-         type="radio"
-                    //-         class="form-check-input"
-                    //-         id="statusInActive"
-                    //-         name="status"
-                    //-         value="inactive"
-                    //-     ) 
-                    //-     label(for="statusInActive" class="form-check-label") Dừng hoạt động
-                    //- div(class="form-group")
-                    //-     button(
-                    //-         type="submit"
-                    //-         class="btn btn-primary"
-                    //-     ) <i class="fa-solid fa-plus" style="margin-right: 6px;font-size: medium"></i> Tạo mới người dùng
+                    div(class="form-group")
+                        a(
+                            href=`${prefixadmin}/accounts` 
+                            class="btn btn-warning"
+                        ) <i class="fa-solid fa-backward"></i> Quay lại

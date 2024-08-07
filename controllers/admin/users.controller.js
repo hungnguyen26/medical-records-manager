@@ -73,11 +73,16 @@ module.exports.detail = async (req, res)=>{
         const account = await Account.findOne({
             _id: id,
             deleted:false
-        }).select("-password -token -Role_id");
+        }).select("-password -token");
+
+        const role = await Role.findOne({
+            _id: account.Role_id
+        }).select("title")
 
         res.render("admin/pages/user/detail.pug",{
             pageTitle: "Chi tiết người dùng",
-            account:account
+            account:account,
+            role:role
         })
     } catch (error) {
         res.redirect(`${systemConfig.prefixAdmin}/accounts`);
