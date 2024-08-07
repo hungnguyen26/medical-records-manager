@@ -8,11 +8,11 @@ block main
             .form-detail-user
                     div(class="form-group")
                         label(for="fullName") Họ tên 
-                            span.required ✳
                         input(
                             type="text"
                             class="form-control"
                             value=account.fullName
+                            readonly
                         ) 
                     div(class="form-group")
                     //-     label(for="email") Email 
