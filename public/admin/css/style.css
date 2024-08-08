@@ -275,3 +275,7 @@ a {
 .form-create-user,.form-detail-user .form-group label {
   font-weight: 700;
 }
+.form-group input.form-control[readonly] {
+  background-color: #dcdcdc; 
+  cursor: not-allowed;
+}
