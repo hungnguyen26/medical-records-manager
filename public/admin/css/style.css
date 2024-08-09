@@ -157,7 +157,9 @@ a {
   font-size: 1rem; 
 }
 
-.form-create-user, .form-detail-user {
+.form-create-user, 
+.form-detail-user, 
+.form-edit-user {
   width: 524px;
   margin: 36px auto; 
   padding: 20px; 
@@ -166,7 +168,7 @@ a {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
   background-color: #fff;
 }
-.form-create-user,.form-detail-user .form-group {
+.form-create-user, .form-detail-user, .form-edit-user .form-group {
   margin-bottom: 8px; 
   font-weight: 400;
 }
@@ -177,7 +179,7 @@ a {
   border-radius: 5px; 
 }
 
-.form-create-user .required {
+.required {
   color: red; 
   font-weight: 500;
 }
@@ -244,11 +246,11 @@ a {
   background: #62fdd4ac;
 }
 /* end img preview */
-.form-create-user .btn-primary {
-  width: 100%;
+.form-create-user, .form-edit-user .btn-primary {
+  /* width: 100%; */
   padding: 10px 20px;
   border-radius: 25px;
-  color: #fff;
+  /* color: #fff; */
   border: none; 
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
    
@@ -272,7 +274,7 @@ a {
 }
 /* thời gian thực */
 
-.form-create-user,.form-detail-user .form-group label {
+.form-create-user,.form-detail-user, .form-edit-user .form-group label {
   font-weight: 700;
 }
 .form-group input.form-control[readonly] {

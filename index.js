@@ -9,8 +9,12 @@ const flash = require("express-flash");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 
+const methodOverride = require("method-override");
+
 const app = express();
 const port = 3000;
+
+app.use(methodOverride('_method'))
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -32,6 +36,7 @@ app.use(express.static('public')) ;
 
 // biến toàn cục
 app.locals.prefixadmin = systemConfig.prefixAdmin;
+
 
 // router admin
 adminRouter(app);
