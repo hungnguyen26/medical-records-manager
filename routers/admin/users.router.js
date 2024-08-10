@@ -25,6 +25,11 @@ router.get("/detail/:id", controller.detail);
 
 router.get("/edit/:id", controller.edit);
 
-router.patch("/edit/:id", upload.single("avatar"), controller.editPatch);
+router.patch(
+  "/edit/:id",
+  upload.single("avatar"),
+  uploadCloud.upload,
+  controller.editPatch
+);
 
 module.exports = router;

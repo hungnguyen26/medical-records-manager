@@ -121,9 +121,6 @@ module.exports.editPatch = async (req, res) => {
     } else {
       delete req.body.password;
     }
-    req.body.avatar = `/uploads/${req.file.filename}`;
-
-    // console.log(req.body);
 
     await Account.updateOne({ _id: id }, req.body);
     req.flash("thanhcong", "Cập nhật tài khoản thành công!");
