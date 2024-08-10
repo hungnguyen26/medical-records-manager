@@ -57,7 +57,7 @@ module.exports.createPost = async (req, res) => {
   } else {
     req.body.password = md5(req.body.password);
 
-    req.body.avatar = `/uploads/${req.file.filename}`;
+    // req.body.avatar = `/uploads/${req.file.filename}`;
 
     const record = new Account(req.body);
     await record.save();

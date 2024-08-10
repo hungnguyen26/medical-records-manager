@@ -1,5 +1,5 @@
 const express = require("express");
-const dotenv = require("dotenv");
+require("dotenv").config();
 const database = require("./config/database");
 const adminRouter = require("./routers/admin/index.router");
 const systemConfig = require("./config/system");
@@ -19,8 +19,6 @@ app.use(methodOverride('_method'))
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
-
-dotenv.config();
 database.connect();
 
 app.set("views", `${__dirname}/views`);
