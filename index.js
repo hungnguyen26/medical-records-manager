@@ -14,7 +14,7 @@ const methodOverride = require("method-override");
 const app = express();
 const port = 3000;
 
-app.use(methodOverride('_method'))
+app.use(methodOverride("_method"));
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -25,19 +25,24 @@ app.set("views", `${__dirname}/views`);
 app.set("view engine", "pug");
 
 // flash - thông báo FE
-app.use(cookieParser('djkhajksdhjkas'));
-app.use(session({ cookie: { maxAge: 60000 }}));
+app.use(cookieParser("djkhajksdhjkas"));
+app.use(session({ cookie: { maxAge: 60000 } }));
 app.use(flash());
 // end flash
 
-app.use(express.static('public')) ;
+app.use(express.static("public"));
 
 // biến toàn cục
 app.locals.prefixadmin = systemConfig.prefixAdmin;
 
-
 // router admin
 adminRouter(app);
+
+app.get("*", (req, res) => {
+  res.render("admin/pages/errors/404.pug",{
+    pageTitle: "404 Not Found"
+  });
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
