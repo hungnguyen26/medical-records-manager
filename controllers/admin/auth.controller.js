@@ -35,9 +35,9 @@ module.exports.loginPost = async (req, res) => {
         res.redirect("back");
         return;
     }
-    req.flash("thanhcong", "Đăng nhập thành công !!")
+    req.flash("thanhcong", "Đăng nhập thành công !!");
     res.cookie("tokenUser",user.token);
-    res.redirect(`${systemConfig.prefixAdmin}`)
+    res.redirect(`${systemConfig.prefixAdmin}/home`);
 };
 
 // [GET] admin/auth/logout
