@@ -1,11 +1,17 @@
 .sider 
     .inner-menu 
-        ul 
+        ul  
+            if(Role.quyen === "admin")
+                li 
+                    a(
+                        href=`${prefixadmin}/accounts` 
+                        class="menu-item btn btn-light"
+                    ) <i class="fa-regular fa-user"></i> Người dùng 
             li 
                 a(
-                    href=`${prefixadmin}/accounts` 
+                    href=`${prefixadmin}/chats` 
                     class="menu-item btn btn-light"
-                ) <i class="fa-regular fa-user"></i> Người dùng
+                ) <i class="fa-brands fa-rocketchat"></i> Tin nhắn
             li 
                 a(
                     href=`${prefixadmin}/auth/logout`

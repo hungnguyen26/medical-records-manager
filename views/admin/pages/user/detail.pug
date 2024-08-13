@@ -3,84 +3,85 @@ include ../../mixins/alert.pug
 
 block main
     .block-main
-        h3(class="mb-4") Chi tiết người dùng
-        if(account)
-            .form-detail-user
-                    div(class="form-group")
-                        label(for="fullName") Họ tên 
-                        input(
-                            type="text"
-                            class="form-control"
-                            value=account.fullName
-                            readonly
-                        ) 
-                    div(class="form-group")
-                        label(for="email") Email 
-                        input(
-                            type="text"
-                            class="form-control"
-                            value=account.email
-                            readonly
-                        ) 
-                    div(class="form-group")
-                        label(for="avatar") Ảnh đại diện
-                        img(
-                            src=account.avatar
-                            upload-img-preview
-                            class="img-preview"
-                        )
-                    div(class="form-group")
-                        label(for="phone") Số điện thoại
-                        input(
-                            type="text"
-                            class="form-control"
-                            value=account.phone 
-                            readonly
-                        ) 
-                    div(class="form-group")
-                        label(for="address") Địa chỉ
-                        input(
-                            type="text"
-                            class="form-control"
-                            value=account.address
-                            readonly
-                        ) 
-                    div(class="form-group")
-                        label(for="dateOfBirth") Ngày sinh
-                        input(
-                            type="text"
-                            class="form-control"
-                            value=account.dateOfBirth
-                            readonly
-                        ) 
-                    div(class="form-group")
-                        label(for="Role_id") Chức vụ
-                        input(
-                            type="text"
-                            class="form-control"
-                            value=role.title
-                            readonly
-                        ) 
-                    div(class="form-group")
-                        label(for="sex") Giới tính
-                        input(
-                            type="text"
-                            class="form-control"
-                            value=(account.sex === "male" ? "Nam" : "Nữ")
-                            readonly
-                        ) 
-     
-                    div(class="form-group")
-                        label(for="status") Trạng thái
-                        input(
-                            type="text"
-                            class="form-control"
-                            value=(account.status === "active" ? "Hoạt động" : "Dừng hoạt động")
-                            readonly
-                        ) 
-                    
-                    div(class="form-group")
-                        a(
-                            href=`${prefixadmin}/accounts` 
-                            class="btn btn-warning"
-                        ) <i class="fa-solid fa-backward"></i> Quay lại
+        
+            h3(class="mb-4") Chi tiết người dùng
+            if(account)
+                .form-detail-user
+                        div(class="form-group")
+                            label(for="fullName") Họ tên 
+                            input(
+                                type="text"
+                                class="form-control"
+                                value=account.fullName
+                                readonly
+                            ) 
+                        div(class="form-group")
+                            label(for="email") Email 
+                            input(
+                                type="text"
+                                class="form-control"
+                                value=account.email
+                                readonly
+                            ) 
+                        div(class="form-group")
+                            label(for="avatar") Ảnh đại diện
+                            img(
+                                src=account.avatar
+                                upload-img-preview
+                                class="img-preview"
+                            )
+                        div(class="form-group")
+                            label(for="phone") Số điện thoại
+                            input(
+                                type="text"
+                                class="form-control"
+                                value=account.phone 
+                                readonly
+                            ) 
+                        div(class="form-group")
+                            label(for="address") Địa chỉ
+                            input(
+                                type="text"
+                                class="form-control"
+                                value=account.address
+                                readonly
+                            ) 
+                        div(class="form-group")
+                            label(for="dateOfBirth") Ngày sinh
+                            input(
+                                type="text"
+                                class="form-control"
+                                value=account.dateOfBirth
+                                readonly
+                            ) 
+                        div(class="form-group")
+                            label(for="Role_id") Chức vụ
+                            input(
+                                type="text"
+                                class="form-control"
+                                value=role.title
+                                readonly
+                            ) 
+                        div(class="form-group")
+                            label(for="sex") Giới tính
+                            input(
+                                type="text"
+                                class="form-control"
+                                value=(account.sex === "male" ? "Nam" : "Nữ")
+                                readonly
+                            ) 
+        
+                        div(class="form-group")
+                            label(for="status") Trạng thái
+                            input(
+                                type="text"
+                                class="form-control"
+                                value=(account.status === "active" ? "Hoạt động" : "Dừng hoạt động")
+                                readonly
+                            ) 
+                        
+                        div(class="form-group")
+                            a(
+                                href=`${prefixadmin}/accounts` 
+                                class="btn btn-warning"
+                            ) <i class="fa-solid fa-backward"></i> Quay lại

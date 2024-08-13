@@ -5,7 +5,7 @@ header.header
                 .inner-logo
                     a(href=`${prefixadmin}/home`) MEDICAL
                 .inner-function     
-                    div(class="function-person") QUẢN LÝ
+                    div(class="function-person") #{Role.title}
             .col-2
                 .clock
                     .clock-icon 
@@ -16,7 +16,7 @@ header.header
                 div(class="text-end")
                     a(
                         href=`${prefixadmin}/my-account`
-                        class="btn btn-primary btn-sm "
+                        class="btn btn-light"
                         style="margin-right: 10px"
-                    ) Nguyen Huu Hung
+                    ) <i class="fa-regular fa-user"></i> #{User.fullName}
                     

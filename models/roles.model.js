@@ -4,6 +4,7 @@ const RoleSchema = new mongoose.Schema(
   {
     title: String,
     description: String,
+    quyen: String,
     deleted: {
       type: Boolean,
       default: false,
