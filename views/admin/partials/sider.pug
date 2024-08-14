@@ -7,6 +7,12 @@
                         href=`${prefixadmin}/accounts` 
                         class="menu-item btn btn-light"
                     ) <i class="fa-regular fa-user"></i> Người dùng 
+            if(Role.quyen === "sell")
+                li 
+                    a(
+                        href=`${prefixadmin}/medicines` 
+                        class="menu-item btn btn-light"
+                    ) Thuốc
             li 
                 a(
                     href=`${prefixadmin}/chats` 
