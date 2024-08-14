@@ -38,6 +38,10 @@
 
 /* end header */
 
+
+
+
+
 /* body */
 .body .sider {
   width: 176px;
@@ -51,7 +55,7 @@
 }
 .body .main {
   /* margin: 15px; */
-  padding: 10px;
+  padding: 20px 0 0 14px;
   position: relative;
   left: 176px;
   width: calc(100% - 176px);
@@ -137,6 +141,25 @@ th {
   text-align: center;
   font-weight: 500;
 }
+.card.mb-3 .table th,
+.card.mb-3 .table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.card.mb-3 .table .btn-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Khoảng cách giữa các icon hành động */
+}
+.role-quanly,
+.role-banhang {
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+
 a {
   text-decoration: none;
 }

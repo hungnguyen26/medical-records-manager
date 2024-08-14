@@ -32,30 +32,24 @@ block main
                             class="btn btn-info"
                         ) + Thêm mới người dùng
             .card.mb-3
-                .card-header Danh sách
-                .card-body 
-                    
-                    table(
-                        class="table table-hover table-sm"
-                    )
-                        thead 
-                            tr 
-                                th STT 
-                                th Ảnh
-                                th Email
-                                th Họ tên
-                                th Ngày sinh
-                                //- th Giới tính 
-                                th Điện thoại
-                                //- th Địa chỉ
-                                th Chức vụ
-                                th Trạng thái
-                                th Hành động
-
-                        tbody 
-                            each item, index in records 
+                table(class="table ")
+                    thead(class="card-header")
+                        tr
+                            th STT 
+                            th Ảnh
+                            th Email
+                            th Họ tên
+                            th Ngày sinh
+                            //- th Giới tính 
+                            th Điện thoại
+                            //- th Địa chỉ
+                            th Chức vụ
+                            th Trạng thái
+                            th Hành động
+                    tbody
+                        each item, index in records 
                                 tr 
-                                    td #{index+1}
+                                    th #{index+1}
                                     td  
                                         img.round-avatar(
                                             src=item.avatar
@@ -104,3 +98,5 @@ block main
                                             button(
                                                 class="item-action" 
                                             ) <i class="fa-regular fa-trash-can"></i>
+
+                
