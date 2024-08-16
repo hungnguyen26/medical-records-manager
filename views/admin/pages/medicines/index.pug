@@ -50,7 +50,9 @@ block main
                                 td #{item.name}
                                 td #{item.quantity}
                                 td #{item.price}  
-                                td #{item.usage}
+                                td 
+                                    if(item.usage === "after")
+                                        .usage-medicines Sau ăn
                                 td #{item.description}  
                                 td #{moment(item.updatedAt).format("DD/MM/YYYY hh:mm:ss a")}
                                 td 

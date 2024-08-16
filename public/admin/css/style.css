@@ -131,7 +131,7 @@ th {
   text-align: center;
   font-weight: 500;
 }
-.role-banhang {
+.role-banhang, .usage-medicines {
   background: #c1bfbf;
   border: 1px solid rgb(12, 170, 222);
   border-radius: 6px;
@@ -153,7 +153,8 @@ th {
     gap: 10px; /* Khoảng cách giữa các icon hành động */
 }
 .role-quanly,
-.role-banhang {
+.role-banhang,
+.usage-medicines {
   margin: 0 auto;
   text-align: center;
 }
