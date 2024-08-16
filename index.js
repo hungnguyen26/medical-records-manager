@@ -11,6 +11,8 @@ const session = require("express-session");
 
 const methodOverride = require("method-override");
 
+const moment = require("moment")
+
 const app = express();
 const port = 3000;
 
@@ -34,6 +36,7 @@ app.use(express.static("public"));
 
 // biến toàn cục
 app.locals.prefixadmin = systemConfig.prefixAdmin;
+app.locals.moment = moment;
 
 // router admin
 adminRouter(app);
