@@ -307,3 +307,7 @@ a {
   background-color: #dcdcdc; 
   cursor: not-allowed;
 }
+
+.fa-trash-can{
+  color: red;
+}
