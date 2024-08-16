@@ -150,13 +150,13 @@ th {
 .card.mb-3 .table .btn-actions {
     display: flex;
     justify-content: center;
-    gap: 10px; /* Khoảng cách giữa các icon hành động */
 }
 .role-quanly,
 .role-banhang,
 .usage-medicines {
   margin: 0 auto;
   text-align: center;
+  width: 120px;
 }
 
 
@@ -311,3 +311,28 @@ a {
 .fa-trash-can{
   color: red;
 }
+
+
+.btn-actions a.item-action {
+  margin: 10px;
+  border: 1px solid rgb(208, 205, 205);
+  border-radius: 5px;
+  padding: 0px 7px;
+  text-decoration: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+.btn-actions button.item-action {
+  margin: 10px;
+  border: 1px solid rgb(255, 160, 160);
+  border-radius: 5px;
+  padding: 5px 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-actions a.item-action:hover,
+.btn-actions button.item-action:hover {
+  background-color: #f0f0f0;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); 

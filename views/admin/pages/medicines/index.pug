@@ -53,6 +53,10 @@ block main
                                 td 
                                     if(item.usage === "after")
                                         .usage-medicines Sau ăn
+                                    else if(item.usage === "before")
+                                            .usage-medicines Trước ăn 
+                                    else 
+                                        .usage-medicines Trước/Sau ăn 
                                 td #{item.description}  
                                 td #{moment(item.updatedAt).format("DD/MM/YYYY hh:mm:ss a")}
                                 td 
