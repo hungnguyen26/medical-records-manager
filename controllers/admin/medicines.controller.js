@@ -1,13 +1,23 @@
 const Medicine = require("../../models/medicines.model");
+const searchHelper = require("../../helpers/search");
 
 // [GET] admin/medicines
 module.exports.index = async (req, res) => {
-  const find = {}
+  const find = {};
+
+  // search
+  const objectSearch = searchHelper(req.query);
+  if(objectSearch.regex){
+    find.name = objectSearch.regex;    
+  }
+  // end search
+
   const medicines = await Medicine.find(find);
-  console.log(medicines);
+  // console.log(medicines);
 
   res.render("admin/pages/medicines/index.pug", {
     pageTitle:  "Quản lý thuốc",
-    medicines: medicines
+    medicines: medicines,
+    keyword: objectSearch.keyword
   });
 };
