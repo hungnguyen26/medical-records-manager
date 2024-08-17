@@ -16,7 +16,7 @@ module.exports.index = async (req, res) => {
   // console.log(medicines);
 
   res.render("admin/pages/medicines/index.pug", {
-    pageTitle:  "Quản lý thuốc",
+    pageTitle:  "Danh sách thuốc",
     medicines: medicines,
     keyword: objectSearch.keyword
   });
@@ -26,6 +26,6 @@ module.exports.index = async (req, res) => {
 module.exports.create = async (req, res) => {
 
   res.render("admin/pages/medicines/create.pug", {
-    pageTitle:  "Thêm thuốc"
+    pageTitle: "Danh sách thuốc"
   });
 };
