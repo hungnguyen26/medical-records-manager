@@ -6,7 +6,7 @@ block main
         +alert-error("5000")
         if(Role.quyen == "admin")
             h3(class="mb-4") Thêm mới người dùng
-            .form-create-user
+            .form-create    
                 form(
                     action=`${prefixadmin}/accounts/create`
                     method='POST'
@@ -96,25 +96,25 @@ block main
                     div(class="form-group")
                         label(for="sex") Giới tính
                             span.required ✳
-                    div(class="form-group form-check form-check-inline")
-                        input(
-                            type="radio"
-                            class="form-check-input"
-                            id="sexInMale"
-                            name="sex"
-                            value="male"
-                            checked
-                        ) 
-                        label(for="sexInMale" class="form-check-label") Nam
-                    div(class="form-group form-check form-check-inline")
-                        input(
-                            type="radio"
-                            class="form-check-input"
-                            id="sexInFemale"
-                            name="sex"
-                            value="female"
-                        ) 
-                        label(for="sexInFemale" class="form-check-label") Nữ
+                        div(class="form-group form-check form-check-inline")
+                            input(
+                                type="radio"
+                                class="form-check-input"
+                                id="sexInMale"
+                                name="sex"
+                                value="male"
+                                checked
+                            ) 
+                            label(for="sexInMale" class="form-check-label") Nam
+                        div(class="form-group form-check form-check-inline")
+                            input(
+                                type="radio"
+                                class="form-check-input"
+                                id="sexInFemale"
+                                name="sex"
+                                value="female"
+                            ) 
+                            label(for="sexInFemale" class="form-check-label") Nữ
                     
                     div(class="form-group")
                         label(for="status") Trạng thái
@@ -141,5 +141,5 @@ block main
                     div(class="form-group")
                         button(
                             type="submit"
-                            class="btn btn-primary"
-                        ) <i class="fa-solid fa-plus" style="margin-right: 6px;font-size: medium"></i> Tạo mới người dùng
+                            class="btn btn-info"
+                        )  Tạo mới 

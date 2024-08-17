@@ -8,7 +8,7 @@ block main
             +alert-success("5000")
             
             h3(class="mb-4") Chỉnh sửa người dùng
-            .form-edit-user
+            .form-edit
                 form(
                     action=`${prefixadmin}/accounts/edit/${account.id}?_method=PATCH`
                     method='POST'

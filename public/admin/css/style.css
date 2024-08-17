@@ -1,3 +1,5 @@
+
+
 /* header */
 .body {
   font-family: "Roboto", sans-serif;
@@ -183,9 +185,9 @@ a {
   font-size: 1rem; 
 }
 
-.form-create-user, 
-.form-detail-user, 
-.form-edit-user {
+.form-create, 
+.form-detail, 
+.form-edit {
   width: 524px;
   margin: 36px auto; 
   padding: 20px; 
@@ -194,14 +196,14 @@ a {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
   background-color: #fff;
 }
-.form-create-user, .form-detail-user, .form-edit-user .form-group {
+.form-create, .form-detail, .form-edit .form-group {
   margin-bottom: 8px; 
   font-weight: 400;
 }
 
-.form-create-user .btn {
+.form-create .btn { 
   margin-top: 10px;
-  width: 200px; 
+  width: 154px; 
   border-radius: 5px; 
 }
 
@@ -272,7 +274,7 @@ a {
   background: #62fdd4ac;
 }
 /* end img preview */
-.form-create-user, .form-edit-user .btn-primary {
+.form-create, .form-edit .btn-primary {
   /* width: 100%; */
   padding: 10px 20px;
   border-radius: 25px;
@@ -300,8 +302,8 @@ a {
 }
 /* thời gian thực */
 
-.form-create-user,.form-detail-user, .form-edit-user .form-group label {
-  font-weight: 700;
+.form-create,.form-detail, .form-edit .form-group label {
+  font-weight: 400;
 }
 .form-group input.form-control[readonly] {
   background-color: #dcdcdc; 
@@ -336,3 +338,5 @@ a {
 .btn-actions button.item-action:hover {
   background-color: #f0f0f0;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); 
+}
+
