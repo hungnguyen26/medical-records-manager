@@ -4,71 +4,71 @@ include ../../mixins/alert.pug
 block main
     .block-main
         +alert-success("5000")
+        if(Role.quyen === "sell")
+            h3(class="mb-4") Quản lý thuốc
+            .mb-3
+                .row 
+                    .col-3
+                        form(id="form-search")
+                            .input-group
+                                input(
+                                    type="text"
+                                    placeholder="Tìm kiếm"
+                                    name="keyword"
+                                    class="form-control"
+                                    style="border-top-right-radius: 6px;border-bottom-right-radius: 6px;margin-right: 20px"
+                                    value=keyword
+                                )
+                                .input-group-appent 
+                                    button(
+                                        class="btn btn-info"
+                                        type="submit"
+                                        style="height: 100%"
+                                    ) <i class="fa-solid fa-magnifying-glass"></i> 
+                    .col-9.text-end 
+                        a(
+                            href=`${prefixadmin}/medicines/create`
+                            class="btn btn-info"
+                        ) + Thêm thuốc
+            .card.mb-3
+                table(class="table ")
+                    thead(class="card-header")
+                        tr
+                            th #
+                            th Tên thuốc
+                            th Số lượng
+                            th Giá tiền
+                            th Cách dùng
+                            th Ghi chú
+                            th Mô tả
+                            th Ngày cập nhật
+                            th Hành động
 
-        h3(class="mb-4") Quản lý thuốc
-        .mb-3
-            .row 
-                .col-3
-                    form(id="form-search")
-                        .input-group
-                            input(
-                                type="text"
-                                placeholder="Tìm kiếm"
-                                name="keyword"
-                                class="form-control"
-                                style="border-top-right-radius: 6px;border-bottom-right-radius: 6px;margin-right: 20px"
-                                value=keyword
-                            )
-                            .input-group-appent 
-                                button(
-                                    class="btn btn-info"
-                                    type="submit"
-                                    style="height: 100%"
-                                ) <i class="fa-solid fa-magnifying-glass"></i> 
-                .col-9.text-end 
-                    a(
-                        href=`${prefixadmin}/medicines/create`
-                        class="btn btn-info"
-                    ) + Thêm thuốc
-        .card.mb-3
-            table(class="table ")
-                thead(class="card-header")
-                    tr
-                        th #
-                        th Tên thuốc
-                        th Số lượng
-                        th Giá tiền
-                        th Cách dùng
-                        th Ghi chú
-                        th Mô tả
-                        th Ngày cập nhật
-                        th Hành động
+                    tbody
+                        each item, index in medicines 
+                                tr 
+                                    th #{index+1}
+                                    td #{item.name}
+                                    td #{item.quantity}
+                                    td #{item.price.toLocaleString('vi-VN',{style : 'currency', currency : 'VND'})} 
+                                    td 
+                                        if(item.usage === "after")
+                                            .usage-medicines Sau ăn
+                                        else if(item.usage === "before")
+                                                .usage-medicines Trước ăn 
+                                        else 
+                                            .usage-medicines Trước/Sau ăn 
+                                    td #{item.note}  
+                                    td #{item.description}  
+                                    td #{moment(item.updatedAt).format("DD/MM/YYYY hh:mm:ss a")}
+                                    td 
+                                        .btn-actions
+                                            a(
+                                                href= `${prefixadmin}/medicines/${item.id}`
+                                                class="item-action" 
+                                            ) <i class="fa-regular fa-pen-to-square"></i>
+                                            button(
+                                                class="item-action" 
+                                            ) <i class="fa-regular fa-trash-can"></i>
 
-                tbody
-                    each item, index in medicines 
-                            tr 
-                                th #{index+1}
-                                td #{item.name}
-                                td #{item.quantity}
-                                td #{item.price.toLocaleString('vi-VN',{style : 'currency', currency : 'VND'})} 
-                                td 
-                                    if(item.usage === "after")
-                                        .usage-medicines Sau ăn
-                                    else if(item.usage === "before")
-                                            .usage-medicines Trước ăn 
-                                    else 
-                                        .usage-medicines Trước/Sau ăn 
-                                td #{item.note}  
-                                td #{item.description}  
-                                td #{moment(item.updatedAt).format("DD/MM/YYYY hh:mm:ss a")}
-                                td 
-                                    .btn-actions
-                                        a(
-                                            href= `${prefixadmin}/medicines/${item.id}`
-                                            class="item-action" 
-                                        ) <i class="fa-regular fa-pen-to-square"></i>
-                                        button(
-                                            class="item-action" 
-                                        ) <i class="fa-regular fa-trash-can"></i>
-
-            
+                

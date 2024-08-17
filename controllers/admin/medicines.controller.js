@@ -21,3 +21,11 @@ module.exports.index = async (req, res) => {
     keyword: objectSearch.keyword
   });
 };
+
+// [GET] admin/medicines
+module.exports.create = async (req, res) => {
+
+  res.render("admin/pages/medicines/create.pug", {
+    pageTitle:  "Thêm thuốc"
+  });
+};
