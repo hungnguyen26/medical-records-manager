@@ -19,7 +19,7 @@ const port = 3000;
 app.use(methodOverride("_method"));
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 database.connect();
 

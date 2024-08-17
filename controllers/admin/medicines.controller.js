@@ -29,3 +29,10 @@ module.exports.create = async (req, res) => {
     pageTitle: "Danh sách thuốc"
   });
 };
+
+// [POST] admin/medicines
+module.exports.createPost = async (req, res) => {
+  console.log(req.body);
+  
+  res.send("Ok")
+};
