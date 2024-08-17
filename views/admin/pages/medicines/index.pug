@@ -39,6 +39,7 @@ block main
                         th Số lượng
                         th Giá tiền
                         th Cách dùng
+                        th Ghi chú
                         th Mô tả
                         th Ngày cập nhật
                         th Hành động
@@ -49,7 +50,7 @@ block main
                                 th #{index+1}
                                 td #{item.name}
                                 td #{item.quantity}
-                                td #{item.price}  
+                                td #{item.price.toLocaleString('vi-VN',{style : 'currency', currency : 'VND'})} 
                                 td 
                                     if(item.usage === "after")
                                         .usage-medicines Sau ăn
@@ -57,6 +58,7 @@ block main
                                             .usage-medicines Trước ăn 
                                     else 
                                         .usage-medicines Trước/Sau ăn 
+                                td #{item.note}  
                                 td #{item.description}  
                                 td #{moment(item.updatedAt).format("DD/MM/YYYY hh:mm:ss a")}
                                 td 
