@@ -50,7 +50,7 @@ block main
                                     th #{index+1}
                                     td #{item.name}
                                     td #{item.quantity}
-                                    td #{item.price.toLocaleString('vi-VN',{style : 'currency', currency : 'VND'})} 
+                                    td #{Number(item.price).toLocaleString('vi-VN')} VND
                                     td 
                                         if(item.usage === "after")
                                             .usage-medicines Sau ăn
@@ -64,7 +64,7 @@ block main
                                     td 
                                         .btn-actions
                                             a(
-                                                href= `${prefixadmin}/medicines/${item.id}`
+                                                href= `${prefixadmin}/medicines/edit/${item.id}`
                                                 class="item-action" 
                                             ) <i class="fa-regular fa-pen-to-square"></i>
                                             button(
