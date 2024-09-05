@@ -1,0 +1,105 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+
+block main
+    .block-main
+        +alert-error("5000")
+        if(Role.quyen === "sell")
+            h3(class="mb-4") Chỉnh sửa thuốc
+            .form-edit
+                form(
+                    action=`${prefixadmin}/medicines/edit/${medicine.id}?_method=PATCH`
+                    method='POST'
+                ) 
+                    div(class="form-group")
+                        label(for="name") Tên thuốc : 
+                            span.required ✳
+                        input(
+                            type="text"
+                            class="form-control"
+                            id="name"
+                            name="name"
+                            value=medicine.name
+                        ) 
+                    div(class="form-group")
+                        label(for="quantity") Số lượng :  
+                            span.required ✳
+                        input(
+                            type="number"
+                            class="form-control"    
+                            id="quantity"
+                            name="quantity"
+                            value=medicine.quantity
+                        ) 
+                    div(class="form-group ")
+                        label(for="price") Giá tiền :  
+                            span.required ✳
+                        input(
+                            type="number"
+                            class="form-control"    
+                            id="price"
+                            name="price"
+                            value=medicine.price
+                        ) 
+    
+                    div(class="form-group")
+                        label(for="usage") Cách dùng :
+                            span.required ✳
+                        div(class="form-group form-check form-check-inline")
+                            input(
+                                type="radio"
+                                class="form-check-input"
+                                id="usageAfter"
+                                name="usage"
+                                value="after"
+                                checked=(medicine.usage == "after" ? true : false)
+                            ) 
+                            label(for="usageAfter" class="form-check-label") Trước ăn
+                        div(class="form-group form-check form-check-inline")
+                            input(
+                                type="radio"
+                                class="form-check-input"
+                                id="usageBefore"
+                                name="usage"
+                                value="before"
+                                checked=(medicine.usage == "before" ? true : false)
+                            ) 
+                            label(for="usageBefore" class="form-check-label") Sau ăn
+                        div(class="form-group form-check form-check-inline")
+                            input(
+                                type="radio"
+                                class="form-check-input"
+                                id="usageAfterBefore"
+                                name="usage"
+                                value="afterBefore"
+                                checked=(medicine.usage == "afterBefore" ? true : false)
+                            ) 
+                            label(for="usageAfterBefore" class="form-check-label") Trước / Sau ăn
+                        div(class="form-group ")
+                            label(for="note") Ghi chú :  
+                            input(
+                                type="text"
+                                class="form-control"    
+                                id="note"
+                                name="note"
+                                value=medicine.note
+                            ) 
+                        div(class="form-group ")
+                            label(for="description") Mô tả :  
+                            textarea(
+                                class="form-control"
+                                id="description"
+                                name="description" 
+                                rows="4"
+                            ) #{medicine.description}
+                    div(class="form-group")
+                        button(
+                            type="submit"
+                            class="btn btn-info"
+                        )  Chỉnh sửa 
+                        button(
+                            type="button" 
+                            onclick="history.back();" 
+                            class="btn btn-secondary"
+                            style="margin-left: 10px; padding: 5px 10px; width: 82px;   "
+                        ) Hủy

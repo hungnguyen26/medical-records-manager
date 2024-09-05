@@ -65,8 +65,28 @@ module.exports.delete = async (req, res) => {
   }
 };
 
-// [PATCH] admin/medicines/edit/:id
+// [GET] admin/medicines/edit/:id
 module.exports.edit = async (req, res) => {
-  console.log(req.params.id); 
-  res.send("Ok")
+  const medicine = await Medicine.findOne({
+    _id: req.params.id
+  })  
+  res.render("admin/pages/medicines/edit.pug", {
+    pageTitle: "Chỉnh sửa thuốc",
+    medicine:medicine
+  });
+};
+
+// [PATCH] admin/medicines/edit/:id
+module.exports.editPatch = async (req, res) => {
+  // console.log(req.body);
+  const id = req.params.id;
+  try {
+    await Medicine.updateOne({_id:id }, req.body);
+    req.flash("thanhcong", " Chỉnh sửa thuốc thành công.");
+    res.redirect(`${systemConfig.prefixAdmin}/medicines`);
+  } catch (error) {
+    req.flash("thatbai", " Chỉnh sửa thuốc thất bại.");
+    res.redirect(`${systemConfig.prefixAdmin}/medicines`);
+
+  }
 };
