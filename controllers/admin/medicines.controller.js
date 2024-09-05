@@ -50,6 +50,21 @@ module.exports.createPost = async (req, res) => {
   }
 };
 
+
+// [DELETE] admin/medicines/delete/:id
+module.exports.delete = async (req, res) => {
+  const id = req.params.id;
+  console.log(id);
+  try {
+    await Medicine.findByIdAndDelete(id);
+    req.flash("thanhcong", " Xóa thuốc thành công.");
+    res.redirect(`${systemConfig.prefixAdmin}/medicines`);
+  } catch (error) {
+    req.flash("thatbai", " Xóa thuốc thất bại.");
+    res.redirect(`${systemConfig.prefixAdmin}/medicines`);
+  }
+};
+
 // [PATCH] admin/medicines/edit/:id
 module.exports.edit = async (req, res) => {
   console.log(req.params.id); 
