@@ -35,7 +35,6 @@ module.exports.create = async (req, res) => {
 
 // [POST] admin/medicines/create
 module.exports.createPost = async (req, res) => {
-  console.log(req.body);
   const tenThuocTonTai = await Medicine.findOne({
     name: req.body.name
   })

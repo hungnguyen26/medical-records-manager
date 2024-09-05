@@ -167,23 +167,7 @@ a {
   text-decoration: none;
 }
 
-.item-action {
-  color: black; 
-  margin-right: 30px;
-  text-decoration: none; 
-  display: inline-flex; 
-  align-items: center;
-}
 
-.item-action:last-child {
-  margin-right: 0; 
-  background-color: white;
-  border: white;
-}
-
-.item-action i {
-  font-size: 1rem; 
-}
 
 .form-create, 
 .form-detail, 
@@ -315,9 +299,30 @@ a {
 }
 
 
+
+.item-action {
+  color: black; 
+  margin-right: 30px;
+  text-decoration: none; 
+  display: inline-flex; 
+  align-items: center;
+}
+
+.item-action:last-child {
+  margin-right: 0; 
+  background-color: white;
+  border: white;
+} 
+
+.item-action i {
+  font-size: 1rem; 
+}
+
+
 .btn-actions a.item-action {
   margin: 10px;
   border: 1px solid rgb(208, 205, 205);
+  height: 27.6px;
   border-radius: 5px;
   padding: 0px 7px;
   text-decoration: none;
@@ -338,5 +343,5 @@ a {
 .btn-actions button.item-action:hover {
   background-color: #f0f0f0;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); 
-}
+}  
 
