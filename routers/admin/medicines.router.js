@@ -1,13 +1,18 @@
 const express = require("express");
 const router = express.Router();
 
-const controller = require("../../controllers/admin/medicines.controller.js")
+const controller = require("../../controllers/admin/medicines.controller.js");
+const validateMedicines = require("../../validates/admin/medicines.validate.js");
 
 router.get("/", controller.index);
 
 router.get("/create", controller.create);
 
-router.post("/create", controller.createPost);
+router.post(
+    "/create", 
+    validateMedicines.createPost, 
+    controller.createPost
+);
 
 router.get("/edit/:id", controller.edit);
 

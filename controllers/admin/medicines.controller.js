@@ -25,17 +25,17 @@ module.exports.index = async (req, res) => {
   });
 };
 
-// [GET] admin/medicines
+// [GET] admin/medicines/create
 module.exports.create = async (req, res) => {
 
   res.render("admin/pages/medicines/create.pug", {
-    pageTitle: "Danh sách thuốc"
+    pageTitle: "Thêm thuốc"
   });
 };
 
-// [POST] admin/medicines
+// [POST] admin/medicines/create
 module.exports.createPost = async (req, res) => {
-  // console.log(req.body);
+  console.log(req.body);
   const tenThuocTonTai = await Medicine.findOne({
     name: req.body.name
   })
