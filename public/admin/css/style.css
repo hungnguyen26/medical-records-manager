@@ -133,11 +133,20 @@ th {
   text-align: center;
   font-weight: 500;
 }
-.role-banhang, .usage-medicines {
-  background: #c1bfbf;
-  border: 1px solid rgb(12, 170, 222);
+.role-bacsi {
+  border: 1px solid rgb(0, 163, 117);
   border-radius: 6px;
+  background-color: #48edc1;
+  width: 78px;
+  height: 24px;
+  text-align: center;
+  font-weight: 500;
+}
+.role-banhang, .usage-medicines {
+  border: 1px solid rgb(12, 170, 222);
   background-color: #cee8fd;
+
+  border-radius: 6px;
   width: 78px;
   height: 24px;
   text-align: center;
@@ -155,6 +164,7 @@ th {
 }
 .role-quanly,
 .role-banhang,
+.role-bacsi,
 .usage-medicines {
   margin: 0 auto;
   text-align: center;

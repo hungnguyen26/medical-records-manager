@@ -70,10 +70,10 @@ block main
                                     td  
                                         if(item.role.title === "Quản lý")
                                             .role-quanly #{item.role.title}
-                                        else if(item.role.title === "Bán hàng")
-                                            .role-banhang #{item.role.title}
-                                        //- else 
-                                        //-     .role-banthuoc #{item.role.title}
+                                        else if(item.role.title === "Nhân viên bán hàng")
+                                            .role-banhang Bán hàng
+                                        else if(item.role.title === "Bác sĩ")
+                                            .role-bacsi #{item.role.title}
                                     td 
                                         if(item.status === "active")
                                             a(
