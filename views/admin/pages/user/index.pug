@@ -74,6 +74,8 @@ block main
                                             .role-banhang Bán hàng
                                         else if(item.role.title === "Bác sĩ")
                                             .role-bacsi #{item.role.title}
+                                        else 
+                                            .role-staff Hành chánh
                                     td 
                                         if(item.status === "active")
                                             a(
