@@ -13,6 +13,12 @@
                         href=`${prefixadmin}/medicines` 
                         class="menu-item btn btn-light"
                     ) <i class="fa-solid fa-pills"></i> Thuốc
+            if(Role.quyen === "staff")
+                li 
+                    a(
+                        href=`${prefixadmin}/profile-medical` 
+                        class="menu-item btn btn-light"
+                    ) <i class="fa-regular fa-id-badge"></i> Hồ sơ bệnh án
             li 
                 a(
                     href=`${prefixadmin}/chats` 
