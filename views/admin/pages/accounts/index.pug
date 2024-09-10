@@ -59,7 +59,7 @@ block main
                                         )
                                     td #{item.email}
                                     td #{item.fullName}
-                                    td #{item.dateOfBirth}  
+                                    td #{moment(item.dateOfBirth).format("DD/MM/YYYY")} 
                                     td #{item.phone}  
                                     td  
                                         if(item.role.title === "Quản lý")

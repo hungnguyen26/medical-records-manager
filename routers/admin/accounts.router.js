@@ -7,7 +7,7 @@ const multer = require("multer");
 const upload = multer();
 const uploadCloud = require("../../middlewares/admin/uploadCloud.middleware");
 
-const controller = require("../../controllers/admin/users.controller");
+const controller = require("../../controllers/admin/accounts.controller");
 
 router.get("/", controller.index);
 

@@ -1,6 +1,6 @@
 const systemConfig = require("../../config/system");
 const homeRouter = require("./home.router");
-const usersRouter = require("./users.router");
+const accountsRouter = require("./accounts.router");
 const auth = require("./auth.router");
 const medicinesRouter = require("./medicines.router");
 const profile_medicalRouter = require("./profile-medical.router");
@@ -15,7 +15,7 @@ module.exports = (app) => {
 
   app.use(PATH_ADMIN + "/home",authMiddlewares.requireAuth,  homeRouter);
 
-  app.use(PATH_ADMIN + "/accounts", authMiddlewares.requireAuth, usersRouter);
+  app.use(PATH_ADMIN + "/accounts", authMiddlewares.requireAuth, accountsRouter);
 
   app.use(PATH_ADMIN + "/auth", auth);
 

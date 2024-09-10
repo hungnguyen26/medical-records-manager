@@ -6,7 +6,7 @@ const accountSchema = new mongoose.Schema(
     fullName: String,
     avatar: String, 
     address: String, 
-    dateOfBirth: String,
+    dateOfBirth: Date,
     sex: String,
     email: String,
     password: String,

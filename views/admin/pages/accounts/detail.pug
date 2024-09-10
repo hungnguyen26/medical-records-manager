@@ -51,7 +51,7 @@ block main
                             input(
                                 type="text"
                                 class="form-control"
-                                value=account.dateOfBirth
+                                value=moment(account.dateOfBirth).format("DD/MM/YYYY")
                                 readonly
                             ) 
                         div(class="form-group")

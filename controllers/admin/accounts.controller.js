@@ -26,7 +26,7 @@ module.exports.index = async (req, res) => {
     });
     record.role = role;
   }
-  res.render("admin/pages/user/index.pug", {
+  res.render("admin/pages/accounts/index.pug", {
     pageTitle: "Quản lí người dùng",
     records: records,
     keyword: objectSearch.keyword,
@@ -38,7 +38,7 @@ module.exports.create = async (req, res) => {
   const roles = await Role.find({
     deleted: false,
   });
-  res.render("admin/pages/user/create.pug", {
+  res.render("admin/pages/accounts/create.pug", {
     pageTitle: "Thêm mới người dùng",
     roles: roles,
   });
@@ -79,7 +79,7 @@ module.exports.detail = async (req, res) => {
       _id: account.Role_id,
     }).select("title");
 
-    res.render("admin/pages/user/detail.pug", {
+    res.render("admin/pages/accounts/detail.pug", {
       pageTitle: "Chi tiết người dùng",
       account: account,
       role: role,
@@ -98,7 +98,7 @@ module.exports.edit = async (req, res) => {
   const roles = await Role.find({
     deleted: false,
   });
-  res.render("admin/pages/user/edit.pug", {
+  res.render("admin/pages/accounts/edit.pug", {
     pageTitle: "Chỉnh sửa người dùng",
     account: account,
     roles: roles,
