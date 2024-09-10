@@ -1,15 +1,22 @@
-// const searchHelper = require("../../../helpers/search");
-
+const User = require("../../models/users.model");
+const searchHelper = require("../../helpers/search");
 
 // [GET] admin/profile-medical
 module.exports.index = async (req, res) => {
-    // const find = {};
+  const find = { deleted: false };
 
-    // // search 
+  // search
+  const objectSearch = searchHelper(req.query);
+  if (objectSearch.regex) {
+    find.name = objectSearch.regex;
+  }
+  // end search
 
-    // // end search 
+  const users = await User.find(find);
+  console.log(users);
 
-    res.render("admin/pages/administrative-staff/profile-medical/index.pug", {
-      pageTitle:  "Hồ sơ bệnh án"
-    });
-  };
+  res.render("admin/pages/administrative-staff/profile-medical/index.pug", {
+    pageTitle: "Hồ sơ bệnh án",
+    users: users,
+  });
+};

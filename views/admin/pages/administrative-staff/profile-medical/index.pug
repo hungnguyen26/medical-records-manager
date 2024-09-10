@@ -41,59 +41,31 @@ block main
                             th Địa chỉ
                             th Lịch khám
                             th Hành động
-            //-         tbody
-            //-             each item, index in records 
-            //-                     tr 
-            //-                         th #{index+1}
-            //-                         td  
-            //-                             img.round-avatar(
-            //-                                 src=item.avatar
-            //-                                 alt=item.fullName
-            //-                                 width="50px"
-            //-                                 height="auto"
-            //-                             )
-            //-                         td #{item.email}
-            //-                         td #{item.fullName}
-            //-                         td #{item.dateOfBirth}  
-            //-                         //- td 
-            //-                         //-     if(item.sex === "male") 
-            //-                         //-         | Nam
-            //-                         //-     else    
-            //-                         //-         | Nữ
-            //-                         td #{item.phone}  
-            //-                         //- td #{item.address}  
-            //-                         td  
-            //-                             if(item.role.title === "Quản lý")
-            //-                                 .role-quanly #{item.role.title}
-            //-                             else if(item.role.title === "Nhân viên bán hàng")
-            //-                                 .role-banhang Bán hàng
-            //-                             else if(item.role.title === "Bác sĩ")
-            //-                                 .role-bacsi #{item.role.title}
-            //-                             else 
-            //-                                 .role-staff Hành chánh
-            //-                         td 
-            //-                             if(item.status === "active")
-            //-                                 a(
-            //-                                     href="javascript:;"
-            //-                                     class="badge bg-success"
-            //-                                 ) Hoạt động
-            //-                             else 
-            //-                                 a(
-            //-                                     href="javascript:;"
-            //-                                     class="badge bg-danger"
-            //-                                 ) Dừng hoạt động
-            //-                         td 
-            //-                             .btn-actions
-            //-                                 a(
-            //-                                     href= `${prefixadmin}/accounts/detail/${item.id}`  
-            //-                                     class="item-action" 
-            //-                                 ) <i class="fa-solid fa-circle-info"></i>
-            //-                                 a(
-            //-                                     href= `${prefixadmin}/accounts/edit/${item.id}`
-            //-                                     class="item-action" 
-            //-                                 ) <i class="fa-regular fa-pen-to-square"></i>
-            //-                                 button(
-            //-                                     class="item-action" 
-            //-                                 ) <i class="fa-regular fa-trash-can"></i>
-
+                    tbody
+                        each item, index in users 
+                                tr 
+                                    td #{item.fullName}
+                                    td #{moment(item.dateOfBirth).format("DD/MM/YYYY")}
+                                    td #{item.phone}
+                                    td #{item.address} 
+                                    td 
+                                        .btn-actions
+                                            a(
+                                                href= `${prefixadmin}/             `  
+                                                class="item-action" 
+                                            ) <i class="fa-regular fa-eye"></i>
+                                            a(
+                                                href= `${prefixadmin}/             `  
+                                                class="item-action" 
+                                            ) <i class="fa-solid fa-plus"></i>
+                                    td 
+                                        .btn-actions
+                                            a(
+                                                href= `${prefixadmin}/             `  
+                                                class="item-action" 
+                                            ) <i class="fa-regular fa-eye"></i>
+                                            a(
+                                                href= `${prefixadmin}/             `  
+                                                class="item-action" 
+                                            ) <i class="fa-solid fa-plus"></i>
                 
