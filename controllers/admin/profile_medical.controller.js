@@ -13,7 +13,6 @@ module.exports.index = async (req, res) => {
   // end search
 
   const users = await User.find(find);
-  console.log(users);
 
   res.render("admin/pages/administrative-staff/profile-medical/index.pug", {
     pageTitle: "Hồ sơ bệnh án",
