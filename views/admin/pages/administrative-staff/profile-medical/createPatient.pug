@@ -1,0 +1,79 @@
+extends ../../../layouts/default.pug
+include ../../../mixins/alert.pug
+
+block main
+    .block-main
+        +alert-error("5000")
+        if(Role.quyen == "staff")
+            h3(class="mb-4") Thêm bệnh nhân
+            .form-create    
+                form(
+                    action=`${prefixadmin}/profile-medical/create-patient`
+                    method='POST'
+                ) 
+                    div(class="form-group")
+                        label(for="fullName") Họ tên 
+                            span.required ✳
+                        input(
+                            type="text"
+                            class="form-control"
+                            id="fullName"
+                            name="fullName"
+                            placeholder="Họ tên bệnh nhân"
+                        ) 
+                    .display-flex 
+                        div(class="form-group")
+                            label(for="phone") Số điện thoại
+                                span.required ✳
+                            input(
+                                type="text"
+                                class="form-control"
+                                id="phone"
+                                name="phone"
+                                placeholder="Số điện thoại"
+                            ) 
+                        div(class="form-group")
+                            label(for="dateOfBirth") Ngày sinh
+                                span.required ✳
+                            input(
+                                type="date"
+                                class="form-control"
+                                id="dateOfBirth"
+                                name="dateOfBirth"
+                            ) 
+                        div(class="form-group")
+                            label(for="sex") Giới tính
+                                span.required  ✳
+                            select(name="sex" id="sex" class="form-control")
+                                    option(value="male") Nam 
+                                    option(value="female") Nữ
+                    div(class="form-group")
+                        label(for="address") Địa chỉ
+                            span.required ✳
+                        input(
+                            type="text"
+                            class="form-control"
+                            id="address"
+                            name="address"
+                            placeholder="Địa chỉ"
+                        ) 
+                    div(class="form-group")
+                        label(for="note") Lưu ý
+                        textarea(
+                            class="form-control"
+                            id="note"
+                            name="note"
+                            placeholder="Địa chỉ"
+                        ) 
+                        
+                    div(class="form-group")
+                        button(
+                            type="submit"
+                            class="btn btn-info"
+                        )  Tạo mới 
+                        button(
+                                type="button" 
+                                onclick="history.back();" 
+                                class="btn btn-secondary"
+                                style="margin-left: 10px; padding: 5px 10px; width: 82px;   "
+                        ) Hủy   
