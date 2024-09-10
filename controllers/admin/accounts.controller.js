@@ -3,6 +3,7 @@ const systemConfig = require("../../config/system");
 
 const Account = require("../../models/accounts.model");
 const Role = require("../../models/roles.model");
+const Department = require("../../models/department.model");
 const searchHelper = require("../../helpers/search");
 
 // [GET] admin/accounts
@@ -29,7 +30,7 @@ module.exports.index = async (req, res) => {
   res.render("admin/pages/accounts/index.pug", {
     pageTitle: "Quản lí người dùng",
     records: records,
-    keyword: objectSearch.keyword,
+    keyword: objectSearch.keyword
   });
 };
 
