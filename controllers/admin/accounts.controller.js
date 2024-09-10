@@ -128,3 +128,18 @@ module.exports.editPatch = async (req, res) => {
 
   res.redirect("back");
 };
+
+// [DELETE] admin/accounts/delete/:id
+module.exports.delete = async (req, res) => {
+  const id = req.params.id;
+  try {
+    await Account.findByIdAndUpdate(id,{
+      deleted:true
+    });
+    req.flash("thanhcong", " Xóa người dùng thành công.");
+    res.redirect(`${systemConfig.prefixAdmin}/accounts`);
+  } catch (error) {
+    req.flash("thatbai", " Xóa người dùng thất bại.");
+    res.redirect(`${systemConfig.prefixAdmin}/accounts`);
+  }
+};

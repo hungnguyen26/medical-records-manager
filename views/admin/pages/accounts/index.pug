@@ -91,8 +91,15 @@ block main
                                                 href= `${prefixadmin}/accounts/edit/${item.id}`
                                                 class="item-action" 
                                             ) <i class="fa-regular fa-pen-to-square"></i>
-                                            button(
-                                                class="item-action" 
-                                            ) <i class="fa-regular fa-trash-can"></i>
+                                            form(
+                                                action=`${prefixadmin}/accounts/delete/${item.id}?_method=DELETE`
+                                                class="hidden-form" 
+                                                method='POST'
+                                            ) 
+                                                button(
+                                                    type="submit"
+                                                    class="item-action" 
+                                                    onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"
+                                                ) <i class="fa-regular fa-trash-can"></i> 
 
                 
