@@ -8,7 +8,7 @@ module.exports.index = async (req, res) => {
   // search
   const objectSearch = searchHelper(req.query);
   if (objectSearch.regex) {
-    find.name = objectSearch.regex;
+    find.fullName = objectSearch.regex;
   }
   // end search
 
@@ -18,5 +18,6 @@ module.exports.index = async (req, res) => {
   res.render("admin/pages/administrative-staff/profile-medical/index.pug", {
     pageTitle: "Hồ sơ bệnh án",
     users: users,
+    keyword: objectSearch.keyword
   });
 };
