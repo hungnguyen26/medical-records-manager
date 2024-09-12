@@ -1,0 +1,32 @@
+extends ../../../layouts/default.pug
+
+block main
+    .block-main
+        if(Role.quyen == "staff")
+            .display-flex
+                .btn-actions
+                    a(
+                        href= `${prefixadmin}/profile-medical`  
+                        class="item-action" 
+                    ) <i class="fa-solid fa-arrow-left"></i>
+                h3(class="mb-4" style="padding-top: 8px;") Thông tin bệnh nhân
+            .card.mb-3
+                table.table(style="margin-bottom: 0")
+                    tbody
+                        tr
+                            th(class="ant-descriptions-item-label" style="font-weight: bold" ) Bệnh nhân
+                            td(class="ant-descriptions-item-content" style="font-weight: bold;")  
+                            th(class="ant-descriptions-item-label") Ngày sinh
+                            td(class="ant-descriptions-item-content")
+                        tr
+                            th(class="ant-descriptions-item-label") Điện thoại
+                            td(class="ant-descriptions-item-content") 
+                            th(class="ant-descriptions-item-label") Email
+                            td(class="ant-descriptions-item-content") 
+                        tr
+                            th(class="ant-descriptions-item-label") Địa chỉ
+                            td(class="ant-descriptions-item-content") 
+                            th(class="ant-descriptions-item-label") Giới tính
+                            td(class="ant-descriptions-item-content") 
+
+            h3(class="mb-4") Lịch sử khám bệnh

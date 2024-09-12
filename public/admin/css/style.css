@@ -1,4 +1,6 @@
-
+.display-flex{
+  display: flex;
+}
 .form-group{
   padding: 14px 0
 }
@@ -367,4 +369,30 @@ a {
 .display-flex {
   display: flex;
   gap: 20px;
+}
+
+
+table .ant-descriptions-item-label{
+  color: rgba(0, 0, 0, 0.65);
+  background-color: rgba(11, 11, 11, 0.02);
+  width: 25%;
+  border-right: 1px solid #d9d9d9;
+  font-weight: inherit;
+  font-style: inherit;
+}
+table .ant-descriptions-item-content{
+  /* color: rgba(0, 0, 0, 0.65);
+  background-color: rgba(11, 11, 11, 0.02);
+  width: 25%;
+  */
+  border-right: 1px solid #d9d9d9; 
+} 
+table tr th:last-child,
+table tr td:last-child {
+  border-right: none;
+}
+.card.mb-3 .table th.ant-descriptions-item-label,
+.card.mb-3 .table td.ant-descriptions-item-content{
+  padding: 20px 0 20px 28px;
+  text-align: left;
 }

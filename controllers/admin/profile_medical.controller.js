@@ -53,3 +53,11 @@ module.exports.createPatientPost = async (req, res) => {
   }
   
 };
+
+// [GET] admin/profile-medical/:id
+module.exports.detailPatient = async (req, res) => {
+  
+  res.render("admin/pages/administrative-staff/profile-medical/detailPatient.pug", {
+    pageTitle: "Thông tin bệnh nhân"
+  });
+};

@@ -15,4 +15,7 @@ router.post(
     controller.createPatientPost
 );
 
+router.get("/:id", controller.detailPatient);
+
+
 module.exports = router;
