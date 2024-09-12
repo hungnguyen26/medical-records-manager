@@ -60,7 +60,7 @@ module.exports.detailPatient = async (req, res) => {
   const patient = await User.findOne({
     _id: patient_id
   });
-  console.log(patient);
+  // console.log(patient);
 
   res.render("admin/pages/administrative-staff/profile-medical/detailPatient.pug", {
     pageTitle: "Thông tin bệnh nhân",
