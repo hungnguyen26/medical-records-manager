@@ -17,5 +17,9 @@ router.post(
 
 router.get("/:id", controller.detailPatient);
 
+router.get("/edit-patient/:id", controller.editPatient);
+
+router.patch("/edit-patient/:id", controller.editPatientPatch);
+
 
 module.exports = router;

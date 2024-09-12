@@ -1,0 +1,83 @@
+extends ../../../layouts/default.pug
+include ../../../mixins/alert.pug
+
+block main
+    .block-main
+        +alert-error("5000")
+        if(Role.quyen == "staff")
+            h3(class="mb-4") Cập nhật bệnh nhân
+            .form-edit    
+                form(
+                    action=`${prefixadmin}/profile-medical/edit-patient/${patient.id}?_method=PATCH`
+                    method='POST'
+                ) 
+                    div(class="form-group")
+                        label(for="fullName") Họ tên 
+                            span.required ✳
+                        input(
+                            type="text"
+                            class="form-control"
+                            id="fullName"
+                            name="fullName"
+                            value=patient.fullName
+
+                        ) 
+                    .display-flex 
+                        div(class="form-group")
+                            label(for="phone") Số điện thoại
+                                span.required ✳
+                            input(
+                                type="text"
+                                class="form-control"
+                                id="phone"
+                                name="phone"
+                                value=patient.phone
+
+                            ) 
+                        div(class="form-group")
+                            label(for="dateOfBirth") Ngày sinh
+                                span.required ✳
+                            input(
+                                type="date"
+                                class="form-control"
+                                id="dateOfBirth"
+                                name="dateOfBirth"
+                                value=moment(patient.dateOfBirth).format("YYYY-MM-DD")
+                            ) 
+                        div(class="form-group")
+                            label(for="sex") Giới tính
+                                span.required  ✳
+                            select(name="sex" id="sex" class="form-control")
+                                    option(value="male" selected=(patient.sex === "male"? true : false)) Nam 
+                                    option(value="female" selected=(patient.sex === "female"? true : false)) Nữ
+                    div(class="form-group")
+                        label(for="address") Địa chỉ
+                            span.required ✳
+                        input(
+                            type="text"
+                            class="form-control"
+                            id="address"
+                            name="address"
+                            value=patient.address
+
+                        ) 
+                    div(class="form-group")
+                        label(for="note") Lưu ý
+                        textarea(
+                            class="form-control"
+                            id="note"
+                            name="note"
+                            value=patient.note
+                        ) 
+                        
+                    div(class="form-group")
+                        button(
+                            type="submit"
+                            class="btn btn-info"
+                        )  Cập nhật 
+                        button(
+                                type="button" 
+                                onclick="history.back();" 
+                                class="btn btn-secondary"
+                                style="margin-left: 10px; padding: 5px 10px; width: 82px;   "
+                        ) Hủy   

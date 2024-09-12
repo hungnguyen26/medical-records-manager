@@ -67,3 +67,32 @@ module.exports.detailPatient = async (req, res) => {
     patient:patient
   });
 };
+
+// [GET] admin/profile-medical/edit-patient/:id
+module.exports.editPatient = async (req, res) => {
+  const patient_id = req.params.id;
+  const patient = await User.findOne({
+    _id: patient_id
+  });
+  res.render("admin/pages/administrative-staff/profile-medical/editPatient.pug", {
+    pageTitle: "Cập nhật bệnh nhân",
+    patient:patient
+  });
+};
+
+// [PATCH] admin/profile-medical/edit-patient/:id
+module.exports.editPatientPatch = async (req, res) => {
+  const patient_id = req.params.id;
+  try {
+    if(req.body.dateOfBirth){
+      req.body.dateOfBirth = new Date(req.body.dateOfBirth);
+    }
+    await User.findByIdAndUpdate(patient_id,req.body);
+    req.flash("thanhcong", " Cập nhật bệnh nhân thành công.");
+    res.redirect(`${systemConfig.prefixAdmin}/profile-medical`);
+  } catch (error) {
+    console.log(error);
+    req.flash("thatbai", " Có lỗi xảy ra khi cập nhật bệnh nhân.");
+    res.redirect(`${systemConfig.prefixAdmin}/profile-medical`);
+  }
+};
