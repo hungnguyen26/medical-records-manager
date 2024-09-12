@@ -99,7 +99,7 @@ block main
                             select(name="department_id" id="department_id" class="form-control")
                                 option(disabled selected) -- Chọn khoa --
                                 each department in departments
-                                    option(value=department._id) #{department.title}
+                                    option(value=department._id) #{department.title} - #{department.description}
 
                     div(class="form-group")
                         label(for="sex") Giới tính
