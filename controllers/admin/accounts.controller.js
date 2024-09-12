@@ -30,7 +30,7 @@ module.exports.index = async (req, res) => {
   res.render("admin/pages/accounts/index.pug", {
     pageTitle: "Quản lí người dùng",
     records: records,
-    keyword: objectSearch.keyword
+    keyword: objectSearch.keyword,
   });
 };
 
@@ -39,31 +39,74 @@ module.exports.create = async (req, res) => {
   const roles = await Role.find({
     deleted: false,
   });
+  const departments = await Department.find({
+    deleted: false,
+  });
   res.render("admin/pages/accounts/create.pug", {
     pageTitle: "Thêm mới người dùng",
     roles: roles,
+    departments: departments,
   });
 };
 
 // [POST] admin/accounts/create
 module.exports.createPost = async (req, res) => {
-  const emailTontai = await Account.findOne({
-    email: req.body.email,
-    deleted: false,
-  });
+  // const emailTontai = await Account.findOne({
+  //   email: req.body.email,
+  //   deleted: false,
+  // });
 
-  if (emailTontai) {
-    req.flash("thatbai", " Email đã tồn tại.");
-    res.redirect("back");
-  } else {
-    req.body.password = md5(req.body.password);
+  // if (emailTontai) {
+  //   req.flash("thatbai", " Email đã tồn tại.");
+  //   res.redirect("back");
+  // } else {
+  //   req.body.password = md5(req.body.password);
 
-    // req.body.avatar = `/uploads/${req.file.filename}`;
+  //   // req.body.avatar = `/uploads/${req.file.filename}`;
 
-    const record = new Account(req.body);
-    await record.save();
-    req.flash("thanhcong", " Thêm người dùng mới.");
-    res.redirect(`${systemConfig.prefixAdmin}/accounts`);
+  //   const record = new Account(req.body);
+  //   await record.save();
+  //   req.flash("thanhcong", " Thêm người dùng mới.");
+  //   res.redirect(`${systemConfig.prefixAdmin}/accounts`);
+  // }
+  try {
+    const emailTontai = await Account.findOne({
+      email: req.body.email,
+      deleted: false,
+    });
+    if (emailTontai) {
+      req.flash("thatbai", " Email đã tồn tại.");
+      res.redirect("back");
+    } else {
+      req.body.password = md5(req.body.password);
+
+      const role = await Role.findOne({
+        _id: req.body.Role_id,
+        deleted: false,
+      }).select("quyen");
+
+      const { department_id, ...dataAccounts } = req.body;
+      
+      const newAccounts = new Account(req.body);
+      await newAccounts.save();
+
+      if (role.quyen === "doctor") {
+        await Department.updateOne(
+          {
+            _id: department_id,
+          },
+          {
+            $push: { doctors: { doctor_id: newAccounts._id } },
+          }
+        );
+      }
+
+      req.flash("thanhcong", " Thêm người dùng mới.");
+      res.redirect(`${systemConfig.prefixAdmin}/accounts`);
+    }
+  } catch (error) {
+    req.flash("thatbai", "Lỗi khi tạo người dùng");
+    res.redirect(`${prefixadmin}/accounts/create`);
   }
 };
 
@@ -134,8 +177,8 @@ module.exports.editPatch = async (req, res) => {
 module.exports.delete = async (req, res) => {
   const id = req.params.id;
   try {
-    await Account.findByIdAndUpdate(id,{
-      deleted:true
+    await Account.findByIdAndUpdate(id, {
+      deleted: true,
     });
     req.flash("thanhcong", " Xóa người dùng thành công.");
     res.redirect(`${systemConfig.prefixAdmin}/accounts`);

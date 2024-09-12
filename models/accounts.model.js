@@ -16,6 +16,7 @@ const accountSchema = new mongoose.Schema(
     },
     phone: String,
     Role_id: String,
+    department_id: String,
     status: String,
     deleted: {
       type: Boolean,

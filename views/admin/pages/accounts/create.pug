@@ -92,6 +92,15 @@ block main
                                 option(disabled selected) -- Chọn chức vụ -- 
                                 each item in roles  
                                     option(value=item.id) #{item.title}
+
+                    div(class="form-group" id="departmentSelect" style="")
+                        label(for="department_id") Chọn khoa
+                        span.required ✳
+                            select(name="department_id" id="department_id" class="form-control")
+                                option(disabled selected) -- Chọn khoa --
+                                each department in departments
+                                    option(value=department._id) #{department.title}
+
                     div(class="form-group")
                         label(for="sex") Giới tính
                             span.required ✳
