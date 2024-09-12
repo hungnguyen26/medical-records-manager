@@ -14,19 +14,19 @@ block main
                 table.table(style="margin-bottom: 0")
                     tbody
                         tr
-                            th(class="ant-descriptions-item-label" style="font-weight: bold" ) Bệnh nhân
-                            td(class="ant-descriptions-item-content" style="font-weight: bold;")  
+                            th(class="ant-descriptions-item-label" style="font-weight: bold" ) Bệnh nhân    
+                            td(class="ant-descriptions-item-content" style="font-weight: bold;")  #{patient.fullName}
                             th(class="ant-descriptions-item-label") Ngày sinh
-                            td(class="ant-descriptions-item-content")
+                            td(class="ant-descriptions-item-content") #{moment(patient.dateOfBirth).format("DD/MM/YYYY")}
                         tr
                             th(class="ant-descriptions-item-label") Điện thoại
-                            td(class="ant-descriptions-item-content") 
+                            td(class="ant-descriptions-item-content") #{patient.phone}
                             th(class="ant-descriptions-item-label") Email
                             td(class="ant-descriptions-item-content") 
                         tr
                             th(class="ant-descriptions-item-label") Địa chỉ
-                            td(class="ant-descriptions-item-content") 
+                            td(class="ant-descriptions-item-content") #{patient.address}
                             th(class="ant-descriptions-item-label") Giới tính
-                            td(class="ant-descriptions-item-content") 
+                            td(class="ant-descriptions-item-content") #{patient.sex === "male"? "Nam": "Nữ"}
 
             h3(class="mb-4") Lịch sử khám bệnh
