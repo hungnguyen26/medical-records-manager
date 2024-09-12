@@ -72,3 +72,25 @@ const updateTime = () => {
 };
 updateTime();
 //end hiển thị thời gian thực
+
+
+// hiển thị khoa
+document.addEventListener("DOMContentLoaded", function () {
+  const departmentSelect = document.getElementById('departmentSelect');
+  const roleSelect = document.getElementById('Role_id');
+
+  if (roleSelect && departmentSelect) {
+    const toggleDepartmentSelect = () => {
+      const selectedRole = roleSelect.options[roleSelect.selectedIndex].text;
+      if (selectedRole === 'Bác sĩ') {
+        departmentSelect.style.display = 'block';
+      } else {
+        departmentSelect.style.display = 'none';
+      }
+    }
+    toggleDepartmentSelect();
+    roleSelect.addEventListener('change', toggleDepartmentSelect);
+  }
+});
+
+// end hiển thị khoa
