@@ -21,5 +21,8 @@ router.get("/edit-patient/:id", controller.editPatient);
 
 router.patch("/edit-patient/:id", controller.editPatientPatch);
 
+router.get("/book-appointment/:id", controller.bookAppointment);
+
+
 
 module.exports = router;

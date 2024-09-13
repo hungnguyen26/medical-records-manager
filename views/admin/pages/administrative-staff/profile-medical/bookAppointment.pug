@@ -1,0 +1,76 @@
+extends ../../../layouts/default.pug
+include ../../../mixins/alert.pug
+
+block main
+    .block-main
+        +alert-error("5000")
+        if(Role.quyen == "staff")
+            h3(class="mb-4") Đặt lịch khám
+            .form-create    
+                form(
+                    action=`${prefixadmin}/profile-medical/book-appointment/:id`
+                    method='POST'
+                ) 
+                    div(class="form-group")
+                        label(for="fullName") Bệnh nhân 
+                            span.required ✳
+                        input(
+                            type="text"
+                            class="form-control"
+                            id="fullName"
+                            name="fullName"
+                        ) 
+                    
+                    div(class="form-group")
+                        label(for="department_id") Chọn chuyên khoa
+                        span.required  ✳
+                        select(name="department_id" id="department_id" class="form-control")
+                            option(disabled selected) Chọn chuyên khoa
+                            //- each item in roles  
+                            //-     option(value=item.id) #{item.title}
+                    
+                    div(class="form-group")
+                        label(for="doctorId") Chọn bác sĩ
+                        span.required  ✳
+                        select(name="doctorId" id="doctorId" class="form-control")
+                            option(disabled selected) Chọn bác sĩ
+                            //- each item in roles  
+                            //-     option(value=item.id) #{item.title}
+                    
+                    .display-flex    
+                        div(class="form-group")
+                            label(for="date") Ngày khám
+                                span.required ✳
+                            input(
+                                style="width: auto"
+                                type="date"
+                                class="form-control"
+                                id="date"
+                                name="date"
+                                onchange="showTimeSlots()"  
+                            )
+                        div(class="form-group")
+                            label(for="time") Khung giờ
+                                span.required ✳
+                            select(
+                                id="time"
+                                class="form-control"
+                                onchange="showEstimatedTime()"  
+                            )
+                                option(disabled selected) Chọn khung giờ
+                        
+                    div(class="form-group")
+                        label(for="estimatedTime") Thời gian dự kiến
+                        h5(id="estimatedTime") 
+                    
+                    div(class="form-group")
+                        button(
+                            type="submit"
+                            class="btn btn-info"
+                        ) Đặt lịch
+                        button(
+                            type="button" 
+                            onclick="history.back();" 
+                            class="btn btn-secondary"
+                            style="margin-left: 10px; padding: 5px 10px; width: 82px;"
+                        ) Hủy

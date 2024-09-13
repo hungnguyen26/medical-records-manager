@@ -94,3 +94,50 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // end hiển thị khoa
+
+// đặt ngày khám
+document.addEventListener("DOMContentLoaded", function() {
+  const dateInput = document.getElementById('date');
+  const today = new Date();
+  
+  const formattedToday = today.toISOString().split('T')[0];
+  
+  const sevenDaysLater = new Date();
+  sevenDaysLater.setDate(today.getDate() + 7);
+  const formattedMaxDate = sevenDaysLater.toISOString().split('T')[0];
+  
+  dateInput.setAttribute('min', formattedToday);
+  dateInput.setAttribute('max', formattedMaxDate);
+});
+// end đặt ngày khám
+
+// Hiển thị các khung giờ khi chọn ngày
+function showTimeSlots() {
+  const timeSlotSelect = document.getElementById('time');
+  const selectedDate = document.getElementById('date').value;
+
+  timeSlotSelect.innerHTML = '<option disabled selected>Chọn khung giờ</option>';
+  
+  if (!selectedDate) return;
+
+  const timeSlots = ['08:00', '10:00', '13:00', '15:00', '17:00'];
+
+  timeSlots.forEach(time => {
+      const option = document.createElement('option');
+      option.value = time;
+      option.textContent = `${time}`;
+      timeSlotSelect.appendChild(option);
+  });
+}
+
+// Hiển thị thời gian dự kiến khi chọn khung giờ
+function showEstimatedTime() {
+  const timeSlot = document.getElementById('time').value;
+  const selectedDate = document.getElementById('date').value;
+  const estimatedTimeDisplay = document.getElementById('estimatedTime');
+
+  if (!timeSlot || !selectedDate) return;
+  estimatedTimeDisplay.textContent = `${selectedDate} ${timeSlot}`;
+}
+
+

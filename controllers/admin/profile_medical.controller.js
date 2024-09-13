@@ -96,3 +96,11 @@ module.exports.editPatientPatch = async (req, res) => {
     res.redirect(`${systemConfig.prefixAdmin}/profile-medical`);
   }
 };
+
+// [GET] admin/profile-medical/book-appointment/:id
+module.exports.bookAppointment = async (req, res) => {
+
+  res.render("admin/pages/administrative-staff/profile-medical/bookAppointment.pug", {
+    pageTitle: "Đặt lịch khám",
+  });
+};
