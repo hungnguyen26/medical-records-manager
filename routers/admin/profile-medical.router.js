@@ -23,6 +23,8 @@ router.patch("/edit-patient/:id", controller.editPatientPatch);
 
 router.get("/book-appointment/:id", controller.bookAppointment);
 
+router.post("/book-appointment/:id", controller.bookAppointmentPost);
+
 
 
 module.exports = router;

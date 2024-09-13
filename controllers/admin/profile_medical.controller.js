@@ -104,3 +104,10 @@ module.exports.bookAppointment = async (req, res) => {
     pageTitle: "Đặt lịch khám",
   });
 };
+
+// [POST] admin/profile-medical/book-appointment/:id
+module.exports.bookAppointmentPost = async (req, res) => {
+  console.log(req.body);
+  
+  res.send("ok")
+};
