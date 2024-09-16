@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 // end đặt ngày khám
 
-// Hiển thị các khung giờ khi chọn ngày
+// hiển thị các khung giờ khi chọn ngày
 function showTimeSlots() {
   const timeSlotSelect = document.getElementById('time');
   const selectedDate = document.getElementById('date').value;
@@ -129,6 +129,8 @@ function showTimeSlots() {
       timeSlotSelect.appendChild(option);
   });
 }
+// end hiển thị các khung giờ khi chọn ngày
+
 
 // Hiển thị thời gian dự kiến khi chọn khung giờ
 function showEstimatedTime() {
@@ -139,5 +141,7 @@ function showEstimatedTime() {
   if (!timeSlot || !selectedDate) return;
   estimatedTimeDisplay.textContent = `${selectedDate} ${timeSlot}`;
 }
+// end Hiển thị thời gian dự kiến khi chọn khung giờ
+
 
 
