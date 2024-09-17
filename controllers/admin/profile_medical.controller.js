@@ -1,4 +1,5 @@
 const User = require("../../models/users.model");
+const Department = require("../../models/department.model");
 const searchHelper = require("../../helpers/search");
 
 const systemConfig = require("../../config/system");
@@ -99,9 +100,13 @@ module.exports.editPatientPatch = async (req, res) => {
 
 // [GET] admin/profile-medical/book-appointment/:id
 module.exports.bookAppointment = async (req, res) => {
+  const departments = await Department.find({
+    deleted:false
+  });
 
   res.render("admin/pages/administrative-staff/profile-medical/bookAppointment.pug", {
     pageTitle: "Đặt lịch khám",
+    departments:departments
   });
 };
 
