@@ -26,8 +26,8 @@ block main
                         span.required  ✳
                         select(name="department_id" id="department_id" class="form-control")
                             option(disabled selected) Chọn chuyên khoa
-                            //- each item in roles  
-                            //-     option(value=item.id) #{item.title}
+                            each item in departments  
+                                option(value=item.id) #{item.title} - #{item.description}
                     
                     div(class="form-group")
                         label(for="doctorId") Chọn bác sĩ
