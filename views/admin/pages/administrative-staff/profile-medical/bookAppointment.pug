@@ -12,19 +12,26 @@ block main
                     method='POST'
                 ) 
                     div(class="form-group")
-                        label(for="fullName") Bệnh nhân 
+                        label(for="patientId") Bệnh nhân 
                             span.required ✳
                         input(
                             type="text"
                             class="form-control"
-                            id="fullName"
-                            name="fullName"
+                            id="patientId"
+                            value= `${patient.fullName} - ${patient.phone} - ${moment(patient.dateOfBirth).format("DD/MM/YYYY")}`
+                            readonly
+                        ) 
+                        input(
+                            type="hidden"
+                            id="patientId"
+                            name="patientId"
+                            value= patient.id
                         ) 
                     
                     div(class="form-group")
                         label(for="department_id") Chọn chuyên khoa
                         span.required  ✳
-                        select(name="department_id" id="department_id" class="form-control")
+                        select(name="department_id" id="department_id" class="form-control"  onchange="filterDoctors()")
                             option(disabled selected) Chọn chuyên khoa
                             each item in departments  
                                 option(value=item.id) #{item.title} - #{item.description}
@@ -34,8 +41,6 @@ block main
                         span.required  ✳
                         select(name="doctorId" id="doctorId" class="form-control")
                             option(disabled selected) Chọn bác sĩ
-                            //- each item in roles  
-                            //-     option(value=item.id) #{item.title}
                     
                     .display-flex    
                         div(class="form-group")

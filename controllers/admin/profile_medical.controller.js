@@ -3,6 +3,7 @@ const Department = require("../../models/department.model");
 const searchHelper = require("../../helpers/search");
 
 const systemConfig = require("../../config/system");
+const Account = require("../../models/accounts.model");
 
 // [GET] admin/profile-medical
 module.exports.index = async (req, res) => {
@@ -98,15 +99,19 @@ module.exports.editPatientPatch = async (req, res) => {
   }
 };
 
+
+
+
 // [GET] admin/profile-medical/book-appointment/:id
 module.exports.bookAppointment = async (req, res) => {
   const departments = await Department.find({
     deleted:false
   });
-
+  const patient = await User.findOne({_id: req.params.id}).select("fullName phone dateOfBirth")
   res.render("admin/pages/administrative-staff/profile-medical/bookAppointment.pug", {
     pageTitle: "Đặt lịch khám",
-    departments:departments
+    departments:departments,
+    patient:patient
   });
 };
 
@@ -115,4 +120,26 @@ module.exports.bookAppointmentPost = async (req, res) => {
   console.log(req.body);
   
   res.send("ok")
+};
+
+
+// [GET] api filterDoctors
+module.exports.apifilterDoctors = async (req, res) => {
+  const departmentId = req.params.department_id;
+  try {
+    const department = await Department.findOne({
+      _id:departmentId
+    });
+    const doctorsIds = department.doctors.map(doctor => doctor.doctor_id);
+
+    const doctors = await Account.find({
+      _id: { $in  : doctorsIds}
+    })
+    res.json(doctors)
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({message: 'Có lỗi xảy ra'})
+    
+  }
 };

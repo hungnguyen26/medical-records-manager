@@ -144,4 +144,26 @@ function showEstimatedTime() {
 // end Hiển thị thời gian dự kiến khi chọn khung giờ
 
 
+// lấy danh sách bác sĩ theo khoa
+const filterDoctors = () => {
+  const departmentSelect = document.getElementById('department_id');
+  const doctorSelect = document.getElementById('doctorId');
+  const selectedDepartment = departmentSelect.value;
 
+  doctorSelect.innerHTML = '<option disabled selected>Chọn bác sĩ</option>';
+
+  fetch(`/admin/profile-medical/api/doctors-by-department/${selectedDepartment}`)
+      .then(response => response.json())
+      .then(doctors => {
+          doctors.forEach(doctor => {
+              const option = document.createElement('option');
+              option.value = doctor._id;
+              option.textContent = doctor.fullName;
+              doctorSelect.appendChild(option);
+          });
+      })
+      .catch(error => {
+          console.error('Có lỗi xảy ra khi lấy danh sách bác sĩ:', error);
+      });
+}
+// end lấy danh sách bác sĩ theo khoa
