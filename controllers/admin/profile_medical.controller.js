@@ -121,7 +121,6 @@ module.exports.bookAppointmentPost = async (req, res) => {
   res.send("ok")
 };
 
-
 // [GET] api filterDoctors
 module.exports.apifilterDoctors = async (req, res) => {
   const departmentId = req.params.department_id;
