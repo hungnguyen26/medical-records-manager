@@ -136,7 +136,15 @@ module.exports.bookAppointmentPost = async (req, res) => {
   }
 };
 
-
+// [GET] admin/profile-medical/appointment/:id
+module.exports.detailAppointment = async (req, res) => {
+  res.send("ok")
+  // res.render("admin/pages/administrative-staff/profile-medical/bookAppointment.pug", {
+  //   pageTitle: "Đặt lịch khám",
+  //   departments:departments,
+  //   patient:patient
+  // });
+};
 
 
 
