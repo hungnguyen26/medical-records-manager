@@ -4,6 +4,7 @@ const searchHelper = require("../../helpers/search");
 
 const systemConfig = require("../../config/system");
 const Account = require("../../models/accounts.model");
+const Appointment = require("../../models/appoinments.model");
 
 // [GET] admin/profile-medical
 module.exports.index = async (req, res) => {
@@ -117,9 +118,27 @@ module.exports.bookAppointment = async (req, res) => {
 
 // [POST] admin/profile-medical/book-appointment/:id
 module.exports.bookAppointmentPost = async (req, res) => {
-  console.log(req.body);
-  res.send("ok")
+  
+  try {
+    const data = {
+      ...req.body,
+      status: "booked"
+    }
+    const bookAppointment =  new Appointment(data);
+    await bookAppointment.save();
+    // console.log(bookAppointment);
+    req.flash("thanhcong", " Đặt lịch khám.");
+    res.redirect(`${systemConfig.prefixAdmin}/profile-medical`);
+  } catch (error) {
+    console.log(error);
+    req.flash("thatbai", " Có lỗi khi đặt lịch khám.");
+    res.redirect(`${systemConfig.prefixAdmin}/profile-medical`);
+  }
 };
+
+
+
+
 
 // [GET] api filterDoctors
 module.exports.apifilterDoctors = async (req, res) => {
