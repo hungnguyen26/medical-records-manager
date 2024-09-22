@@ -17,7 +17,7 @@ block main
                             th(class="ant-descriptions-item-label" style="font-weight: bold" ) Bệnh nhân    
                             td(class="ant-descriptions-item-content" style="font-weight: bold;")  #{patient.fullName}
                             th(class="ant-descriptions-item-label") Ngày sinh
-                            td(class="ant-descriptions-item-content") #{moment(patient.dateOfBirth).format("DD/MM/YYYY")}
+                            td(class="ant-descriptions-item-content") #{moment(patient.dateOfBirth).format("DD/MM/YYYY hh:mm:ss ")}
                         tr
                             th(class="ant-descriptions-item-label") Điện thoại
                             td(class="ant-descriptions-item-content") #{patient.phone}

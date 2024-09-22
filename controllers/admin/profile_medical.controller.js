@@ -138,12 +138,25 @@ module.exports.bookAppointmentPost = async (req, res) => {
 
 // [GET] admin/profile-medical/appointment/:id
 module.exports.detailAppointment = async (req, res) => {
-  res.send("ok")
-  // res.render("admin/pages/administrative-staff/profile-medical/bookAppointment.pug", {
-  //   pageTitle: "Đặt lịch khám",
-  //   departments:departments,
-  //   patient:patient
-  // });
+  const user = await User.findOne({
+    _id: req.params.id,
+    deleted:false
+  }).select("fullName phone");
+
+  const appoinments = await Appointment.find({
+    patientId: req.params.id
+  })
+
+  console.log(appoinments);
+  const doctor = await Account.findOne({
+    _id: req.params.id
+  });
+
+  res.render("admin/pages/administrative-staff/profile-medical/detailAppointment.pug", {
+    pageTitle: "Lịch hẹn",
+    user:user,
+    appoinments:appoinments,
+  });
 };
 
 

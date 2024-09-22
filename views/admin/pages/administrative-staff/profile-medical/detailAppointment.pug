@@ -1,0 +1,46 @@
+extends ../../../layouts/default.pug
+include ../../../mixins/alert.pug
+
+block main
+    .block-main
+        if(Role.quyen === "staff")
+            +alert-success("5000")
+            .display-flex
+                .btn-actions
+                    a(
+                        href= `${prefixadmin}/profile-medical`  
+                        class="item-action" 
+                    ) <i class="fa-solid fa-arrow-left"></i>
+                h4(class="mb-4" style="padding-top: 10px;") Lịch hẹn khám bệnh : #{user.fullName} - #{user.phone}
+
+            .card.mb-3
+                table(class="table ")
+                    thead(class="card-header")
+                        tr(class="table-active")
+                            th Ngày đặt
+                            th Ngày khám
+                            th Giờ dự kiến
+                            th Chuyên khoa
+                            th Bác sĩ
+                            th Trạng thái
+                            th Hành động
+                    tbody
+                        each item, index in appoinments 
+                            tr 
+                                td #{moment(item.createdAt).format("DD/MM/YYYY HH:mm:ss" )}
+                                td #{moment(item.date).format("DD/MM/YYYY" )}
+                                td #{item.time}
+                        //-             td #{moment(item.dateOfBirth).format("DD/MM/YYYY")}
+                        //-             td #{item.phone}
+                        //-             td #{item.address} 
+                        //-             td 
+                        //-                 .btn-actions
+                        //-                     a(
+                        //-                         href= `${prefixadmin}/profile-medical/appointment/${item.id}            `  
+                        //-                         class="item-action" 
+                        //-                     ) <i class="fa-regular fa-eye"></i>
+                        //-                     a(
+                        //-                         href= `${prefixadmin}/profile-medical/book-appointment/${item.id}`  
+                        //-                         class="item-action" 
+                        //-                     ) <i class="fa-solid fa-plus"></i>
+                                    
