@@ -19,27 +19,28 @@ module.exports.index = async (req, res) => {
 
   const users = await User.find(find);
   // console.log(users);
-  
+
   res.render("admin/pages/administrative-staff/profile-medical/index.pug", {
     pageTitle: "Hồ sơ bệnh án",
     users: users,
-    keyword: objectSearch.keyword
+    keyword: objectSearch.keyword,
   });
 };
 
-
 // [GET] admin/profile-medical/create-patient
 module.exports.createPatient = async (req, res) => {
-  
-  res.render("admin/pages/administrative-staff/profile-medical/createPatient.pug", {
-    pageTitle: "Tạo hồ sơ bệnh nhân"
-  });
+  res.render(
+    "admin/pages/administrative-staff/profile-medical/createPatient.pug",
+    {
+      pageTitle: "Tạo hồ sơ bệnh nhân",
+    }
+  );
 };
 
 // [POST] admin/profile-medical/create-patient
 module.exports.createPatientPost = async (req, res) => {
   try {
-    if(req.body.dateOfBirth){
+    if (req.body.dateOfBirth) {
       req.body.dateOfBirth = new Date(req.body.dateOfBirth);
     }
     const newPatient = new User(req.body);
@@ -47,50 +48,53 @@ module.exports.createPatientPost = async (req, res) => {
 
     req.flash("thanhcong", " Thêm bệnh nhân mới.");
     res.redirect(`${systemConfig.prefixAdmin}/profile-medical`);
-
   } catch (error) {
-
     console.log(error);
     req.flash("thatbai", "Có lỗi xảy ra khi thêm bệnh nhân.");
     res.redirect(`${systemConfig.prefixAdmin}/profile-medical`);
   }
-  
 };
 
 // [GET] admin/profile-medical/:id
 module.exports.detailPatient = async (req, res) => {
   const patient_id = req.params.id;
   const patient = await User.findOne({
-    _id: patient_id
+    _id: patient_id,
   });
   // console.log(patient);
 
-  res.render("admin/pages/administrative-staff/profile-medical/detailPatient.pug", {
-    pageTitle: "Thông tin bệnh nhân",
-    patient:patient
-  });
+  res.render(
+    "admin/pages/administrative-staff/profile-medical/detailPatient.pug",
+    {
+      pageTitle: "Thông tin bệnh nhân",
+      patient: patient,
+    }
+  );
 };
 
 // [GET] admin/profile-medical/edit-patient/:id
 module.exports.editPatient = async (req, res) => {
   const patient_id = req.params.id;
   const patient = await User.findOne({
-    _id: patient_id
+    _id: patient_id,
   });
-  res.render("admin/pages/administrative-staff/profile-medical/editPatient.pug", {
-    pageTitle: "Cập nhật bệnh nhân",
-    patient:patient
-  });
+  res.render(
+    "admin/pages/administrative-staff/profile-medical/editPatient.pug",
+    {
+      pageTitle: "Cập nhật bệnh nhân",
+      patient: patient,
+    }
+  );
 };
 
 // [PATCH] admin/profile-medical/edit-patient/:id
 module.exports.editPatientPatch = async (req, res) => {
   const patient_id = req.params.id;
   try {
-    if(req.body.dateOfBirth){
+    if (req.body.dateOfBirth) {
       req.body.dateOfBirth = new Date(req.body.dateOfBirth);
     }
-    await User.findByIdAndUpdate(patient_id,req.body);
+    await User.findByIdAndUpdate(patient_id, req.body);
     req.flash("thanhcong", " Cập nhật bệnh nhân thành công.");
     res.redirect(`${systemConfig.prefixAdmin}/profile-medical`);
   } catch (error) {
@@ -100,31 +104,32 @@ module.exports.editPatientPatch = async (req, res) => {
   }
 };
 
-
-
-
 // [GET] admin/profile-medical/book-appointment/:id
 module.exports.bookAppointment = async (req, res) => {
   const departments = await Department.find({
-    deleted:false
+    deleted: false,
   });
-  const patient = await User.findOne({_id: req.params.id}).select("fullName phone dateOfBirth")
-  res.render("admin/pages/administrative-staff/profile-medical/bookAppointment.pug", {
-    pageTitle: "Đặt lịch khám",
-    departments:departments,
-    patient:patient
-  });
+  const patient = await User.findOne({ _id: req.params.id }).select(
+    "fullName phone dateOfBirth"
+  );
+  res.render(
+    "admin/pages/administrative-staff/profile-medical/bookAppointment.pug",
+    {
+      pageTitle: "Đặt lịch khám",
+      departments: departments,
+      patient: patient,
+    }
+  );
 };
 
 // [POST] admin/profile-medical/book-appointment/:id
 module.exports.bookAppointmentPost = async (req, res) => {
-  
   try {
     const data = {
       ...req.body,
-      status: "booked"
-    }
-    const bookAppointment =  new Appointment(data);
+      status: "booked",
+    };
+    const bookAppointment = new Appointment(data);
     await bookAppointment.save();
     // console.log(bookAppointment);
     req.flash("thanhcong", " Đặt lịch khám.");
@@ -140,44 +145,54 @@ module.exports.bookAppointmentPost = async (req, res) => {
 module.exports.detailAppointment = async (req, res) => {
   const user = await User.findOne({
     _id: req.params.id,
-    deleted:false
+    deleted: false,
   }).select("fullName phone");
 
-  const appoinments = await Appointment.find({
-    patientId: req.params.id
-  })
-
-  console.log(appoinments);
-  const doctor = await Account.findOne({
-    _id: req.params.id
+  const appointments = await Appointment.find({
+    patientId: req.params.id,
   });
 
-  res.render("admin/pages/administrative-staff/profile-medical/detailAppointment.pug", {
-    pageTitle: "Lịch hẹn",
-    user:user,
-    appoinments:appoinments,
-  });
+  const updatedAppointments = await Promise.all(
+    appointments.map(async (appointment) => {
+      const doctor = await Account.findOne({
+        _id: appointment.doctorId,
+      }).select("fullName department_id");
+  
+      appointment = appointment.toObject();
+      appointment.doctor = doctor;
+      
+      return appointment;
+    })
+  );
+
+  console.log(updatedAppointments);
+
+
+  res.render(
+    "admin/pages/administrative-staff/profile-medical/detailAppointment.pug",
+    {
+      pageTitle: "Lịch hẹn",
+      user: user,
+      appointments: updatedAppointments,
+    }
+  );
 };
-
-
 
 // [GET] api filterDoctors
 module.exports.apifilterDoctors = async (req, res) => {
   const departmentId = req.params.department_id;
   try {
     const department = await Department.findOne({
-      _id:departmentId
+      _id: departmentId,
     });
-    const doctorsIds = department.doctors.map(doctor => doctor.doctor_id);
+    const doctorsIds = department.doctors.map((doctor) => doctor.doctor_id);
 
     const doctors = await Account.find({
-      _id: { $in  : doctorsIds}
-    })
-    res.json(doctors)
-
+      _id: { $in: doctorsIds },
+    });
+    res.json(doctors);
   } catch (error) {
     console.log(error);
-    res.status(500).json({message: 'Có lỗi xảy ra'})
-    
+    res.status(500).json({ message: "Có lỗi xảy ra" });
   }
 };

@@ -25,11 +25,14 @@ block main
                             th Trạng thái
                             th Hành động
                     tbody
-                        each item, index in appoinments 
+                        each item, index in appointments 
                             tr 
                                 td #{moment(item.createdAt).format("DD/MM/YYYY HH:mm:ss" )}
                                 td #{moment(item.date).format("DD/MM/YYYY" )}
                                 td #{item.time}
+                                td #{item.doctor.fullName}
+                                td #{item.doctor.fullName}
+
                         //-             td #{moment(item.dateOfBirth).format("DD/MM/YYYY")}
                         //-             td #{item.phone}
                         //-             td #{item.address} 
