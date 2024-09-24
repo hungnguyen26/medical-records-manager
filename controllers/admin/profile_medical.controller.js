@@ -158,8 +158,17 @@ module.exports.detailAppointment = async (req, res) => {
         _id: appointment.doctorId,
       }).select("fullName department_id");
   
+      const department = await Department.findOne({
+        _id: doctor.department_id
+      })
+      console.log(department.title);
+      
+      
+      // doctor.department = department
+
       appointment = appointment.toObject();
       appointment.doctor = doctor;
+      appointment.department = department.title;
       
       return appointment;
     })
