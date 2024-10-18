@@ -129,6 +129,8 @@ module.exports.bookAppointmentPost = async (req, res) => {
       ...req.body,
       status: "booked",
     };
+    // console.log(data);
+    
     const bookAppointment = new Appointment(data);
     await bookAppointment.save();
     // console.log(bookAppointment);
@@ -143,49 +145,45 @@ module.exports.bookAppointmentPost = async (req, res) => {
 
 // [GET] admin/profile-medical/appointment/:id
 module.exports.detailAppointment = async (req, res) => {
-  const user = await User.findOne({
+  const userInfo = await User.findOne({
     _id: req.params.id,
-    deleted: false,
+    deleted:false
   }).select("fullName phone");
-
-  const appointments = await Appointment.find({
-    patientId: req.params.id,
-  });
-
-  const updatedAppointments = await Promise.all(
-    appointments.map(async (appointment) => {
-      const doctor = await Account.findOne({
-        _id: appointment.doctorId,
-      }).select("fullName department_id");
   
-      const department = await Department.findOne({
-        _id: doctor.department_id
-      })
-      console.log(department.title);
-      
-      
-      // doctor.department = department
+  const appoinments = await Appointment.find({
+    patientId: req.params.id
+  })
 
-      appointment = appointment.toObject();
-      appointment.doctor = doctor;
-      appointment.department = department.title;
-      
-      return appointment;
-    })
-  );
+  const updateAppointments = [];
 
-  console.log(updatedAppointments);
+  for (let appoinment of appoinments) {
 
+    const doctor = await Account.findOne({
+      _id: appoinment.doctorId,
+    }).select("fullName");
+
+    if(doctor){
+      appoinment = appoinment.toObject();
+      appoinment.doctorName = doctor.fullName;
+    }
+
+    updateAppointments.push(appoinment);
+  }
+
+  console.log("Updated Appointments: ", updateAppointments);
+  
 
   res.render(
     "admin/pages/administrative-staff/profile-medical/detailAppointment.pug",
     {
       pageTitle: "Lịch hẹn",
-      user: user,
-      appointments: updatedAppointments,
+      userInfo,
+      updateAppointments
     }
   );
 };
+
+
 
 // [GET] api filterDoctors
 module.exports.apifilterDoctors = async (req, res) => {

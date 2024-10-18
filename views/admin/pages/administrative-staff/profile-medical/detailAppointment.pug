@@ -1,20 +1,17 @@
 extends ../../../layouts/default.pug
-include ../../../mixins/alert.pug
 
 block main
     .block-main
-        if(Role.quyen === "staff")
-            +alert-success("5000")
+        if(Role.quyen == "staff")
             .display-flex
                 .btn-actions
                     a(
                         href= `${prefixadmin}/profile-medical`  
                         class="item-action" 
                     ) <i class="fa-solid fa-arrow-left"></i>
-                h4(class="mb-4" style="padding-top: 10px;") Lịch hẹn khám bệnh : #{user.fullName} - #{user.phone}
-
+                h3(class="mb-4" style="padding-top: 8px; font-weight: 400") Lịch hẹn khám bệnh: #{userInfo.fullName} - #{userInfo.phone}
             .card.mb-3
-                table(class="table ")
+                table.table
                     thead(class="card-header")
                         tr(class="table-active")
                             th Ngày đặt
@@ -25,25 +22,22 @@ block main
                             th Trạng thái
                             th Hành động
                     tbody
-                        each item, index in appointments 
+                        each appoinment in updateAppointments
                             tr 
-                                td #{moment(item.createdAt).format("DD/MM/YYYY HH:mm:ss" )}
-                                td #{moment(item.date).format("DD/MM/YYYY" )}
-                                td #{item.time}
-                                td #{item.department}
-                                td #{item.doctor.fullName}
-
-                        //-             td #{moment(item.dateOfBirth).format("DD/MM/YYYY")}
-                        //-             td #{item.phone}
-                        //-             td #{item.address} 
-                        //-             td 
-                        //-                 .btn-actions
-                        //-                     a(
-                        //-                         href= `${prefixadmin}/profile-medical/appointment/${item.id}            `  
-                        //-                         class="item-action" 
-                        //-                     ) <i class="fa-regular fa-eye"></i>
-                        //-                     a(
-                        //-                         href= `${prefixadmin}/profile-medical/book-appointment/${item.id}`  
-                        //-                         class="item-action" 
-                        //-                     ) <i class="fa-solid fa-plus"></i>
-                                    
+                                td #{moment(appoinment.createdAt).format("hh:mm:ss a DD/MM/YYYY  ")} 
+                                td #{moment(appoinment.date).format("DD/MM/YYYY")} 
+                                td #{appoinment.time}
+                                td ..
+                                td #{appoinment.doctorName}
+                                td #{appoinment.status}
+                                td 
+                                    .btn-actions
+                                        a(
+                                            href= `${prefixadmin}`  
+                                            class="item-action" 
+                                        ) <i class="fa-regular fa-pen-to-square"></i>
+                                        a(
+                                            href= `${prefixadmin}`  
+                                            class="item-action" 
+                                        ) <i class="fa-regular fa-eye"></i>
+                            
