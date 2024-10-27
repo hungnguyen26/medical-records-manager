@@ -27,6 +27,8 @@ router.post("/book-appointment/:id", controller.bookAppointmentPost);
 
 router.get("/appointment/:id", controller.detailAppointment);
 
+router.get("/appointment/:id/edit", controller.editAppointment);
+
 
 //api
 router.get("/api/doctors-by-department/:department_id", controller.apifilterDoctors)

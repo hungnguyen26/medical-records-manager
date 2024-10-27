@@ -1,6 +1,5 @@
-
-.form-group{
-  padding: 14px 0
+.form-group {
+  padding: 14px 0;
 }
 /* header */
 .body {
@@ -38,12 +37,7 @@
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
 }
 
-
 /* end header */
-
-
-
-
 
 /* body */
 .body .sider {
@@ -143,7 +137,7 @@ th {
   text-align: center;
   font-weight: 500;
 }
-.role-staff{
+.role-staff {
   border: 1px solid rgb(255 0 182 / 44%);
   border-radius: 6px;
   background-color: #fbd7ff;
@@ -152,7 +146,8 @@ th {
   text-align: center;
   font-weight: 500;
 }
-.role-banhang, .usage-medicines {
+.role-banhang,
+.usage-medicines {
   border: 1px solid rgb(12, 170, 222);
   background-color: #cee8fd;
 
@@ -164,56 +159,55 @@ th {
 }
 .card.mb-3 .table th,
 .card.mb-3 .table td {
-    text-align: center;
-    vertical-align: middle;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .card.mb-3 .table .btn-actions {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 .role-quanly,
 .role-banhang,
 .role-bacsi,
 .role-staff,
-.usage-medicines {
+.usage-medicines,
+.booked {
   margin: 0 auto;
   text-align: center;
   width: 120px;
 }
 
-
-
 a {
   text-decoration: none;
 }
 
-
-
-.form-create, 
-.form-detail, 
+.form-create,
+.form-detail,
 .form-edit {
   width: 524px;
-  margin: 36px auto; 
-  padding: 20px; 
-  border-radius: 10px; 
-  border: 1px solid #ccc; 
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  margin: 36px auto;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: #fff;
 }
-.form-create, .form-detail, .form-edit .form-group {
-  margin-bottom: 8px; 
+.form-create,
+.form-detail,
+.form-edit .form-group {
+  margin-bottom: 8px;
   font-weight: 400;
 }
 
-.form-create .btn { 
+.form-create .btn {
   margin-top: 10px;
-  width: 154px; 
-  border-radius: 5px; 
+  width: 154px;
+  border-radius: 5px;
 }
 
 .required {
-  color: red; 
+  color: red;
   font-weight: 500;
 }
 
@@ -263,7 +257,7 @@ a {
 /* end thông báo */
 
 /* img preview */
-.img-preview{
+.img-preview {
   width: 100%;
   height: auto;
   margin-top: 15px;
@@ -271,25 +265,25 @@ a {
   padding: 15px;
   border-radius: 5px;
 }
-.img-preview[src=""]{
+.img-preview[src=""] {
   display: none;
 }
-.form-control-file{
+.form-control-file {
   display: block;
   background: #62fdd4ac;
 }
 /* end img preview */
-.form-create, .form-edit .btn-primary {
+.form-create,
+.form-edit .btn-primary {
   padding: 10px 16px;
   border-radius: 25px;
-  border: none; 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-   
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* thời gian thực */
-.clock{
-  border: 2px solid #f8f8f8;;
+.clock {
+  border: 2px solid #f8f8f8;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 0px;
   border-radius: 8px;
@@ -298,45 +292,44 @@ a {
   align-items: center;
   background-color: #ffffff;
 }
-.clock-icon{
+.clock-icon {
   font-size: 24px;
   margin-left: 10px;
   margin-right: 10px;
 }
 /* thời gian thực */
 
-.form-create,.form-detail, .form-edit .form-group label {
+.form-create,
+.form-detail,
+.form-edit .form-group label {
   font-weight: 400;
 }
 .form-group input.form-control[readonly] {
-  background-color: #dcdcdc; 
+  background-color: #dcdcdc;
   cursor: not-allowed;
 }
 
-.fa-trash-can{
+.fa-trash-can {
   color: red;
 }
 
-
-
 .item-action {
-  color: black; 
+  color: black;
   margin-right: 30px;
-  text-decoration: none; 
-  display: inline-flex; 
+  text-decoration: none;
+  display: inline-flex;
   align-items: center;
 }
 
 .item-action:last-child {
-  margin-right: 0; 
+  margin-right: 0;
   background-color: white;
   border: white;
-} 
-
-.item-action i {
-  font-size: 1rem; 
 }
 
+.item-action i {
+  font-size: 1rem;
+}
 
 .btn-actions a.item-action {
   margin: 10px;
@@ -346,7 +339,6 @@ a {
   padding: 0px 7px;
   text-decoration: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
 }
 
 .btn-actions button.item-action {
@@ -361,16 +353,15 @@ a {
 .btn-actions a.item-action:hover,
 .btn-actions button.item-action:hover {
   background-color: #f0f0f0;
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); 
-}  
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
 
 .display-flex {
   display: flex;
   gap: 16px;
 }
 
-
-table .ant-descriptions-item-label{
+table .ant-descriptions-item-label {
   color: rgba(0, 0, 0, 0.65);
   background-color: rgba(11, 11, 11, 0.02);
   width: 25%;
@@ -378,16 +369,29 @@ table .ant-descriptions-item-label{
   font-weight: inherit;
   font-style: inherit;
 }
-table .ant-descriptions-item-content{
+table .ant-descriptions-item-content {
   width: 25%;
-  border-right: 1px solid #d9d9d9; 
-} 
+  border-right: 1px solid #d9d9d9;
+}
 table tr th:last-child,
 table tr td:last-child {
   border-right: none;
 }
 .card.mb-3 .table th.ant-descriptions-item-label,
-.card.mb-3 .table td.ant-descriptions-item-content{
+.card.mb-3 .table td.ant-descriptions-item-content {
   padding: 20px 0 20px 28px;
   text-align: left;
 }
+.booked {
+  color: #0958d9;
+  background: #e6f4ff;
+  border-color: #91caff;
+  
+  border-radius: 6px;
+  width: 78px;
+  height: 24px;
+  text-align: center;
+  /* font-weight: 500; */
+  line-height: 24px;
+}
+

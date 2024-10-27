@@ -27,17 +27,35 @@ block main
                                 td #{moment(appoinment.createdAt).format("hh:mm:ss a DD/MM/YYYY  ")} 
                                 td #{moment(appoinment.date).format("DD/MM/YYYY")} 
                                 td #{appoinment.time}
-                                td ..
+                                td #{appoinment.departmentName}
                                 td #{appoinment.doctorName}
-                                td #{appoinment.status}
                                 td 
-                                    .btn-actions
-                                        a(
-                                            href= `${prefixadmin}`  
-                                            class="item-action" 
-                                        ) <i class="fa-regular fa-pen-to-square"></i>
-                                        a(
-                                            href= `${prefixadmin}`  
-                                            class="item-action" 
-                                        ) <i class="fa-regular fa-eye"></i>
+                                    if(appoinment.status == "booked")
+                                        div(class="booked") Đã đặt
+                                td 
+                                    - var currentTime = moment()
+                                    - var appointmentDate = moment(appoinment.date, "DD/MM/YYYY") 
+                                    - var appointmentTime = moment(appoinment.time, "HH:mm")       
+                                    - var appointmentDateTime = appointmentDate.clone().hour(appointmentTime.hour()).minute(appointmentTime.minute())
+                                    - var diffMinutes = appointmentDateTime.diff(currentTime, 'minutes')
+                                    if diffMinutes > 120
+                                        .btn-actions
+                                            a(
+                                                href= `${prefixadmin}/profile-medical/appointment/${appoinment._id}/edit`  
+                                                class="item-action" 
+                                            ) <i class="fa-regular fa-pen-to-square"></i>
+                                            form(
+                                                action=`${prefixadmin}/medicines/delete?_method=DELETE`
+                                                class="hidden-form" 
+                                                method='POST'
+                                            ) 
+                                                button(
+                                                    type="submit"
+                                                    class="item-action" 
+                                                    onclick="return confirm('Bạn có chắc chắn muốn hủy lịch hẹn không?')"
+                                                ) <i class="fa-regular fa-trash-can"></i> 
+                                    else
+                                        .alert
+                                            i.fa-solid.fa-circle-exclamation(title="Bạn không thể chỉnh sửa hoặc hủy lịch hẹn trong vòng 2 giờ trước giờ khám")
+
                             

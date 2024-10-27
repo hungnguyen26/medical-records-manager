@@ -151,8 +151,9 @@ module.exports.detailAppointment = async (req, res) => {
   }).select("fullName phone");
   
   const appoinments = await Appointment.find({
-    patientId: req.params.id
-  })
+    patientId: req.params.id,
+    status: "booked"
+  }).sort({ createdAt: -1 }); 
 
   const updateAppointments = [];
 
@@ -165,12 +166,18 @@ module.exports.detailAppointment = async (req, res) => {
     if(doctor){
       appoinment = appoinment.toObject();
       appoinment.doctorName = doctor.fullName;
+      
+      const department = await Department.findOne({
+        _id: appoinment.department_id
+      })
+      appoinment.departmentName = department.title
+
     }
 
     updateAppointments.push(appoinment);
   }
 
-  console.log("Updated Appointments: ", updateAppointments);
+  // console.log("Updated Appointments: ", updateAppointments);
   
 
   res.render(
@@ -183,6 +190,10 @@ module.exports.detailAppointment = async (req, res) => {
   );
 };
 
+// [GET] admin/profile-medical/appointment/:id/edit
+module.exports.editAppointment = async (req, res) => {
+  res.send("ok")
+};
 
 
 // [GET] api filterDoctors
