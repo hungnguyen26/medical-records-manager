@@ -29,6 +29,10 @@ router.get("/appointment/:id", controller.detailAppointment);
 
 router.get("/appointment/:id/edit", controller.editAppointment);
 
+router.patch("/appointment/:id/edit", controller.editAppointmentPatch);
+
+
+
 
 //api
 router.get("/api/doctors-by-department/:department_id", controller.apifilterDoctors)

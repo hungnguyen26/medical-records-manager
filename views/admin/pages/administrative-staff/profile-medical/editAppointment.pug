@@ -1,0 +1,89 @@
+extends ../../../layouts/default.pug
+include ../../../mixins/alert.pug
+
+block main
+    .block-main
+        +alert-error("5000")
+        if(Role.quyen == "staff")
+            h3(class="mb-4") Cập nhật lịch khám: #{appointment.time} - #{moment(appointment.date).format("DD/MM/YYYY")}
+            .form-create     
+                form(
+                    action=`${prefixadmin}/profile-medical/appointment/${appointment.id}/edit?_method=PATCH`
+                    method='POST'
+                ) 
+                    div(class="form-group")
+                        label(for="patientId") Bệnh nhân 
+                            span.required ✳
+                        input(
+                            type="text"
+                            class="form-control"
+                            id="patientId"
+                            value= `${patient.fullName} - ${patient.phone} - ${moment(patient.dateOfBirth).format("DD/MM/YYYY")}`
+                            readonly
+                        ) 
+                        input(
+                            type="hidden"
+                            id="patientId"
+                            name="patientId"
+                            value= patient.id
+                        ) 
+                    
+                    div(class="form-group")
+                        label(for="department_id") Chọn chuyên khoa
+                        span.required  ✳
+                        select(name="department_id" id="department_id" class="form-control"  onchange="filterDoctors()")
+                            option(disabled selected) Chọn chuyên khoa
+                            each item in departments  
+                                option(
+                                    value=item.id
+                                    selected=(item.id == appointment.department_id ? true : false) 
+                                    ) #{item.title} - #{item.description}
+                    
+                    div(class="form-group")
+                        label(for="doctorId") Chọn bác sĩ
+                        span.required  ✳
+                        select(name="doctorId" id="doctorId" class="form-control")
+                            option(
+                                    value=doctor._id
+                                    selected=(doctor._id == appointment.doctorId ? true : false)
+                                ) #{doctor.fullName}
+                    
+                    .display-flex    
+                        div(class="form-group")
+                            label(for="date") Ngày khám
+                                span.required ✳
+                            input(
+                                style="width: auto"
+                                type="date"
+                                class="form-control"
+                                id="date"
+                                name="date"
+                                value= moment(appointment.date).format("YYYY-MM-DD")
+                                onchange="showTimeSlots()"  
+                            )
+                        div(class="form-group")
+                            label(for="time") Khung giờ
+                                span.required ✳
+                            select(
+                                id="time"
+                                name="time"
+                                class="form-control"
+                                onchange="showEstimatedTime()"  
+                            )
+                                option(disabled selected) #{appointment.time}
+                        
+                    div(class="form-group")
+                        label(for="estimatedTime") Thời gian dự kiến
+                        h5(id="estimatedTime") 
+                    
+                    div(class="form-group")
+                        button(
+                            type="submit"
+                            class="btn btn-info"
+                        ) Cập nhật
+                        button(
+                            type="button" 
+                            onclick="history.back();" 
+                            class="btn btn-secondary"
+                            style="margin-left: 10px; padding: 5px 10px; width: 82px;"
+                        ) Hủy

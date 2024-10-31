@@ -45,7 +45,7 @@ block main
                                                 class="item-action" 
                                             ) <i class="fa-regular fa-pen-to-square"></i>
                                             form(
-                                                action=`${prefixadmin}/medicines/delete?_method=DELETE`
+                                                action=`${prefixadmin}/profile-medical/appointment/${appoinment._id}?_method=DELETE`
                                                 class="hidden-form" 
                                                 method='POST'
                                             ) 
@@ -56,6 +56,6 @@ block main
                                                 ) <i class="fa-regular fa-trash-can"></i> 
                                     else
                                         .alert
-                                            i.fa-solid.fa-circle-exclamation(title="Bạn không thể chỉnh sửa hoặc hủy lịch hẹn trong vòng 2 giờ trước giờ khám")
+                                            i.fa-solid.fa-circle-exclamation(title="Chỉ có thể hủy/thay đổi trước 2 giờ")
 
                             

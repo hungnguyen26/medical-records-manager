@@ -192,7 +192,61 @@ module.exports.detailAppointment = async (req, res) => {
 
 // [GET] admin/profile-medical/appointment/:id/edit
 module.exports.editAppointment = async (req, res) => {
-  res.send("ok")
+  try {
+    const idAppointment = req.params.id;
+
+    const appointment = await Appointment.findOne({
+      _id: idAppointment,
+      isExamined: false
+    });
+
+    if (!appointment) {
+      return res.status(404).render("admin/pages/error", {
+        message: "Lịch khám không tồn tại hoặc đã được khám."
+      });
+    }
+
+    const patient = await User.findOne({
+      _id: appointment.patientId,
+      deleted: false
+    }).select("fullName phone dateOfBirth");
+
+    const departments = await Department.find({
+      deleted: false
+    });
+
+    const doctor = await Account.findOne({ _id: appointment.doctorId }).select("fullName");
+
+    res.render("admin/pages/administrative-staff/profile-medical/editAppointment.pug", {
+      pageTitle: "Cập nhật lịch khám",
+      departments,
+      appointment,
+      patient,
+      doctor
+    });
+  } catch (error) {
+    console.error("Lỗi khi truy vấn dữ liệu:", error);
+  }
+};
+
+// [PATCH] admin/profile-medical/appointment/:id/edit
+module.exports.editAppointmentPatch = async (req, res) => {
+  const idAppointment = req.params.id;
+  try {
+    if (req.body.date) {
+      req.body.date = new Date(req.body.date);
+    }
+    // console.log(req.body);
+    // res.send("ok")
+    await Appointment.findByIdAndUpdate(idAppointment, req.body);
+
+    req.flash("thanhcong", " Cập nhật lịch khám thành công.");
+    res.redirect(`${systemConfig.prefixAdmin}/profile-medical`);
+  } catch (error) {
+    console.log(error);
+    req.flash("thatbai", " Có lỗi xảy ra khi cập nhật lịch khám.");
+    res.redirect(`${systemConfig.prefixAdmin}/profile-medical`);
+  }
 };
 
 
