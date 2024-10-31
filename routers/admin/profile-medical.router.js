@@ -31,6 +31,7 @@ router.get("/appointment/:id/edit", controller.editAppointment);
 
 router.patch("/appointment/:id/edit", controller.editAppointmentPatch);
 
+router.delete("/appointment/:id", controller.detailAppointmentDelete);
 
 
 

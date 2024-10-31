@@ -250,6 +250,12 @@ module.exports.editAppointmentPatch = async (req, res) => {
 };
 
 
+// [DELETE] admin/profile-medical/appointment/:id
+module.exports.detailAppointmentDelete = async (req, res) => {
+  res.send("ok")
+};
+
+
 // [GET] api filterDoctors
 module.exports.apifilterDoctors = async (req, res) => {
   const departmentId = req.params.department_id;
