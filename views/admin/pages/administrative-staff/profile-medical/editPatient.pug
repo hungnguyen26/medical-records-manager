@@ -45,7 +45,7 @@ block main
                                 value=moment(patient.dateOfBirth).format("YYYY-MM-DD")
                             ) 
                         div(class="form-group")
-                            label(for="sex") Giới tính
+                            label(for="sex" style="display: flex") Giới tính
                                 span.required  ✳
                             select(name="sex" id="sex" class="form-control")
                                     option(value="male" selected=(patient.sex === "male"? true : false)) Nam 

@@ -19,6 +19,12 @@
                         href=`${prefixadmin}/profile-medical` 
                         class="menu-item btn btn-light"
                     ) <i class="fa-regular fa-id-badge"></i> Hồ sơ bệnh án
+            if(Role.quyen === "staff")
+                li 
+                    a(
+                        href=`${prefixadmin}/appointments-patient` 
+                        class="menu-item btn btn-light"
+                    ) <i class="fa-solid fa-list"></i> Khám bệnh
             li 
                 a(
                     href=`${prefixadmin}/chats` 

@@ -265,6 +265,7 @@ module.exports.detailAppointmentDelete = async (req, res) => {
 };
 
 
+
 // [GET] api filterDoctors
 module.exports.apifilterDoctors = async (req, res) => {
   const departmentId = req.params.department_id;
