@@ -252,7 +252,16 @@ module.exports.editAppointmentPatch = async (req, res) => {
 
 // [DELETE] admin/profile-medical/appointment/:id
 module.exports.detailAppointmentDelete = async (req, res) => {
-  res.send("ok")
+  const id = req.params.id;
+  try {
+    await Appointment.findByIdAndUpdate(id, { status : "cancelled"});
+
+    req.flash("thanhcong", " Hủy lịch khám thành công.");
+    res.redirect(`${systemConfig.prefixAdmin}/profile-medical`);
+  } catch (error) {
+    req.flash("thatbai", " Hủy lịch khám thất bại.");
+    res.redirect(`${systemConfig.prefixAdmin}/profile-medical`);
+  }
 };
 
 
