@@ -5,5 +5,8 @@ const controller = require("../../controllers/admin/appointments-patient.control
 
 router.get("/", controller.index);
 
+// api lấy các cuộc hẹn theo ngày
+router.get("/dates", controller.getAppointmentsByDate);
+
 
 module.exports = router;

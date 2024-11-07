@@ -1,0 +1,73 @@
+extends ../../../layouts/default.pug
+include ../../../mixins/alert.pug
+
+block main
+    .block-main
+        if (Role.quyen === "staff")
+            +alert-success("5000")
+
+            .display-flex
+                h3.mb-4 Danh sách thứ tự khám
+
+                .filter-controls.display-flex.align-items-center.mb-4
+                    button#today-btn.btn.btn-primary Hôm nay
+                    button#tomorrow-btn.btn.btn-secondary Ngày mai
+                    input#date-input(type="date", class="form-control", name="date")
+
+            .card.mb-3
+                table(class="table")
+                    thead(class="card-header")
+                        tr(class="table-active")
+                            th STT
+                            th Ngày khám
+                            th Giờ khám
+                            th Chuyên khoa
+                            th Bệnh nhân
+                            th Bác sĩ
+                            th Trạng thái 
+                            th Hành động
+                    tbody   
+                        
+    script.
+        function updateAppointments(date) {
+            fetch(`/admin/appointments-patient/dates?date=${date}`)
+                .then(response => response.json())
+                .then(data => {
+                    const tbody = document.querySelector("tbody");
+                    tbody.innerHTML = ""; 
+                    data.forEach((appointment, index) => {
+                        const row = document.createElement("tr");
+                        row.innerHTML = `
+                            <td>${index + 1}</td>
+                            <td>${appointment.date}</td>
+                            <td>${appointment.time}</td>
+                            <td>${appointment.specialty}</td>
+                            <td>${appointment.patient}</td>
+                            <td>${appointment.doctor}</td>
+                            <td>${appointment.status}</td>
+                        `;
+                        tbody.appendChild(row);
+                    });
+                })
+                .catch(error => console.error("Lỗi khi lấy dữ liệu cuộc hẹn:", error));
+        }
+        document.getElementById("today-btn").addEventListener("click", () => {
+            const today = new Date().toISOString().split("T")[0];
+            document.getElementById("date-input").value = today;
+            updateAppointments(today);
+        });
+
+        document.getElementById("tomorrow-btn").addEventListener("click", () => {
+            let currentDate = document.getElementById("date-input").value;
+            currentDate = currentDate ? new Date(currentDate) : new Date();
+            const tomorrow = new Date(currentDate.setDate(currentDate.getDate() + 1))
+                .toISOString().split("T")[0];
+            document.getElementById("date-input").value = tomorrow;
+            updateAppointments(tomorrow);
+        });
+
+        document.getElementById("date-input").addEventListener("change", (event) => {
+            const selectedDate = event.target.value;
+            updateAppointments(selectedDate);
+        });
+
