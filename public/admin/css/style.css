@@ -405,3 +405,30 @@ table tr td:last-child {
   border: var(--bs-border-width) solid var(--bs-border-color);
   color: #000;
 }
+
+.contact-info {
+  /* display: flex; */
+  flex-direction: column; /* Đảm bảo tên và số điện thoại nằm trên các dòng riêng biệt */
+  /* border: 1px solid #ccc; Thêm border cho cả tên và số điện thoại */
+  padding: 8px;
+  text-align: left; /* Căn lề trái để mọi thứ gọn gàng */
+}
+
+.contact-info span {
+  margin-bottom: 5px;
+}
+
+.patient-phone, .doctor-phone {
+  color: #007bff; /* Màu xanh biển cho số điện thoại */
+  font-weight: 400; /* Làm đậm số điện thoại */
+}
+
+.contact-info i {
+  margin-top: 5px;
+  color: #007bff; /* Màu xanh biển cho icon điện thoại */
+}
+
+.contact-info #patient, #doctor{
+  justify-content: space-around;
+  display: flex;
+}

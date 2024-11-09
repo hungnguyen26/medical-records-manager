@@ -43,8 +43,16 @@ block main
                             <td>${formattedDate}</td>
                             <td>${appointment.time}</td>
                             <td>${appointment.departmentName}</td>
-                            <td class="">${appointment.patientName}-${appointment.patientPhone}</td>
-                            <td>${appointment.doctorName}-${appointment.doctorPhone}</td>
+                           <td class="contact-info">
+                                <span class="patient-name" id="patient">${appointment.patientName}</span>
+                                <span class="patient-phone" >${appointment.patientPhone}</span>
+                                <i class="fa-solid fa-phone"></i>
+                            </td>
+                            <td class="contact-info">
+                                <span class="doctor-name" id="doctor">${appointment.doctorName}</span>
+                                <span class="doctor-phone">${appointment.doctorPhone}</span>
+                                <i class="fa-solid fa-phone"></i>
+                            </td>
                             <td ><div class="booked">Đã đặt</div></td>
                             <td>KHÁM</td>
                         `;
