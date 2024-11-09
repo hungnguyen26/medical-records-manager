@@ -37,14 +37,16 @@ block main
                     tbody.innerHTML = ""; 
                     data.forEach((appointment, index) => {
                         const row = document.createElement("tr");
+                        const formattedDate = new Date(appointment.date).toLocaleDateString('vi-VN');
                         row.innerHTML = `
                             <td>${index + 1}</td>
-                            <td>${appointment.date}</td>
+                            <td>${formattedDate}</td>
                             <td>${appointment.time}</td>
-                            <td>${appointment.specialty}</td>
-                            <td>${appointment.patient}</td>
-                            <td>${appointment.doctor}</td>
-                            <td>${appointment.status}</td>
+                            <td>${appointment.departmentName}</td>
+                            <td class="">${appointment.patientName}-${appointment.patientPhone}</td>
+                            <td>${appointment.doctorName}-${appointment.doctorPhone}</td>
+                            <td ><div class="booked">Đã đặt</div></td>
+                            <td>KHÁM</td>
                         `;
                         tbody.appendChild(row);
                     });
@@ -70,4 +72,8 @@ block main
             const selectedDate = event.target.value;
             updateAppointments(selectedDate);
         });
-
+        document.addEventListener("DOMContentLoaded", () => {
+            const today = new Date().toISOString().split("T")[0];
+            document.getElementById("date-input").value = today;
+            updateAppointments(today); 
+        });
