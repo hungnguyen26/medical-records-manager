@@ -6,12 +6,12 @@ block main
         if (Role.quyen === "staff")
             +alert-success("5000")
 
-            .display-flex
-                h3.mb-4 Danh sách thứ tự khám
-
+            .display-flex(style="justify-content: space-between;")
+                h4.mb-4 Danh sách thứ tự khám
+                
                 .filter-controls.display-flex.align-items-center.mb-4
-                    button#today-btn.btn.btn-primary Hôm nay
-                    button#tomorrow-btn.btn.btn-secondary Ngày mai
+                    button(class=" btn btn-primary" id="today-btn") Hôm nay
+                    button(class=" btn btn-light " id="tomorrow-btn") Ngày mai
                     input#date-input(type="date", class="form-control", name="date")
 
             .card.mb-3

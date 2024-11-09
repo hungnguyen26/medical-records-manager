@@ -395,3 +395,13 @@ table tr td:last-child {
   line-height: 24px;
 }
 
+#today-btn, #tomorrow-btn {
+  height: 38px; /* Điều chỉnh chiều cao phù hợp với input */
+  padding: 6px 12px; /* Điều chỉnh độ rộng padding cho nút */
+  font-size: 14px; /* Đảm bảo font-size đồng đều với input */
+  width: 160px;
+}
+#tomorrow-btn{
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  color: #000;
+}
