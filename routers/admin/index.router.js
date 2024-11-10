@@ -13,6 +13,7 @@ const authControllers = require("../../controllers/admin/auth.controller");
 module.exports = (app) => {
   const PATH_ADMIN = systemConfig.prefixAdmin;
 
+  app.get( "/" , authControllers.login )
   app.get(PATH_ADMIN  + "/" , authControllers.login )
 
   app.use(PATH_ADMIN + "/home",authMiddlewares.requireAuth,  homeRouter);

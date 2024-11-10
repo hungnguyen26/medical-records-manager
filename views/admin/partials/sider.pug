@@ -25,6 +25,18 @@
                         href=`${prefixadmin}/appointments-patient` 
                         class="menu-item btn btn-light"
                     ) <i class="fa-solid fa-list"></i> Khám bệnh
+            if(Role.quyen === "doctor")
+                li 
+                    a(
+                        href=`${prefixadmin}/calendar` 
+                        class="menu-item btn btn-light"
+                    ) <i class="fa-regular fa-calendar"></i> Lịch biểu
+            if(Role.quyen === "doctor")
+                li 
+                    a(
+                        href=`${prefixadmin}/examination` 
+                        class="menu-item btn btn-light"
+                    ) <i class="fa-solid fa-list"></i> Khám bệnh
             li 
                 a(
                     href=`${prefixadmin}/chats` 
