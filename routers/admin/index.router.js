@@ -27,5 +27,4 @@ module.exports = (app) => {
 
   app.use(PATH_ADMIN + "/appointments-patient", authMiddlewares.requireAuth, appointments_patient);
 
-  // app.get(PATH_ADMIN + "/api" , apifilterDoctors)
 };

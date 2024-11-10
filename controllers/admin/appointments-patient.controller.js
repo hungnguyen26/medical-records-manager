@@ -65,3 +65,9 @@ module.exports.getAppointmentsByDate = async (req, res) => {
     }
 };
 
+// [PATCH] admin/appointments-patient/waiting/:appointmentId
+module.exports.updateStatusToWaiting = async (req, res) => {
+    const appointmentId = req.params.appointmentId;
+    res.send(appointmentId)
+};
+
