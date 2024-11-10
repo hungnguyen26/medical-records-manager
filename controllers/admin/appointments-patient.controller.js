@@ -2,6 +2,7 @@ const Appointment = require("../../models/appoinments.model");
 const Department = require("../../models/department.model");
 const Account = require("../../models/accounts.model");
 const User = require("../../models/users.model");
+const systemConfig = require("../../config/system");
 
 // [GET] admin/appointments-patient
 module.exports.index = async (req, res) => {
@@ -68,6 +69,17 @@ module.exports.getAppointmentsByDate = async (req, res) => {
 // [PATCH] admin/appointments-patient/waiting/:appointmentId
 module.exports.updateStatusToWaiting = async (req, res) => {
     const appointmentId = req.params.appointmentId;
-    res.send(appointmentId)
+    try {
+        await Appointment.findByIdAndUpdate(
+            appointmentId,
+            {status:'waiting'}
+        )
+        req.flash("thanhcong", " Xác nhận chờ khám thành công.");
+        res.redirect(`${systemConfig.prefixAdmin}/appointments-patient`);
+    } catch (error) {
+        console.log(error);
+        req.flash("thatbai", " Có lỗi xảy ra khi xác nhận chờ khám.");
+        res.redirect(`${systemConfig.prefixAdmin}/appointments-patient`);
+    }
 };
 
