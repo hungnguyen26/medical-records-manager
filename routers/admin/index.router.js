@@ -6,9 +6,12 @@ const medicinesRouter = require("./medicines.router");
 const profile_medicalRouter = require("./profile-medical.router");
 const { apifilterDoctors } = require("../../controllers/admin/profile_medical.controller");
 const appointments_patient = require("./appointments-patient.router");
+const calendarsRouter = require("./calendars.router");
+const examinationsRouter = require("./examinations.router");
 
 const authMiddlewares = require("../../middlewares/admin/auth.middlewares");
 const authControllers = require("../../controllers/admin/auth.controller");
+const { calendarFormat } = require("moment");
 
 module.exports = (app) => {
   const PATH_ADMIN = systemConfig.prefixAdmin;
@@ -27,5 +30,9 @@ module.exports = (app) => {
   app.use(PATH_ADMIN + "/profile-medical", authMiddlewares.requireAuth, profile_medicalRouter);
 
   app.use(PATH_ADMIN + "/appointments-patient", authMiddlewares.requireAuth, appointments_patient);
+
+  app.use(PATH_ADMIN + "/calendar", authMiddlewares.requireAuth, calendarsRouter);
+
+  app.use(PATH_ADMIN + "/examination", authMiddlewares.requireAuth, examinationsRouter);
 
 };
