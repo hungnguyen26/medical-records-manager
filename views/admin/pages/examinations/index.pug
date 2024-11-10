@@ -1,0 +1,9 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+
+block main
+    .block-main
+        if (Role.quyen === "doctor")
+            +alert-success("5000")
+            
+            h4.mb-4 Danh sách thứ tự khám
