@@ -401,7 +401,7 @@ table tr td:last-child {
   font-size: 14px; /* Đảm bảo font-size đồng đều với input */
   width: 160px;
 }
-#tomorrow-btn{
+#tomorrow-btn, #waiting-apponitment{
   border: var(--bs-border-width) solid var(--bs-border-color);
   color: #000;
 }
