@@ -5,5 +5,87 @@ block main
     .block-main
         if (Role.quyen === "doctor")
             +alert-success("5000")
-            
-            h4.mb-4 Lịch biểu
+
+            .display-flex(style="gap: 20px")
+
+                .sidebar(style="width: 300px;")
+                    h4.mb-4 Danh sách
+                    .button-group
+                        button.btn.btn-outline-secondary Tất cả
+                        button.btn.btn-primary Hôm nay
+
+                .calendar-container(style="flex-grow: 1;")
+                    .calendar-header
+                        .button-group
+                            button.btn.btn-primary <i class="fa-solid fa-angle-left"></i>
+                            button.btn.btn-primary <i class="fa-solid fa-angle-right"></i>
+                        span#current-date
+                        button.btn.btn-primary.mt-2 Hiện tại
+                    table.mt-3.calendar.table-bordered(style="width: 100%; border-right:1px solid #000;")
+                        thead
+                            tr
+                                th CN
+                                th Th 2
+                                th Th 3
+                                th Th 4
+                                th Th 5
+                                th Th 6
+                                th Th 7
+                        tbody#calendar-body 
+
+    script.     
+        const calendarBody = document.querySelector('.calendar tbody');
+        const monthDisplay = document.querySelector('.calendar-header span');
+        const today = new Date();
+        let currentYear = today.getFullYear();
+        let currentMonth = today.getMonth();
+
+        function renderCalendar(year, month) {
+            // Đặt tháng và năm hiện tại
+            monthDisplay.textContent = `Tháng ${month + 1} năm ${year}`;
+
+            // Xóa lịch cũ
+            calendarBody.innerHTML = '';
+
+            // Lấy thông tin tháng
+            const firstDay = new Date(year, month, 1).getDay();
+            const lastDate = new Date(year, month + 1, 0).getDate();
+            const prevLastDate = new Date(year, month, 0).getDate();
+
+            let date = 1;
+            let nextDate = 1;
+
+            for (let i = 0; i < 6; i++) {
+                const row = document.createElement('tr');
+
+                for (let j = 0; j < 7; j++) {
+                    const cell = document.createElement('td');
+                    cell.style.textAlign = 'inherit';
+
+                    if (i === 0 && j < firstDay) {
+                        // Ngày thuộc tháng trước
+                        cell.textContent = prevLastDate - firstDay + j + 1;
+                        cell.classList.add('dimmed');  // Áp dụng CSS làm mờ
+                    } else if (date > lastDate) {
+                        // Ngày thuộc tháng sau
+                        cell.textContent = nextDate++;
+                        cell.classList.add('dimmed');  // Áp dụng CSS làm mờ
+                    } else {
+                        // Ngày thuộc tháng hiện tại
+                        cell.textContent = date++;
+                        if (today.getDate() === cell.textContent && today.getMonth() === month && today.getFullYear() === year) {
+                            cell.style.backgroundColor = '#fdf5e6'; // Đánh dấu ngày hiện tại
+                        }
+                    }
+
+                    row.appendChild(cell);
+                }
+
+                calendarBody.appendChild(row);
+
+                if (date > lastDate) break;
+            }
+        }
+
+        // Gọi hàm renderCalendar với tháng và năm hiện tại
+        renderCalendar(currentYear, currentMonth);

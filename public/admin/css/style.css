@@ -432,3 +432,32 @@ table tr td:last-child {
   justify-content: space-around;
   display: flex;
 }
+
+.calendar-header{
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+table.calendar.table-bordered th {
+  text-align: inherit;
+  width: calc(100% / 7);
+  height: 25px;
+  padding-left: 8px;
+}
+
+
+table.calendar.table-bordered td.dimmed {
+  opacity: 0.3;
+}
+
+table.calendar.table-bordered th {
+  text-align: inherit;
+}
+
+table.calendar.table-bordered td {
+  height: 80px;
+  margin-right: 20px;
+  padding: 10px 20px 40px 10px;
+}
+
