@@ -100,6 +100,7 @@ block main
 
         // Gọi hàm renderCalendar với tháng và năm hiện tại
         renderCalendar(currentYear, currentMonth);
+        
         // Thêm sự kiện cho nút "Tháng trước"
         document.querySelector('.calendar-header .fa-angle-left').addEventListener('click', () => {
             if (currentMonth === 0) {
