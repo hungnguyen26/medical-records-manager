@@ -107,9 +107,11 @@
 /* avatar user */
 .round-avatar {
   width: 40px;
-  height: 4 0px;
+  height: 40px; 
   border-radius: 50%;
-  object-fit: cover;
+  object-fit: cover; 
+  object-position: center;
+  overflow: hidden;
 }
 /* avatar user */
 
@@ -138,9 +140,9 @@ th {
   font-weight: 500;
 }
 .role-staff {
-  border: 1px solid rgb(255 0 182 / 44%);
+  border: 1px solid rgb(216 204 127 / 44%);
   border-radius: 6px;
-  background-color: #fbd7ff;
+  background-color: #fff7e4;
   width: 78px;
   height: 24px;
   text-align: center;
@@ -148,7 +150,7 @@ th {
 }
 .role-banhang,
 .usage-medicines {
-  border: 1px solid rgb(12, 170, 222);
+  border: 1px solid rgb(143 214 237);
   background-color: #cee8fd;
 
   border-radius: 6px;
