@@ -21,5 +21,6 @@ module.exports.requireAuth = async (req, res, next) => {
   res.locals.User = user; // tạo biến toàn cục tên user, tất cả file pug đều dùng được user
   res.locals.Role = role;
   
+  
   next();
 };
