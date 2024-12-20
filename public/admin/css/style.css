@@ -270,7 +270,7 @@ a {
 }
 .form-control-file {
   display: block;
-  background: #62fdd4ac;
+  /* background: #62fdd4ac; */
 }
 /* end img preview */
 .form-create,
