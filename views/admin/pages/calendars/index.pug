@@ -77,7 +77,6 @@ block main
                             cell.style.backgroundColor = '#fdf5e6'; // Đánh dấu ngày hiện tại
                         }
 
-                        // Thêm sự kiện click vào toàn bộ ô ngày
                         cell.addEventListener('click', () => {
                             const selectedDate = new Date(year, month, parseInt(cell.textContent));  // Tạo Date chính xác
                             selectedDate.setHours(12, 0, 0, 0); // Đảm bảo không bị lệch múi giờ
@@ -85,7 +84,7 @@ block main
                             // Lấy ngày theo định dạng yyyy-mm-dd
                             const formattedDate = selectedDate.toLocaleDateString('en-CA'); 
 
-                            window.location.href = `/appointments/create?date=${formattedDate}`;
+                            window.location.href = `calendar/meeting/create?date=${formattedDate}`;
                         });
                     }
 

@@ -1,0 +1,51 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+
+block main
+    .block-main
+        +alert-success("5000")
+        if (Role.quyen === "doctor")
+            h3(class="mb-4") Tạo lịch họp
+            .form-create    
+                form(
+                    action=`${prefixadmin}/calendar/meeting/create`
+                    method='POST'
+                ) 
+                    div(class="form-group")
+                        label(for="patientId") Chủ đề cuộc họp 
+                            span.required ✳
+                        input(
+                            type="text"
+                            class="form-control"
+                            id="subject"
+                            name="subject"
+                            placeholder="Chủ đề cuộc họp"
+                        )             
+                        input(
+                            type="hidden"
+                            id="date"
+                            name="date"
+                            value= date.date
+                        )  
+                    div(class="form-group")
+                        label(for="patientId") Mô tả cuộc họp 
+                            span.required ✳
+                        textarea(
+                            rows="2"
+                            class="form-control"
+                            id="description"
+                            name="description"
+                            placeholder="Mô tả"
+                        )
+                    div(class="form-group")
+                            label(for="dateOfBirth") Thời gian họp
+                    div(class="form-group")
+                            label(for="dateOfBirth") Thời gian bắt đầu
+                                span.required ✳
+                            input(
+                                type="date"
+                                class="form-control"
+                                id="startDate"
+                                name="startDate"
+                                readonly  
+                            ) 
