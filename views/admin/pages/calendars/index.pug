@@ -102,10 +102,10 @@ block main
         renderCalendar(currentYear, currentMonth);
         
         // Thêm sự kiện cho nút "Tháng trước"
-        document.querySelector('.calendar-header .fa-angle-left').addEventListener('click', () => {
+        document.querySelector(' .calendar-header .fa-angle-left').addEventListener('click', () => {
             if (currentMonth === 0) {
-                currentMonth = 11;  // Chuyển sang tháng 12
-                currentYear--;      // Giảm năm
+                currentMonth = 11;  
+                currentYear--;      
             } else {
                 currentMonth--;
             }
