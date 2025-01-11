@@ -9,10 +9,11 @@ block main
             .form-create    
                 form(
                     action=`${prefixadmin}/calendar/meeting/create`
+                    enctype="multipart/form-data"
                     method='POST'
                 ) 
                     div(class="form-group")
-                        label(for="patientId") Chủ đề cuộc họp 
+                        label(for="subject") Chủ đề cuộc họp 
                             span.required ✳
                         input(
                             type="text"
@@ -28,7 +29,7 @@ block main
                             value= date.date
                         )  
                     div(class="form-group")
-                        label(for="patientId") Mô tả cuộc họp 
+                        label(for="description") Mô tả cuộc họp 
                             span.required ✳
                         textarea(
                             rows="2"
@@ -38,14 +39,69 @@ block main
                             placeholder="Mô tả"
                         )
                     div(class="form-group")
-                            label(for="dateOfBirth") Thời gian họp
+                        label(for="date") Thời gian họp
                     div(class="form-group")
-                            label(for="dateOfBirth") Thời gian bắt đầu
+                        label(for="date") Thời gian bắt đầu
+                            span.required ✳
+                        input(
+                            type="date"
+                            class="form-control"
+                            id="date"
+                            name="date"
+                            value=date.date
+                            readonly  
+                        ) 
+                    div(class="form-group" style="display: flex; gap: 10px; width: 100%;")
+                        div(class="form-group" style="width: 50%;")
+                            label(for="startTime") Thời gian bắt đầu
                                 span.required ✳
                             input(
-                                type="date"
+                                type="time"
                                 class="form-control"
-                                id="startDate"
-                                name="startDate"
-                                readonly  
+                                id="startTime"
+                                name="startTime"
                             ) 
+                        div(class="form-group" style="width: 50%;")
+                            label(for="endTime") Thời gian kết thúc
+                                span.required ✳
+                            input(
+                                type="time"    
+                                class="form-control"
+                                id="endTime"
+                                name="endTime"
+                            ) 
+                    div(class="form-group" )
+                        label(for="room") Phòng họp
+                            span.required ✳
+                        select(name="room" id="room" class="form-control")
+                                option(disabled selected) Chọn phòng họp
+                                option(value="room1") Room 1 
+                                option(value="room2") Room 2  
+                                option(value="room3") Room 3  
+                    div(class="form-group")
+                        label(for="participants") Người tham gia
+                            span.required ✳
+                        select(name="participants" id="participants" class="form-control")
+                                option(disabled selected) Chọn người tham gia
+                                    each item in doctors
+                                        option(value=item.id) #{item.fullName} - #{item.phone} 
+                    div(class="form-group" style="width: 50%;")
+                        label(for="files") Đính kèm
+                        input(
+                            type="file"    
+                            class="form-control"
+                            id="files"
+                            name="files"
+                            multiple
+                        ) 
+                    div(class="form-group")
+                        button(
+                            type="submit"
+                            class="btn btn-info"
+                        )  Tạo mới
+                        button(
+                            type="button" 
+                            onclick="history.back();" 
+                            class="btn btn-secondary"
+                            style="margin-left: 10px; padding: 5px 10px; width: 82px;   "
+                        ) Hủy
