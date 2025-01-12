@@ -4,13 +4,13 @@ include ../../mixins/alert.pug
 block main
     .block-main
         +alert-success("5000")
-        if (Role.quyen === "doctor")
+        if(Role.quyen === "doctor")
             h3(class="mb-4") Tạo lịch họp
             .form-create    
                 form(
                     action=`${prefixadmin}/calendar/meeting/create`
-                    enctype="multipart/form-data"
                     method='POST'
+                    enctype="multipart/form-data"
                 ) 
                     div(class="form-group")
                         label(for="subject") Chủ đề cuộc họp 
@@ -89,10 +89,10 @@ block main
                         label(for="files") Đính kèm
                         input(
                             type="file"    
-                            class="form-control"
+                            class="form-control-file"
                             id="files"
                             name="files"
-                            multiple
+                            //- multiple
                         ) 
                     div(class="form-group")
                         button(

@@ -29,5 +29,7 @@ module.exports.create = async (req, res) => {
 };
 
 module.exports.createPost = async (req, res) => {
- res.send("ok");
+  res.json(req.body);
+  // res.json(req.files);
+
 };

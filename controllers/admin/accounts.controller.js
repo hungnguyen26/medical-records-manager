@@ -51,24 +51,7 @@ module.exports.create = async (req, res) => {
 
 // [POST] admin/accounts/create
 module.exports.createPost = async (req, res) => {
-  // const emailTontai = await Account.findOne({
-  //   email: req.body.email,
-  //   deleted: false,
-  // });
-
-  // if (emailTontai) {
-  //   req.flash("thatbai", " Email đã tồn tại.");
-  //   res.redirect("back");
-  // } else {
-  //   req.body.password = md5(req.body.password);
-
-  //   // req.body.avatar = `/uploads/${req.file.filename}`;
-
-  //   const record = new Account(req.body);
-  //   await record.save();
-  //   req.flash("thanhcong", " Thêm người dùng mới.");
-  //   res.redirect(`${systemConfig.prefixAdmin}/accounts`);
-  // }
+  // res.json(req.body);
   try {
     const emailTontai = await Account.findOne({
       email: req.body.email,
