@@ -22,12 +22,6 @@ block main
                             name="subject"
                             placeholder="Chủ đề cuộc họp"
                         )             
-                        input(
-                            type="hidden"
-                            id="date"
-                            name="date"
-                            value= date.date
-                        )  
                     div(class="form-group")
                         label(for="description") Mô tả cuộc họp 
                             span.required ✳
@@ -92,7 +86,6 @@ block main
                             class="form-control-file"
                             id="files"
                             name="files"
-                            //- multiple
                         ) 
                     div(class="form-group")
                         button(
