@@ -19,7 +19,7 @@ block main
                         .button-group
                             button.btn.background-color <i class="fa-solid fa-angle-left"></i>
                             button.btn.background-color <i class="fa-solid fa-angle-right"></i>
-                        span#current-date
+                        h5#current-date
                         button.btn.background-color.mt-2 Hiện tại
                     table.mt-3.calendar.table-bordered(style="width: 100%; border-right:1px solid #000;")
                         thead
@@ -36,7 +36,7 @@ block main
 
     script.     
         const calendarBody = document.querySelector('.calendar tbody');
-        const monthDisplay = document.querySelector('.calendar-header span');
+        const monthDisplay = document.querySelector('.calendar-header h5');
         const today = new Date();
         let currentYear = today.getFullYear();
         let currentMonth = today.getMonth();
