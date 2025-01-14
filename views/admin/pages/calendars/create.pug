@@ -4,6 +4,7 @@ include ../../mixins/alert.pug
 block main
     .block-main
         +alert-success("5000")
+        +alert-error("5000")
         if(Role.quyen === "doctor")
             h3(class="mb-4") Tạo lịch họp
             .form-create    
@@ -75,7 +76,7 @@ block main
                     div(class="form-group")
                         label(for="participants") Người tham gia
                             span.required ✳
-                        select(name="participants" id="participants" class="form-control")
+                        select(name="participants" id="participants" class="form-control" multiple)
                                 option(disabled selected) Chọn người tham gia
                                     each item in doctors
                                         option(value=item.id) #{item.fullName} - #{item.phone} 

@@ -6,11 +6,9 @@ const meetingsSchema = new Schema(
     subject: String,  // chủ đề
     description: String, // mô tả
     files: [String],   // files
-    participants: [
-      {
-        doctor_id: String,
-      }
-    ],
+    participants: [{
+      type: mongoose.Schema.Types.ObjectId,
+    }],
     room: String,
     startDate: Date,
     endDate: Date,
@@ -26,6 +24,6 @@ const meetingsSchema = new Schema(
   }
 );
 
-const Meeting = mongoose.model("Meeting", meetingsSchema, "meetings");
+const Meeting = mongoose.model("Meeting", meetingsSchema, "mettings");
 
 module.exports = Meeting;

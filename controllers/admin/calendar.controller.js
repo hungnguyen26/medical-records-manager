@@ -1,5 +1,8 @@
+const systemConfig = require("../../config/system");
+
 const Role = require("../../models/roles.model");
 const Account = require("../../models/accounts.model");
+const Meeting = require("../../models/meetings.model");
 
 // [GET] admin/home
 module.exports.index = async (req, res) => {
@@ -29,7 +32,43 @@ module.exports.create = async (req, res) => {
 };
 
 module.exports.createPost = async (req, res) => {
-  const owner = res.locals.User.id;
-  res.send("Ok")
-  
+  // const owner = res.locals.User.id;
+  // console.log(req.body);
+  try {
+    const {
+      subject,
+      description,
+      date,
+      startTime,
+      endTime,
+      room,
+      participants,
+      files,
+    } = req.body;
+    const startDate = new Date(`${date}T${startTime}:00`);
+    const endDate = new Date(`${date}T${endTime}:00`);
+
+    const newMeeting = new Meeting({
+      subject,
+      description,
+      room,
+      startDate,
+      endDate,
+      participants,
+      files,
+      owner: res.locals.User.id,
+    })
+    
+    await newMeeting.save();
+    
+    req.flash("thanhcong", "Tạo cuộc họp thành công");
+    res.redirect(`${systemConfig.prefixAdmin}/calendar`);
+
+  } catch (error) {
+    console.log(error);
+    req.flash("thatbai", "Lỗi khi tạo cuộc họp");
+    res.redirect(`${systemConfig.prefixAdmin}/calendar`);
+
+  }
+
 };

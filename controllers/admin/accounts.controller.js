@@ -89,7 +89,7 @@ module.exports.createPost = async (req, res) => {
     }
   } catch (error) {
     req.flash("thatbai", "Lỗi khi tạo người dùng");
-    res.redirect(`${prefixadmin}/accounts/create`);
+    res.redirect(`${systemConfig.prefixadmin}/accounts/create`);
   }
 };
 
