@@ -29,7 +29,7 @@ module.exports.create = async (req, res) => {
 };
 
 module.exports.createPost = async (req, res) => {
-  res.json(req.body);
-  // res.json(req.files);
-
+  const owner = res.locals.User.id;
+  res.send("Ok")
+  
 };
