@@ -32,6 +32,7 @@ block main
                                 th Th 6
                                 th Th 7
                         tbody#calendar-body 
+                            
 
     script.     
         const calendarBody = document.querySelector('.calendar tbody');
@@ -41,13 +42,10 @@ block main
         let currentMonth = today.getMonth();
 
         function renderCalendar(year, month) {
-            // Đặt tháng và năm hiện tại
             monthDisplay.textContent = `Tháng ${month + 1} năm ${year}`;
 
-            // Xóa lịch cũ
             calendarBody.innerHTML = '';
 
-            // Lấy thông tin tháng
             const firstDay = new Date(year, month, 1).getDay();
             const lastDate = new Date(year, month + 1, 0).getDate();
             const prevLastDate = new Date(year, month, 0).getDate();
@@ -63,25 +61,23 @@ block main
                     cell.style.textAlign = 'inherit';
 
                     if (i === 0 && j < firstDay) {
-                        // Ngày thuộc tháng trước
                         cell.textContent = prevLastDate - firstDay + j + 1;
-                        cell.classList.add('dimmed');  // Áp dụng CSS làm mờ
+                        cell.classList.add('dimmed');  
                     } else if (date > lastDate) {
-                        // Ngày thuộc tháng sau
+
                         cell.textContent = nextDate++;
-                        cell.classList.add('dimmed');  // Áp dụng CSS làm mờ
+                        cell.classList.add('dimmed');
                     } else {
-                        // Ngày thuộc tháng hiện tại
+
                         cell.textContent = date++;
                         if (today.getDate() === parseInt(cell.textContent) && today.getMonth() === month && today.getFullYear() === year) {
-                            cell.style.backgroundColor = '#fdf5e6'; // Đánh dấu ngày hiện tại
+                            cell.style.backgroundColor = '#fdf5e6'; 
                         }
 
                         cell.addEventListener('click', () => {
-                            const selectedDate = new Date(year, month, parseInt(cell.textContent));  // Tạo Date chính xác
-                            selectedDate.setHours(12, 0, 0, 0); // Đảm bảo không bị lệch múi giờ
+                            const selectedDate = new Date(year, month, parseInt(cell.textContent));  
+                            selectedDate.setHours(12, 0, 0, 0); 
 
-                            // Lấy ngày theo định dạng yyyy-mm-dd
                             const formattedDate = selectedDate.toLocaleDateString('en-CA'); 
 
                             window.location.href = `calendar/meeting/create?date=${formattedDate}`;
@@ -97,11 +93,10 @@ block main
             }
         }
 
-        // Gọi hàm renderCalendar với tháng và năm hiện tại
         renderCalendar(currentYear, currentMonth);
         
         // Thêm sự kiện cho nút "Tháng trước"
-        document.querySelector(' .calendar-header .fa-angle-left').addEventListener('click', () => {
+        document.querySelector(' .calendar-header button:first-child').addEventListener('click', () => {
             if (currentMonth === 0) {
                 currentMonth = 11;  
                 currentYear--;      
@@ -112,7 +107,7 @@ block main
         });
 
         // Thêm sự kiện cho nút "Tháng tới"
-        document.querySelector('.calendar-header .fa-angle-right').addEventListener('click', () => {
+        document.querySelector('.calendar-header button:nth-child(2)').addEventListener('click', () => {
             if (currentMonth === 11) {
                 currentMonth = 0;   // Chuyển sang tháng 1
                 currentYear++;      // Tăng năm
