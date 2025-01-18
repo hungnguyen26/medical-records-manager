@@ -11,6 +11,7 @@ module.exports.index = async (req, res) => {
   });
 };
 
+// [GET] admin/calendar/meeting/create
 module.exports.create = async (req, res) => {
   const date = req.query;
   const roleDoctor = await Role.findOne({ quyen: "doctor" });
@@ -31,6 +32,7 @@ module.exports.create = async (req, res) => {
   });
 };
 
+// [POST] admin/calendar/meeting/create
 module.exports.createPost = async (req, res) => {
   // const owner = res.locals.User.id;
   // console.log(req.body);
@@ -67,8 +69,7 @@ module.exports.createPost = async (req, res) => {
   } catch (error) {
     console.log(error);
     req.flash("thatbai", "Lỗi khi tạo cuộc họp");
-    res.redirect(`${systemConfig.prefixAdmin}/calendar`);
-
+    res.redirect(`back`);
   }
 
 };

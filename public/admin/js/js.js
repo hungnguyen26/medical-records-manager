@@ -169,5 +169,87 @@ const filterDoctors = () => {
 // end lấy danh sách bác sĩ theo khoa
 
 
+// meetings
+const calendarBody = document.querySelector('.calendar tbody');
+const monthDisplay = document.querySelector('.calendar-header h5');
+const today = new Date();
+let currentYear = today.getFullYear();
+let currentMonth = today.getMonth();
 
+function renderCalendar(year, month) {
+    monthDisplay.textContent = `Tháng ${month + 1} năm ${year}`;
 
+    calendarBody.innerHTML = '';
+
+    const firstDay = new Date(year, month, 1).getDay();
+    const lastDate = new Date(year, month + 1, 0).getDate();
+    const prevLastDate = new Date(year, month, 0).getDate();
+
+    let date = 1;
+    let nextDate = 1;
+
+    for (let i = 0; i < 6; i++) {
+        const row = document.createElement('tr');
+
+        for (let j = 0; j < 7; j++) {
+            const cell = document.createElement('td');
+            cell.style.textAlign = 'inherit';
+
+            if (i === 0 && j < firstDay) {
+                cell.textContent = prevLastDate - firstDay + j + 1;
+                cell.classList.add('dimmed');  
+            } else if (date > lastDate) {
+
+                cell.textContent = nextDate++;
+                cell.classList.add('dimmed');
+            } else {
+
+                cell.textContent = date++;
+                if (today.getDate() === parseInt(cell.textContent) && today.getMonth() === month && today.getFullYear() === year) {
+                    cell.style.backgroundColor = '#fdf5e6'; 
+                }
+
+                cell.addEventListener('click', () => {
+                    const selectedDate = new Date(year, month, parseInt(cell.textContent));  
+                    selectedDate.setHours(12, 0, 0, 0); 
+
+                    const formattedDate = selectedDate.toLocaleDateString('en-CA'); 
+
+                    window.location.href = `calendar/meeting/create?date=${formattedDate}`;
+                });
+            }
+
+            row.appendChild(cell);
+        }
+
+        calendarBody.appendChild(row);
+
+        if (date > lastDate) break;
+    }
+}
+
+renderCalendar(currentYear, currentMonth);
+
+    // Thêm sự kiện cho nút "Tháng trước"
+document.querySelector(' .calendar-header button:first-child').addEventListener('click', () => {
+    if (currentMonth === 0) {
+        currentMonth = 11;  
+        currentYear--;      
+    } else {
+        currentMonth--;
+    }
+    renderCalendar(currentYear, currentMonth);
+});
+
+    // Thêm sự kiện cho nút "Tháng tới"
+document.querySelector('.calendar-header button:nth-child(2)').addEventListener('click', () => {
+    if (currentMonth === 11) {
+        currentMonth = 0;   // Chuyển sang tháng 1
+        currentYear++;      // Tăng năm
+    } else {
+        currentMonth++;
+    }
+    renderCalendar(currentYear, currentMonth);
+});
+
+// end meetings
