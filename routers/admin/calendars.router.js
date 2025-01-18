@@ -18,4 +18,7 @@ router.post(
   controller.createPost
 );
 
+// router.get("/meeting/all", controller.getAllMeetings);
+
+
 module.exports = router;

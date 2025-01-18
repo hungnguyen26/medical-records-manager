@@ -11,8 +11,9 @@ block main
                 .sidebar(style="width: 300px;")
                     h4.mb-4 Danh sách
                     .button-group
-                        button.btn.btn-outline-secondary Tất cả
+                        button.btn.btn-outline-secondary(onclick="loadAllMeetings()") Tất cả
                         button.btn.background-color Hôm nay
+                    .all-meetings
 
                 .calendar-container(style="flex-grow: 1;")
                     .calendar-header
@@ -34,5 +35,5 @@ block main
                         tbody#calendar-body 
                             
 
-    //- script.     
+
         

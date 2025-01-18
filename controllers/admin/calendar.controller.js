@@ -73,3 +73,20 @@ module.exports.createPost = async (req, res) => {
   }
 
 };
+
+// [GET] admin/calendar/meeting/all
+// Api get all meetings
+// module.exports.getAllMeetings = async (req, res) => {
+//   try {
+//     const meetings = await Meeting.find({
+//       $or:[
+//         {owner: res.locals.User.id},
+//         {participants: res.locals.User.id},
+//       ]
+//     });
+//     res.json(meetings)
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).send('Lỗi khi lấy cuộc họp')
+//   }
+// };
