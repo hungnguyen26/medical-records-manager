@@ -52,6 +52,7 @@ module.exports.create = async (req, res) => {
 // [POST] admin/accounts/create
 module.exports.createPost = async (req, res) => {
   // res.json(req.body);
+
   try {
     const emailTontai = await Account.findOne({
       email: req.body.email,
@@ -83,7 +84,8 @@ module.exports.createPost = async (req, res) => {
           }
         );
       }
-
+      console.log(req.body);
+      
       req.flash("thanhcong", " Thêm người dùng mới.");
       res.redirect(`${systemConfig.prefixAdmin}/accounts`);
     }

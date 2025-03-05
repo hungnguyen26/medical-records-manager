@@ -8,6 +8,7 @@ const { apifilterDoctors } = require("../../controllers/admin/profile_medical.co
 const appointments_patient = require("./appointments-patient.router");
 const calendarsRouter = require("./calendars.router");
 const examinationsRouter = require("./examinations.router");
+const chatRouter = require("./chats.router");
 
 const authMiddlewares = require("../../middlewares/admin/auth.middlewares");
 const authControllers = require("../../controllers/admin/auth.controller");
@@ -34,5 +35,9 @@ module.exports = (app) => {
   app.use(PATH_ADMIN + "/calendar", authMiddlewares.requireAuth, calendarsRouter);
 
   app.use(PATH_ADMIN + "/examination", authMiddlewares.requireAuth, examinationsRouter);
+
+  app.use(PATH_ADMIN + "/chats", authMiddlewares.requireAuth, chatRouter);
+
+
 
 };

@@ -5,5 +5,25 @@ block main
     .block-main
         if (Role.quyen === "doctor")
             +alert-success("5000")
-            
-            h4.mb-4 Danh sách thứ tự khám
+
+            .display-flex(style="justify-content: space-between;")
+                h4.mb-4 Danh sách thứ tự khám
+                
+                .filter-controls.display-flex.align-items-center.mb-4
+                    button(class=" btn background-color " id="today-btn") Hôm nay
+                    button(class=" btn btn-light " id="tomorrow-btn") Ngày mai
+                    input#date-input(type="date", class="form-control", name="date")
+
+            .card.mb-3
+                table(class="table")
+                    thead(class="card-header")
+                        tr(class="table-active")
+                            th STT
+                            th Ngày khám
+                            th Giờ khám
+                            th Bệnh nhân
+                            th Ngày sinh
+                            th Số điện thoại
+                            th Trạng thái 
+                            th Hành động
+                    tbody   

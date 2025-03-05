@@ -4,6 +4,10 @@ const database = require("./config/database");
 const adminRouter = require("./routers/admin/index.router");
 const systemConfig = require("./config/system");
 const bodyParser = require("body-parser");
+const http = require('http');
+
+// Socket io
+const { Server } = require("socket.io");
 
 const flash = require("express-flash");
 const cookieParser = require("cookie-parser");
@@ -14,7 +18,7 @@ const methodOverride = require("method-override");
 const moment = require("moment")
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 4000 ;
 
 app.use(methodOverride("_method"));
 
@@ -26,6 +30,14 @@ database.connect();
 
 app.set("views", `${__dirname}/views`);
 app.set("view engine", "pug");
+
+
+// socketIO
+const server = http.createServer(app);
+const io = new Server(server);
+global._io = io;          // _io là biến toàn cục
+
+
 
 // flash - thông báo FE
 app.use(cookieParser("djkhajksdhjkas"));
