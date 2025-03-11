@@ -6,44 +6,74 @@
                     a(
                         href=`${prefixadmin}/accounts` 
                         class="menu-item btn btn-light"
+                        style="display: flex; align-items: center; gap: 20px;"
                     ) <i class="fa-regular fa-user"></i> Người dùng 
+            if(Role.quyen === "sell")
+                li 
+                    a(
+                        href=`${prefixadmin}/statistics` 
+                        class="menu-item btn btn-light"
+                        style="display: flex; align-items: center; gap: 20px;"
+                    ) <i class="fa-solid fa-chart-column"></i> Thống kê
+            if(Role.quyen === "sell")
+                li 
+                    a(
+                        href=`${prefixadmin}/orders` 
+                        class="menu-item btn btn-light"
+                        style="display: flex; align-items: center; gap: 20px;"
+                    ) <i class="fa-solid fa-cart-shopping"></i> Đơn hàng
+            if(Role.quyen === "sell")
+                li 
+                    a(
+                        href=`${prefixadmin}/sales` 
+                        class="menu-item btn btn-light"
+                        style="display: flex; align-items: center; gap: 20px;"
+                    ) 
+                        <i class="fa-solid fa-bag-shopping"></i> Kê toa
             if(Role.quyen === "sell")
                 li 
                     a(
                         href=`${prefixadmin}/medicines` 
                         class="menu-item btn btn-light"
+                        style="display: flex; align-items: center; gap: 20px;"
                     ) <i class="fa-solid fa-pills"></i> Thuốc
             if(Role.quyen === "staff")
                 li 
                     a(
                         href=`${prefixadmin}/profile-medical` 
                         class="menu-item btn btn-light"
+                        style="display: flex; align-items: center; gap: 20px;"
                     ) <i class="fa-regular fa-id-badge"></i> Hồ sơ bệnh án
             if(Role.quyen === "staff")
                 li 
                     a(
                         href=`${prefixadmin}/appointments-patient` 
                         class="menu-item btn btn-light"
+                        style="display: flex; align-items: center; gap: 20px;"
                     ) <i class="fa-solid fa-list"></i> Khám bệnh
             if(Role.quyen === "doctor")
                 li 
                     a(
                         href=`${prefixadmin}/calendar` 
                         class="menu-item btn btn-light"
+                        style="display: flex; align-items: center; gap: 20px;"
                     ) <i class="fa-regular fa-calendar"></i> Lịch biểu
             if(Role.quyen === "doctor")
                 li 
                     a(
                         href=`${prefixadmin}/examination` 
                         class="menu-item btn btn-light"
+                        style="display: flex; align-items: center; gap: 20px;"
                     ) <i class="fa-solid fa-list"></i> Khám bệnh
             li 
                 a(
                     href=`${prefixadmin}/chats` 
                     class="menu-item btn btn-light"
+                    style="display: flex; align-items: center; gap: 20px;"
                 ) <i class="fa-brands fa-rocketchat"></i> Tin nhắn
             li 
                 a(
                     href=`${prefixadmin}/auth/logout`
                     class="btn btn-outline-info"
+                    style="display: flex; align-items: center; gap: 20px;"
                 ) Đăng xuất

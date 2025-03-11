@@ -127,9 +127,10 @@ module.exports.bookAppointmentPost = async (req, res) => {
   try {
     const data = {
       ...req.body,
+      dateFinish : null,
       status: "booked",
     };
-    // console.log(data);
+
     
     const bookAppointment = new Appointment(data);
     await bookAppointment.save();
@@ -249,7 +250,6 @@ module.exports.editAppointmentPatch = async (req, res) => {
   }
 };
 
-
 // [DELETE] admin/profile-medical/appointment/:id
 module.exports.detailAppointmentDelete = async (req, res) => {
   const id = req.params.id;
@@ -263,8 +263,6 @@ module.exports.detailAppointmentDelete = async (req, res) => {
     res.redirect(`${systemConfig.prefixAdmin}/profile-medical`);
   }
 };
-
-
 
 // [GET] api filterDoctors
 module.exports.apifilterDoctors = async (req, res) => {

@@ -1,0 +1,58 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+
+block main
+    .block-main
+        if (Role.quyen === "sell")
+            +alert-success("5000")
+            +alert-error("5000")
+
+            .display-flex(style="justify-content: space-between;")
+                h4.mb-4 Danh sách đã khám
+                
+                .filter-controls.display-flex.align-items-center.mb-4
+                    button(class=" btn background-color " id="today-btn") Hôm nay
+                    button(class=" btn btn-light " id="tomorrow-btn") Ngày mai
+                    input#date-input(type="date", class="form-control", name="date")
+            .col-3
+                form(id="form-search")
+                    .input-group
+                        input(
+                            type="text"
+                            placeholder="Tìm kiếm"
+                            name="keyword"
+                            class="form-control"
+                            style="border-top-right-radius: 6px;border-bottom-right-radius: 6px;margin-right: 20px"
+                            value=keyword
+                        )
+                        .input-group-appent 
+                            button(
+                                class="btn btn-info"
+                                type="submit"
+                                style="height: 100%"
+                            ) <i class="fa-solid fa-magnifying-glass"></i>
+
+            .card.mb-3
+                table(class="table")
+                    thead(class="card-header")
+                        tr(class="table-active")
+                            th #
+                            th Ngày khám
+                            th Bệnh nhân
+                            th Ngày sinh
+                            th Số điện thoại
+                            th Trạng thái 
+                            th Hành động
+                    tbody 
+                        each appointment, index in appointments
+                            td #{index+1}
+                            td #{moment(appointment.dateFinish).format("DD/MM/YYYY")}
+                            td #{appointment.patientInfo.fullName}
+                            td #{moment(appointment.patientInfo.dateOfBirth).format("DD/MM/YYYY")}
+                            td #{appointment.patientInfo.phone}
+                            td Đã khám
+                            td
+                                form.wait-form(action='/admin/appointments-patient/waiting/${appointment._id}?_method=PATCH' method='POST')
+                                    button#waiting-apponitment.btn.btn-light(type='submit') <i class="fa-solid fa-right-to-bracket"></i> Kê toa
+                        
+    

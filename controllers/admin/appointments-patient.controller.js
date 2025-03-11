@@ -3,6 +3,7 @@ const Department = require("../../models/department.model");
 const Account = require("../../models/accounts.model");
 const User = require("../../models/users.model");
 const systemConfig = require("../../config/system");
+const { now } = require("mongoose");
 
 // [GET] admin/appointments-patient
 module.exports.index = async (req, res) => {
@@ -72,7 +73,9 @@ module.exports.updateStatusToWaiting = async (req, res) => {
     try {
         await Appointment.findByIdAndUpdate(
             appointmentId,
-            {status:'waiting'}
+            {
+                status:'waiting',
+            }
         )
         req.flash("thanhcong", " Xác nhận chờ khám thành công.");
         res.redirect(`${systemConfig.prefixAdmin}/appointments-patient`);
