@@ -45,14 +45,15 @@ block main
                             th Hành động
                     tbody 
                         each appointment, index in appointments
-                            td #{index+1}
-                            td #{moment(appointment.dateFinish).format("DD/MM/YYYY")}
-                            td #{appointment.patientInfo.fullName}
-                            td #{moment(appointment.patientInfo.dateOfBirth).format("DD/MM/YYYY")}
-                            td #{appointment.patientInfo.phone}
-                            td Đã khám
-                            td
-                                form.wait-form(action='/admin/appointments-patient/waiting/${appointment._id}?_method=PATCH' method='POST')
-                                    button#waiting-apponitment.btn.btn-light(type='submit') <i class="fa-solid fa-right-to-bracket"></i> Kê toa
-                        
+                            tr
+                                td #{index+1}
+                                td #{moment(appointment.dateFinish).format("DD/MM/YYYY")}
+                                td #{appointment.patientInfo.fullName}
+                                td #{moment(appointment.patientInfo.dateOfBirth).format("DD/MM/YYYY")}
+                                td #{appointment.patientInfo.phone}
+                                td Đã khám
+                                td
+                                    form.wait-form(action='/admin/appointments-patient/waiting/${appointment._id}?_method=PATCH' method='POST')
+                                        button#waiting-apponitment.btn.btn-light(type='submit') <i class="fa-solid fa-right-to-bracket"></i> Kê toa
+                            
     
